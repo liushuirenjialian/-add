@@ -1,0 +1,12 @@
+extends: airbnb/legacy
+rules:
+  func-names: 0
+  no-undef: 2
+  no-undef-init: 2
+  no-undefined: 0
+  no-param-reassign: 0
+  wrap-iife: [2, 'any']
+  max-len: [2, 200, 4]
+  no-console: [2, { allow: ["warn", "error"] }]
+  no-debugger: 0
+  vars-on-top: 0

@@ -1,0 +1,88 @@
+// Core variables and mixins
+@import "bs/variables";
+@import "bs/mixins";
+@import "mixins/iconfont";
+
+// Reset and dependencies
+@import "bs/normalize";
+// @import "bs/print";
+
+// Core CSS
+@import "bs/reboot";
+@import "bs/type";
+@import "bs/images";
+// @import "bs/code";
+@import "bs/grid";
+@import "bs/tables";
+@import "bs/forms";
+@import "bs/buttons";
+
+// Components
+// @import "bs/animation";
+@import "bs/dropdown";
+// @import "bs/button-group";
+// @import "bs/input-group";
+// @import "bs/custom-forms";
+@import "bs/nav";
+@import "bs/navbar";
+// @import "bs/card";
+@import "bs/breadcrumb";
+@import "bs/pagination";
+// @import "bs/pager";
+@import "bs/labels";
+// @import "bs/jumbotron";
+@import "bs/alert";
+// @import "bs/progress";
+// @import "bs/media";
+// @import "bs/list-group";
+// @import "bs/responsive-embed";
+// @import "bs/close";
+
+// Components w/ JavaScript
+// @import "bs/modal";
+// @import "bs/tooltip";
+// @import "bs/popover";
+// @import "bs/carousel";
+
+// Utility classes
+// @import "bs/utilities";
+// @import "bs/utilities-background";
+// @import "bs/utilities-spacing";
+// @import "bs/utilities-responsive";
+
+$iconPath: "../iconfont";
+
+@font-face {
+  font-family: iconfont;
+  src: url("#{$iconPath}/iconfont.eot");
+  src: url("#{$iconPath}/iconfont.eot?#iefix") format("embedded-opentype"), url("#{$iconPath}/iconfont.woff") format("woff"), url("#{$iconPath}/iconfont.ttf") format("truetype"), url("#{$iconPath}/iconfont.svg#iconfont") format("svg");
+}
+
+.iconfont {
+  @include iconfont(16px);
+}
+.icon-fail::before { content: "\e600"; }
+.icon-success::before { content: "\e601"; }
+.icon-remove::before { content: "\e602"; }
+
+.fade-transition {
+  transition: all 0.3s ease;
+  &.fade-enter,
+  &.fade-leave {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes twinkling {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.twinkling-transition {
+  animation: twinkling 1s infinite ease-in-out;
+}

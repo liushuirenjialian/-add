@@ -1,0 +1,6 @@
+<div class="logs">
+  <h5 class="title">最近活动</h5>
+  <div class="log" v-for="log in logs">
+    {{ formatDate(log.createdate) }} <span class="username">{{ log.username }}</span> {{ log.actions }}
+  </div>
+</div>

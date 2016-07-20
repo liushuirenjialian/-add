@@ -1,0 +1,22 @@
+.logs {
+
+  border: 1px solid #bdbdbd;
+  padding: 10px;
+  width: 40%;
+
+  .title {
+    border-left: 4px solid #ffbf00;
+    padding-left: 10px;
+  }
+
+  .log {
+
+    margin: 5px;
+
+    .username {
+      color: #ffbf00;
+      margin-left: 10px;
+    }
+  }
+
+}
