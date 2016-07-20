@@ -21,8 +21,8 @@ ac_.join = require('lodash/join');
 
 window.ac_cookies = require('js-cookie');
 window.ac_util = require('../lib/util');
-window.ac_store = require('../lib/store');
-window.ac_http = require('../lib/http');
+// window.ac_store = require('../lib/store');
+// window.ac_http = require('../lib/http');
 
 window.ac_secret_things = {};
 
@@ -38,8 +38,8 @@ App = Vue.extend({
     };
   },
   components: {
-    topbar: require('../components/top/topbar'),
-    alert: require('../components/omo/alert')
+    topbar: require('../components/top/topbar')
+  //   alert: require('../components/omo/alert')
   },
   events: {
     mylord: function () {

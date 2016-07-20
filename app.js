@@ -2,7 +2,7 @@ var express = require('express');
 var request = require('request');
 var path = require('path');
 
-var appConfig = require('build/appConfig');
+var appConfig = require('./build/appConfig.js');
 
 var app = express();
 
@@ -19,7 +19,7 @@ app.use('/v1', function (req, res) {
   req.pipe(request(url)).pipe(res);
 });
 
- 
+
 app.use('/', express.static(path.resolve(__dirname, './public')));
 
 if (process.env.NODE_ENV === 'dev') {

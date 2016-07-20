@@ -2,8 +2,8 @@
 
 module.exports = function (router) {
   router.map({
-    '/register': {
-      component: require('../components/top/register'),
+    '': {
+      component: require('../components/top/login'),
       auth: false
     },
     '/login': {

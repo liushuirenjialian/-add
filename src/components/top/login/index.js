@@ -1,4 +1,4 @@
-var handleXHR = require('../../../lib/handleXHR.js');
+var acHttp = require('../../../lib/http.js');
 require('./style.scss');
 module.exports = {
   template: require('./template.html'),
@@ -11,14 +11,19 @@ module.exports = {
   },
   methods: {
     login: function () {
-      var url = "/v1/oauth/token";
+      var url = '/v1/oauth/token';
       var param = {};
-      param.account = this.account;
+      param.username = this.account;
       param.password = this.password;
-      ac_http.oauth(url,param,function(ret){
-        console.log(ret); 
+      acHttp.oauth(this, url, param, function (ret) {
+        console.log(ret);
       });
-
+    },
+    getUserInfo: function () {
+      var url = '/v1/api/account';
+      acHttp.request(this, 'GET', url, function (ret) {
+        console.log(ret);
+      });
     }
   }
 };

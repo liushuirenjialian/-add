@@ -1,0 +1,17 @@
+<header class="topbar">
+  <div class="container">
+    <a class="navbar-brand" v-link='{ path: "/home" }'>
+      <img src="../../../assets/images/logo.png" alt="logo" style="width: 50px;height:50px;">
+    </a>
+    <nav>
+      <ul class="nav navbar-nav">
+        <li class="nav-item"></li>
+        <li class="nav-item active" v-for="(index, func) in funcBlocks"><a class="nav-link" v-link='func.url' v-text="func.name" v-show="authenticated"></a></li>
+        <li class="nav-item omo-fr active"><a class="nav-link" v-show="authenticated" v-text="username" v-link='{ path: "/user-center" }'></a></li>
+        <li class="nav-item omo-fr active"><a class="nav-link" v-link='{ path: "/login" }' v-show="!authenticated" >登录</a></li>
+        <li class="nav-item omo-fr active"><a class="nav-link" v-link='{ path: "/register" }' v-show="!authenticated" >注册</a></li>
+        <li class="nav-item omo-fr active"><a class="nav-link" v-on:click="logout" v-show="authenticated">退出</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
