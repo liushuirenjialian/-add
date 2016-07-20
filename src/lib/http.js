@@ -23,11 +23,11 @@ module.exports = {
     if (!headers) {
       headers = {'Content-Type': 'application/x-www-form-urlencoded',
                         'Accept': 'application/json',
-                        'Authorization': 'Basic ' + store.getToken().access_token
+                        'Authorization': 'Bearer ' + store.getToken().access_token
                 };
     }
     ctx.$http({
-      url: url,
+      url: '/v1' + url,
       data: param,
       method: method,
       headers: headers

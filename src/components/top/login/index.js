@@ -11,7 +11,7 @@ module.exports = {
   },
   methods: {
     login: function () {
-      var url = '/v1/oauth/token';
+      var url = '/oauth/token';
       var param = {};
       param.username = this.account;
       param.password = this.password;
@@ -20,8 +20,14 @@ module.exports = {
       });
     },
     getUserInfo: function () {
-      var url = '/v1/api/account';
+      var url = '/api/account';
       acHttp.request(this, 'GET', url, function (ret) {
+        console.log(ret);
+      });
+    },
+    logout: function () {
+      var url = '/api/logout';
+      acHttp.request(this, 'POST', url, function (ret) {
         console.log(ret);
       });
     }
