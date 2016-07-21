@@ -3,43 +3,37 @@
 module.exports = function (router) {
   router.map({
     '': {
-      component: require('../components/top/login'),
+      component: require('../components/views/login'),
       auth: false
     },
     '/login': {
-      component: require('../components/top/login'),
+      component: require('../components/views/login'),
       auth: false
     },
     '/home': {
-      component: require('../components/top/home'),
+      component: require('../components/views/home'),
       auth: true
     }
   });
 
   router.beforeEach(function (transition) {
-    var interVal;
-
+    var userInfo = ac_store.getUserInfo();
+    var hasLogin = true;
+    if (userInfo === null || !userInfo) {
+      hasLogin = false;
+    }
     function doNext() {
-      var unauthenticated = window.authenticated === 'NO';
-      if (transition.to.auth && unauthenticated) {
+      // var unauthenticated = window.authenticated === 'NO';
+      if (transition.to.auth && !hasLogin) {
         transition.redirect('/login');
       } else {
-        if ((transition.to.path === '/login' || transition.to.path === '/' || transition.to.path === '/register') && !unauthenticated) {
+        if ((transition.to.path === '/login' || transition.to.path === '/' || transition.to.path === '/register') && userInfo) {
           transition.redirect('/home');
         } else {
           transition.next();
         }
       }
     }
-    if (window.authenticated) {
-      doNext();
-    } else {
-      interVal = setInterval(function () {
-        if (window.authenticated) {
-          clearInterval(interVal);
-          doNext();
-        }
-      }, 100);
-    }
+    doNext();
   });
 };

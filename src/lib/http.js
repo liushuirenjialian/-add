@@ -1,4 +1,3 @@
-var store = require('../lib/store');
 module.exports = {
   oauth: function (ctx, url, param, callback) {
     param.grant_type = 'password';
@@ -8,7 +7,6 @@ module.exports = {
     var headers = { 'Content-Type': 'application/x-www-form-urlencoded','Accept': 'application/json',
       'Authorization': 'Basic dGlja2V0YXBwOm15LXNlY3JldC10b2tlbi10by1jaGFuZ2UtaW4tcHJvZHVjdGlvbg=='};
     this.request(ctx, 'POST', url, param, function (ret) {
-      store.setToken(ret.data);
       callback(ret);
     }, headers);
   },
@@ -23,7 +21,7 @@ module.exports = {
     if (!headers) {
       headers = {'Content-Type': 'application/x-www-form-urlencoded',
                         'Accept': 'application/json',
-                        'Authorization': 'Bearer ' + store.getToken().access_token
+                        'Authorization': 'Bearer ' + ac_store.getToken().access_token
                 };
     }
     ctx.$http({
@@ -32,10 +30,12 @@ module.exports = {
       method: method,
       headers: headers
     }).then(function (res) {
+      res.ret = 1;
       if (callback) {
         callback(res);
       }
     }, function (res) {
+      res.ret = -1;
       if (callback) {
         callback(res);
       }

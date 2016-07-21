@@ -10,5 +10,12 @@ module.exports = {
   },
   getToken: function () {
     return this.fetch('nami_token');
+  },
+  getUserInfo: function () {
+    return this.fetch('nami_userinfo');
+  },
+  setUserInfo: function (userInfo) {
+    this.save('nami_userinfo', userInfo);
   }
+
 };
