@@ -11,7 +11,22 @@ module.exports = function (router) {
       auth: false
     },
     '/home': {
-      component: require('../components/views/home'),
+      auth: true,
+      name: 'home',
+      component: function (resolve) {
+        ac_util.startLoading();
+        require(['../components/views/home'], resolve);
+      },
+      subRoutes: {
+        '/ticket': {
+          name: 'ticket',
+          component: require('../components/views/ticket'),
+          auth: true
+        }
+      }
+    },
+    '/header': {
+      component: require('../components/common/header'),
       auth: true
     }
   });

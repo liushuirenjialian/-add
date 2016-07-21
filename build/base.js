@@ -30,7 +30,7 @@ module.exports = {
       test: /\.html$/,
       loader: 'vue-html-loader?interpolate'
     }, {
-      test: /\.(jpeg|jpg|png|gif|svg|eot|woff|ttf)$/i,
+      test: /\.(jpeg|jpg|png|gif|svg|eot|woff|ttf|woff2)$/i,
       loaders: [
         'file?hash=sha512&digest=hex&name=[hash].[ext]',
         'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'

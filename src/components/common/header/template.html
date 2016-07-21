@@ -1,0 +1,18 @@
+<div class="header">
+    <a href="#">log</a>
+    <a href="#">menu-link</a>
+
+    <!-- <div class="poto">
+        <img src="" alt="{{user.login}}" />
+    </div> -->
+    <div class="hd_info">
+      <span v-text="user.login"></span>
+      <span v-text="user.email"></span>
+    </div>
+
+    <div class="hd_logot">
+      <a class="nav-link" v-on:click="logout">退出</a>
+    </div>
+</div>
+
+<omoleftmenu v-bind:selected='actionId'> </omoleftmenu>
