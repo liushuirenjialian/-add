@@ -9,11 +9,8 @@ module.exports = {
       actionId: 0
     };
   },
-  components: {
-    omolayout: require('../../common/layout')
-  },
   created: function () {
-    ac_util.stopLoading();
+    this.$dispatch('onActived', this.actionId);
   },
   methods: {
     logout: function () {

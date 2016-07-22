@@ -18,6 +18,11 @@ module.exports = function (router) {
         require(['../components/views/home'], resolve);
       },
       subRoutes: {
+        '/index': {
+          name: 'index',
+          component: require('../components/views/index'),
+          auth: true
+        },
         '/ticket': {
           name: 'ticket',
           component: require('../components/views/ticket'),

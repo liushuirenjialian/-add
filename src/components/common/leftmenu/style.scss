@@ -1,4 +1,17 @@
 .left-menu {
-
   background-color: green;
+  width: 80px;
+  height: 1000px;
+  float: left;
+  li {
+    height: 30px;
+    font-size: 15px;
+    .active {
+      background-color: yellow;
+    }
+    .v-link-active {
+      background-color: yellow;
+    }
+  }
+
 }

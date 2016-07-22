@@ -22,7 +22,11 @@ module.exports = {
         if (ret.ret < 0) {
           alert(ret.data.error); return;
         }
-        ac_store.setToken(ret.data);
+        var token = ret.data;
+        var expiredAt = new Date();
+        expiredAt.setSeconds(expiredAt.getSeconds() + token.expires_in);
+        token.expires_at = expiredAt.getTime();
+        ac_store.setToken(token);
         _this.getUserInfo();
       });
     },

@@ -8,10 +8,28 @@ module.exports = {
   setToken: function (store) {
     this.save('nami_token', store);
   },
+  hasValidToken: function () {
+    var token = this.fetch('nami_token');
+    return token && token.expires_at && token.expires_at > new Date().getTime();
+  },
+  checkToken: function () {
+    if (!this.hasValidToken()) {
+      this.setUserInfo(null);
+      this.setToken(null);
+      return false;
+    }
+    return true;
+  },
   getToken: function () {
+    if (!this.checkToken()) {
+      return null;
+    }
     return this.fetch('nami_token');
   },
   getUserInfo: function () {
+    if (!this.checkToken()) {
+      return null;
+    }
     return this.fetch('nami_userinfo');
   },
   setUserInfo: function (userInfo) {

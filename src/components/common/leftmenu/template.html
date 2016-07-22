@@ -1,5 +1,5 @@
 <div class="left-menu">
   <li v-for="(index, action) in actionList" v-bind:class="{ 'active': action.id == selected }">
-    {{ action.name }}
+    <a class="nav-link" v-link='action.link'>{{ action.name }}</a>
   </li>
 </div>
