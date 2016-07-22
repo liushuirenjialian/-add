@@ -4,8 +4,11 @@ module.exports = {
     param.scope = 'read write';
     param.client_secret = 'my-secret-token-to-change-in-production';
     param.client_id = 'ticketapp';
-    var headers = { 'Content-Type': 'application/x-www-form-urlencoded','Accept': 'application/json',
-      'Authorization': 'Basic dGlja2V0YXBwOm15LXNlY3JldC10b2tlbi10by1jaGFuZ2UtaW4tcHJvZHVjdGlvbg=='};
+    var headers = {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Accept': 'application/json',
+      'Authorization': 'Basic dGlja2V0YXBwOm15LXNlY3JldC10b2tlbi10by1jaGFuZ2UtaW4tcHJvZHVjdGlvbg=='
+    };
     this.request(ctx, 'POST', url, param, function (ret) {
       callback(ret);
     }, headers);
@@ -19,10 +22,17 @@ module.exports = {
       param = {};
     }
     if (!headers) {
-      headers = {'Content-Type': 'application/x-www-form-urlencoded',
-                        'Accept': 'application/json',
-                        'Authorization': 'Bearer ' + ac_store.getToken().access_token
-                };
+      var token = ac_store.getToken();
+      if (token === null || !token) {
+        alert("token超时，请重新登录！");
+        ctx.$router.go('/');
+        return;
+      }
+      headers = {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ' + token.access_token
+      };
     }
     ctx.$http({
       url: '/v1' + url,
