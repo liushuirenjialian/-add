@@ -3,5 +3,17 @@
 //   width: 200px;
 //   height: auto;
 // }
+main {
+  position: relative;
+  top: 100px;
+  .auth-block {
+    a {
+        padding-bottom: 20px;
+    }
+  }
+  .form-group {
+    height: 60px;
+  }
+}
 
 @import "../../../assets/blur-admin/sass/auth"
