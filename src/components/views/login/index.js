@@ -9,7 +9,7 @@ module.exports = {
     };
   },
   components: {
-    alert: require('vue-strap').alert
+    alert: require('../../common/alerts')
   },
   methods: {
     login: function () {
@@ -20,13 +20,15 @@ module.exports = {
       var _this = this;
       ac_http.oauth(_this, url, param, function (ret) {
         if (ret.ret < 0) {
-          alert(ret.data.error); return;
+          _this.$broadcast('showAlert', '账号或密码错误！', 3);
+          return;
         }
         var token = ret.data;
         var expiredAt = new Date();
         expiredAt.setSeconds(expiredAt.getSeconds() + token.expires_in);
         token.expires_at = expiredAt.getTime();
         ac_store.setToken(token);
+        _this.$dispatch('showAlert', '成功登录！');
         _this.getUserInfo();
       });
     },

@@ -33,6 +33,10 @@ module.exports = function (router) {
     '/header': {
       component: require('../components/common/header'),
       auth: true
+    },
+    '/alerts': {
+      component: require('../components/common/alerts'),
+      auth: true
     }
   });
 
