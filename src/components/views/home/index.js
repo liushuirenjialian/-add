@@ -6,6 +6,7 @@ module.exports = {
   replace: true,
   data: function () {
     return {
+      pageName: '仪表盘',
       actionId: 0
     };
   },
@@ -21,8 +22,10 @@ module.exports = {
   },
   events: {
     onActived: function (id) {
-      console.log('页面id：'+ id);
       this.actionId = id;
+    },
+    showBreadcrumb: function (pageName) {
+      this.pageName = pageName;
     }
   }
 };

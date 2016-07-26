@@ -1,17 +1,4 @@
-
-var actionList = [];
-var action = {};
-action.id = 0;
-action.name = '首页';
-action.active = false;
-action.link = '/home/index';
-actionList.push(action);
-action = {};
-action.id = 1;
-action.name = '工单';
-action.active = false;
-action.link = '/home/ticket';
-actionList.push(action);
+var myMenus = require('./menu.js');
 
 require('./style.scss');
 module.exports = {
@@ -31,11 +18,11 @@ module.exports = {
   },
   data: function () {
     return {
-      actionList: actionList
+      menuItems: myMenus.myMenusList
     };
   },
   created: function () {
-    console.log(123333333);
+    // console.log(this.menuItems);
   },
   method: {
     goLink: function (){

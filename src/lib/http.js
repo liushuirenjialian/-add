@@ -24,7 +24,7 @@ module.exports = {
     if (!headers) {
       var token = ac_store.getToken();
       if (token === null || !token) {
-        alert("token超时，请重新登录！");
+        alert('token超时，请重新登录！');
         ctx.$router.go('/');
         return;
       }

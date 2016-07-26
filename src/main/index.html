@@ -10,15 +10,35 @@
     <meta content="telphone=no, email=no" name="format-detection" />
     <meta name="HandheldFriendly" content="true">
     <link rel="icon" href='${require("../assets/images/logo.png")}' type="image/x-icon">
-    <script src="./vendor/modernizr-2.8.3.min.js"></script>
+    <!-- <script src="./vendor/modernizr-2.8.3.min.js"></script> -->
     <!--[if lt IE 9]>
       <script src="./vendor/lt-ie-9.min.js"></script>
       <script src="./vendor/calc.min.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" href="./vendor/blur-admin/main.css">
+    <link rel="stylesheet" href="./vendor/blur-admin/lib/ionicons.css" >
+    <link rel="stylesheet" href="./vendor/blur-admin/lib/angular-toastr.css" >
+    <link rel="stylesheet" href="./vendor/blur-admin/lib/animate.css" >
+    <link rel="stylesheet" href="./vendor/blur-admin/lib/bootstrap.css" >
+    <link rel="stylesheet" href="./vendor/blur-admin/lib/bootstrap-select.css" >
+    <link rel="stylesheet" href="./vendor/blur-admin/lib/bootstrap-switch.css" >
+    <link rel="stylesheet" href="./vendor/blur-admin/lib/bootstrap-tagsinput.css" >
+    <link rel="stylesheet" href="./vendor/blur-admin/lib/font-awesome.css" >
+    <link rel="stylesheet" href="./vendor/blur-admin/lib/fullcalendar.css" >
+    <link rel="stylesheet" href="./vendor/blur-admin/lib/leaflet.css" >
+    <link rel="stylesheet" href="./vendor/blur-admin/lib/angular-progress-button-styles.min.css" >
+    <link rel="stylesheet" href="./vendor/blur-admin/lib/angular-chart.css" >
+    <link rel="stylesheet" href="./vendor/blur-admin/lib/chartist.min.css" >
+    <link rel="stylesheet" href="./vendor/blur-admin/lib/morris.css" >
+    <link rel="stylesheet" href="./vendor/blur-admin/lib/ion.rangeSlider.css" >
+    <link rel="stylesheet" href="./vendor/blur-admin/lib/ion.rangeSlider.skinFlat.css" >
+    <link rel="stylesheet" href="./vendor/blur-admin/lib/textAngular.css" >
+    <link rel="stylesheet" href="./vendor/blur-admin/lib/xeditable.css" >
+    <link rel="stylesheet" href="./vendor/blur-admin/lib/style.css" >
+
+
   </head>
-  <body class="omo">
+  <body class="blur-theme">
     <!--[if lt IE 10]>
       <div class="browsehappy">
         <p>
@@ -44,8 +64,9 @@
     </svg>
     <div id="app" class="app">
       <topbar></topbar>
+      <link rel="stylesheet" href="./vendor/blur-admin/main.css">
       <router-view></router-view>
-      <alert></alert>
+      <globalalert></globalalert>
       <!-- <div class="container">
         <router-view></router-view>
         <alert></alert>

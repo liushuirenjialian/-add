@@ -48,6 +48,7 @@
     "html-minifier": "^1.4.0",
     "html-webpack-plugin": "^2.7.2",
     "image-webpack-loader": "^1.6.3",
+    "json-loader": "^0.5.4",
     "node-sass": "^3.4.2",
     "postcss-loader": "^0.8.1",
     "request": "^2.69.0",

@@ -1,10 +1,7 @@
-<div class="header">
+<!-- <div class="header">
     <a href="#">log</a>
     <a href="#">menu-link</a>
 
-    <!-- <div class="poto">
-        <img src="" alt="{{user.login}}" />
-    </div> -->
     <div class="hd_info">
       <span v-text="user.login"></span>
       <span v-text="user.email"></span>
@@ -13,4 +10,47 @@
     <div class="hd_logot">
       <a class="nav-link" v-on:click="logout">退出</a>
     </div>
-</div>
+</div> -->
+
+<page-top>
+    <div class="page-top clearfix ng-isolate-scope scrolled" scroll-position="scrolled" max-height="50">
+      <a href="#/dashboard" class="al-logo clearfix"><span>胡莱</span>客服系统</a>
+        <a href="" class="collapse-menu-link ion-navicon" v-on:click="toggleMenu"></a>
+        <div class="search"><i class="ion-ios-search-strong" ng-click="startSearch()"></i>
+            <input id="searchInput" type="text" placeholder="Search for...">
+        </div>
+        <div class="user-profile clearfix">
+            <div class="al-user-profile dropdown" :class="{ open: settingShow }"  v-on:click="toggleSetting">
+                <a class="profile-toggle-link dropdown-toggle">
+                  <img src="../../../assets/vendor/assets/img/app/profile/Nasta.png"></a>
+                <ul class="top-dropdown-menu profile-dropdown dropdown-menu">
+                    <li><i class="dropdown-arr"></i></li>
+                    <li><a href="#/profile"><i class="fa fa-user"></i>Profile</a></li>
+                    <li><a href=""><i class="fa fa-cog"></i>Settings</a></li>
+                    <li><a href="" class="signout" v-on:click="logout"><i class="fa fa-power-off"></i>退出</a></li>
+                </ul>
+            </div>
+            <msg-center>
+                <ul class="al-msg-center clearfix">
+                    <li uib-dropdown="" class="dropdown">
+                      <a href="" uib-dropdown-toggle="" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-bell-o"></i>
+                        <span>5</span>
+                        <div class="notification-ring"></div>
+                      </a>
+                        <div uib-dropdown-menu="" class="top-dropdown-menu dropdown-menu"><i class="dropdown-arr"></i>
+                            <div class="header clearfix"><strong>Notifications</strong> <a href="">Mark All as Read</a> <a href="">Settings</a></div>
+                            <a href="">See all notifications</a></div>
+                    </li>
+                    <li uib-dropdown="" class="dropdown"><a href="" class="msg dropdown-toggle" uib-dropdown-toggle="" aria-haspopup="true" aria-expanded="false">
+                      <i class="fa fa-envelope-o"></i><span>5</span>
+                      <div class="notification-ring"></div></a>
+                        <div uib-dropdown-menu="" class="top-dropdown-menu dropdown-menu"><i class="dropdown-arr"></i>
+                            <div class="header clearfix"><strong>Messages</strong> <a href="">Mark All as Read</a> <a href="">Settings</a></div>
+                            <a href="">See all messages</a></div>
+                    </li>
+                </ul>
+            </msg-center>
+        </div>
+    </div>
+</page-top>

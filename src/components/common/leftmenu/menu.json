@@ -1,0 +1,52 @@
+[{
+    "text": "仪表盘",
+    "name": "dashboard",
+    "link": "/home/index",
+    "iClass": "ion-android-home",
+    "authorities": "",
+    "subMenu": []
+}, {
+    "text": "系统管理",
+    "name": "system",
+    "link": "/system/index",
+    "iClass": "ion-gear-a",
+    "authorities": "",
+    "subMenu": [{
+        "text": "用户管理",
+        "name": "users",
+        "link": "/system/users",
+        "iClass": "",
+        "authorities": ["ROLE_ADMIN", "ROLE_MODERATOR"]
+    }, {
+        "text": "权限管理",
+        "name": "roles",
+        "link": "/system/users",
+        "iClass": "",
+        "authorities": ["ROLE_ADMIN", "ROLE_MODERATOR"]
+    }, {
+        "text": "游戏管理",
+        "name": "games",
+        "link": "/system/games",
+        "iClass": "",
+        "authorities": ["ROLE_ADMIN", "ROLE_MODERATOR"]
+    }]
+}, {
+    "text": "工单管理",
+    "name": "ticket",
+    "link": "/home/ticket",
+    "iClass": "ion-stats-bars",
+    "authorities": "",
+    "subMenu": [{
+        "text": "工单列表",
+        "name": "ticket",
+        "link": "/home/ticket",
+        "iClass": "",
+        "authorities": ""
+    }, {
+        "text": "工单统计",
+        "name": "ticket-report",
+        "link": "/home/ticket/report",
+        "iClass": "",
+        "authorities": ""
+    }]
+}]

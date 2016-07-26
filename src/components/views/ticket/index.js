@@ -10,7 +10,7 @@ module.exports = {
     };
   },
   created: function () {
-    this.$dispatch('onActived', this.actionId);
+    this.$dispatch('showBreadcrumb', '工单管理');
   },
   methods: {
     logout: function () {

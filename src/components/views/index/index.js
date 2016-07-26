@@ -10,7 +10,7 @@ module.exports = {
     };
   },
   created: function () {
-    this.$dispatch('onActived', this.actionId);
+    this.$dispatch('showBreadcrumb', '仪表盘');
   },
   methods: {
     logout: function () {

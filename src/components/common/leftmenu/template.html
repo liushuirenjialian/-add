@@ -1,5 +1,30 @@
-<div class="left-menu">
-  <li v-for="(index, action) in actionList" v-bind:class="{ 'active': action.id == selected }">
-    <a class="nav-link" v-link='action.link'>{{ action.name }}</a>
-  </li>
-</div>
+<ba-sidebar>
+    <aside class="al-sidebar" ng-swipe-right="$baSidebarService.setMenuCollapsed(false)" ng-swipe-left="$baSidebarService.setMenuCollapsed(true)" ng-mouseleave="hoverElemTop=selectElemTop">
+        <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 821px;">
+            <ul class="al-sidebar-list" slimscroll="{height: '821px'}" slimscroll-watch="menuHeight" style="overflow: hidden; width: auto; height: 821px;">
+
+                <li class="al-sidebar-list-item" v-for="(index, item) in menuItems" v-show="item.haspower">
+                    <a class="al-sidebar-list-link" v-link="item.link">
+                        <i v-bind:class="item.iClass"></i><span>{{ item.text }}</span>
+
+                        <b class="fa fa-angle-down" v-if="item.subMenu.length>0">
+
+                    </b>
+                    </a>
+
+                    <ul class="al-sidebar-sublist" style="display: block;" v-if="item.subMenu.length>0">
+                      <!-- selected -->
+                        <li class="ba-sidebar-sublist-item" v-for="(index, subItem) in item.subMenu" class="nav-link" v-show="subItem.haspower">
+                            <a class="ng-binding"  v-link="subItem.link">{{subItem.text}}</a>
+                        </li>
+                    </ul>
+                </li>
+
+
+            </ul>
+            <div class="slimScrollBar" style="width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 821px; background: rgb(0, 0, 0);"></div>
+            <div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div>
+        </div>
+        <div class="sidebar-hover-elem show-hover-elem" ng-style="{top: hoverElemTop + 'px', height: hoverElemHeight + 'px'}" ng-class="{'show-hover-elem': showHoverElem }" style="height: 42px;"></div>
+    </aside>
+</ba-sidebar>

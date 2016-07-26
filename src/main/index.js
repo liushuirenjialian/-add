@@ -39,7 +39,7 @@ App = Vue.extend({
   },
   components: {
     // topbar: require('../components/top/topbar')
-    // alert: require('../components/common/alerts')
+    globalalert: require('../components/common/global-alert')
   },
   attached: function () {
     ac_util.stopLoading();
