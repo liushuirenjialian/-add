@@ -15,7 +15,7 @@ module.exports = {
   },
   methods: {
     toggleMenu: function () {
-      this.menuShow = !this.menuShow;
+      this.$dispatch('toggleCollapsed');
     },
     toggleSetting: function () {
       this.settingShow = !this.settingShow;

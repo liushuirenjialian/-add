@@ -35,6 +35,7 @@ Vue.http.options.emulateJSON = true;
 App = Vue.extend({
   data: function () {
     return {
+      menuCollapsed: false
     };
   },
   components: {
@@ -50,6 +51,9 @@ App = Vue.extend({
   events: {
     mylord: function () {
       this.$broadcast.apply(this, arguments);
+    },
+    toggleCollapsed: function () {
+      this.menuCollapsed = !this.menuCollapsed;
     }
   }
 });

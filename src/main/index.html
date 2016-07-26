@@ -65,7 +65,9 @@
     <div id="app" class="app">
       <topbar></topbar>
       <link rel="stylesheet" href="./vendor/blur-admin/main.css">
-      <router-view></router-view>
+      <main v-bind:class="{'menu-collapsed':menuCollapsed}">
+          <router-view></router-view>
+      </main>
       <globalalert></globalalert>
       <!-- <div class="container">
         <router-view></router-view>
