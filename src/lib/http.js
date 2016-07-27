@@ -4,9 +4,9 @@ module.exports = {
     param.scope = 'read write';
     param.client_secret = 'my-secret-token-to-change-in-production';
     param.client_id = 'ticketapp';
+    vueApp.http.options.emulateJSON = true;
+    //  'Content-Type': 'application/x-www-form-urlencoded',
     var headers = {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Accept': 'application/json',
       'Authorization': 'Basic dGlja2V0YXBwOm15LXNlY3JldC10b2tlbi10by1jaGFuZ2UtaW4tcHJvZHVjdGlvbg=='
     };
     this.request(ctx, 'POST', url, param, function (ret) {
@@ -28,11 +28,13 @@ module.exports = {
         ctx.$router.go('/');
         return;
       }
+      vueApp.http.options.emulateJSON = false;
+      // 'Content-Type': 'application/json;charset=UTF-8',
+      // 'Accept': 'application/json, text/plain, */*',
       headers = {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json',
         'Authorization': 'Bearer ' + token.access_token
       };
+      // param = JSON.stringify(param);
     }
     ctx.$http({
       url: '/v1' + url,

@@ -1,17 +1,17 @@
 <page-top>
-    <div class="page-top clearfix ng-isolate-scope scrolled" scroll-position="scrolled" max-height="50">
+    <div class="page-top clearfix ng-isolate-scope scrolled">
       <a href="" class="al-logo clearfix"><span>胡莱</span>客服系统</a>
         <a class="collapse-menu-link ion-navicon" v-on:click="toggleMenu"></a>
-        <div class="search"><i class="ion-ios-search-strong" ng-click="startSearch()"></i>
+        <div class="search"><i class="ion-ios-search-strong"></i>
             <input id="searchInput" type="text" placeholder="Search for...">
         </div>
         <div class="user-profile clearfix">
-            <div class="al-user-profile dropdown" :class="{ open: settingShow }"  v-on:click="toggleSetting">
+            <div class="al-user-profile dropdown" v-bind:class="{ open: settingShow }"  v-on:click="toggleSetting">
                 <a class="profile-toggle-link dropdown-toggle">
                   <img src="../../../assets/vendor/assets/img/app/profile/Nasta.png"></a>
                 <ul class="top-dropdown-menu profile-dropdown dropdown-menu">
                     <li><i class="dropdown-arr"></i></li>
-                    <li><a href="#/profile"><i class="fa fa-user"></i>Profile</a></li>
+                    <li><a v-link='{ path: "/home/profile" }' ><i class="fa fa-user"></i>Profile</a></li>
                     <li><a href=""><i class="fa fa-cog"></i>Settings</a></li>
                     <li><a href="" class="signout" v-on:click="logout"><i class="fa fa-power-off"></i>退出</a></li>
                 </ul>

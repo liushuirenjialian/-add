@@ -36,6 +36,11 @@ module.exports = function (router) {
           component: require('../components/views/index'),
           auth: true
         },
+        '/profile': {
+          name: 'index',
+          component: require('../components/views/profile'),
+          auth: true
+        },
         '/ticket': {
           name: 'ticket',
           component: function (resolve) {
