@@ -16,14 +16,12 @@ module.exports = {
     this.$dispatch('toggleNoauth');
   },
   methods: {
-    login: function() {
+    login: function () {
       var url = '/oauth/token';
       var param = {};
       param.username = this.account;
       param.password = this.password;
       var _this = this;
-      var cc_http;
-      debugger
       // module.exports.oauth function ?
       ac_http.oauth(_this, url, param, function(ret) {
         if (ret.ret < 0) {
@@ -33,7 +31,6 @@ module.exports = {
         }
         var token = ret.data;
         var expiredAt = new Date();
-        debugger
         expiredAt.setSeconds(expiredAt.getSeconds() + token.expires_in);
         token.expires_at = expiredAt.getTime();
         ac_store.setToken(token);
@@ -52,6 +49,4 @@ module.exports = {
       });
     }
   }
-  
-
 };
