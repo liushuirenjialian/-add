@@ -26,11 +26,14 @@ window.ac_http = require('../lib/http');
 
 window.ac_secret_things = {};
 
+window.vueApp = Vue;
+
 Vue.use(VueRouter);
 
 Vue.use(require('vue-resource'));
 Vue.http.options.root = '/root';
-Vue.http.options.emulateJSON = true;
+// Vue.http.options.emulateJSON = true;
+// Vue.http.options.emulateHTTP = true;
 
 App = Vue.extend({
   data: function () {
