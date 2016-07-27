@@ -39,7 +39,11 @@ module.exports = {
           _this.alert.show = 'alert-hide';
         }
       }, 2000);
-    }
+    } 
+    // the use of way
+  
+    // messaeShow:function(){
+    // }
   },
   methods: {
     close: function () {
