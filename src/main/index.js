@@ -6,7 +6,7 @@ var configRouter = require('../config/router.js');
 var App = {};
 var router = {};
 
-require('../assets/scss/main.scss');
+// require('../assets/scss/main.scss');
 require('./style.scss');
 
 // global object
@@ -35,25 +35,28 @@ Vue.http.options.emulateJSON = true;
 App = Vue.extend({
   data: function () {
     return {
-      menuCollapsed: false
+      noauth: true,
+      pageFinishedLoading: false
     };
   },
   components: {
     // topbar: require('../components/top/topbar')
     globalalert: require('../components/common/global-alert')
   },
-  attached: function () {
-    ac_util.stopLoading();
-  },
   created: function () {
-    // this.$emit('loadFunc');
+    console.log(new Date());
+    this.pageFinishedLoading = false;
+  },
+  ready: function () {
+    console.log(new Date());
+    this.pageFinishedLoading = true;
   },
   events: {
     mylord: function () {
       this.$broadcast.apply(this, arguments);
     },
-    toggleCollapsed: function () {
-      this.menuCollapsed = !this.menuCollapsed;
+    toggleNoauth: function () {
+      this.noauth = false;
     }
   }
 });
@@ -73,5 +76,5 @@ if (__PRERELEASE__) {
 }
 
 window.onload = function () {
-  document.querySelector('.loading').style.display = 'none';
+   // document.querySelector('.loading').style.display = 'none';
 };

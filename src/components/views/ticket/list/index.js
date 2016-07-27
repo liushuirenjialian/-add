@@ -1,22 +1,22 @@
-/* global ac_util ac_ ac_cookies */
-
 require('./style.scss');
 module.exports = {
   template: require('./template.html'),
   replace: true,
   data: function () {
     return {
+      dropdownStatus: false,
       actionId: 1
     };
   },
   components: {
-    menu: require('./menu')
+    menu: require('../menu')
   },
   created: function () {
-    this.$dispatch('showBreadcrumb', '工单管理');
+    this.$dispatch('showBreadcrumb', '工单列表');
   },
   methods: {
-    logout: function () {
+    teggleDropdown: function () {
+      this.dropdownStatus = !this.dropdownStatus;
     }
   }
 };

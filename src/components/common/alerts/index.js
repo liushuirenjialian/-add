@@ -13,7 +13,7 @@ module.exports = {
     };
   },
   created: function () {
-    console.log(this.data);
+    // console.log(this.data);
   },
   events: {
     // classname 0:操作成功 1：信息 bg-info 2：提示  bg-warning 3：错误 bg-danger

@@ -11,6 +11,9 @@ module.exports = {
   components: {
     alert: require('../../common/alerts')
   },
+  created: function () {
+    this.$dispatch('toggleNoauth');
+  },
   methods: {
     login: function () {
       var url = '/oauth/token';

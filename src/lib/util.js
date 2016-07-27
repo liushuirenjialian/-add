@@ -2,10 +2,10 @@
 
 module.exports = {
   startLoading: function () {
-    document.querySelector('.loading').style.display = 'block';
+    // document.querySelector('.loading').style.display = 'block';
   },
   stopLoading: function () {
-    document.querySelector('.loading').style.display = 'none';
+    // document.querySelector('.loading').style.display = 'none';
   },
   formatDate: function (date, fmt) {
     function pad(value) {

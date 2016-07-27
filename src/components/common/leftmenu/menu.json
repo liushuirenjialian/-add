@@ -38,8 +38,14 @@
     "authorities": "",
     "subMenu": [{
         "text": "工单列表",
-        "name": "ticket",
-        "link": "/home/ticket",
+        "name": "ticket-list",
+        "link": "/home/ticket/list",
+        "iClass": "",
+        "authorities": ""
+    }, {
+        "text": "工单详情",
+        "name": "ticket-detail",
+        "link": "/home/ticket/detail",
         "iClass": "",
         "authorities": ""
     }, {

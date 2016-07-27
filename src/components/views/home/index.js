@@ -6,6 +6,8 @@ module.exports = {
   replace: true,
   data: function () {
     return {
+      pageFinishedLoading: false,
+      menuCollapsed: false,
       pageName: '仪表盘',
       actionId: 0
     };
@@ -14,7 +16,12 @@ module.exports = {
     omolayout: require('../../common/layout')
   },
   created: function () {
-    ac_util.stopLoading();
+    // ac_util.stopLoading();
+    // this.pageFinishedLoading = false;
+  },
+  ready: function () {
+    // ac_util.stopLoading();
+    // this.pageFinishedLoading = true;
   },
   methods: {
     logout: function () {
@@ -26,6 +33,9 @@ module.exports = {
     },
     showBreadcrumb: function (pageName) {
       this.pageName = pageName;
+    },
+    toggleCollapsed: function () {
+      this.menuCollapsed = !this.menuCollapsed;
     }
   }
 };

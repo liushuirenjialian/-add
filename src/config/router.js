@@ -25,8 +25,23 @@ module.exports = function (router) {
         },
         '/ticket': {
           name: 'ticket',
-          component: require('../components/views/ticket'),
-          auth: true
+          component: function (resolve) {
+            // ac_util.startLoading();
+            require(['../components/views/ticket'], resolve);
+          },
+          auth: true,
+          subRoutes: {
+            '/list': {
+              name: 'ticket-list',
+              component: require('../components/views/ticket/list'),
+              auth: true
+            },
+            '/detail': {
+              name: 'ticket-detail',
+              component: require('../components/views/ticket/detail'),
+              auth: true
+            }
+          }
         }
       }
     },

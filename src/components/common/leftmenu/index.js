@@ -25,7 +25,5 @@ module.exports = {
     // console.log(this.menuItems);
   },
   method: {
-    goLink: function (){
-    }
   }
 };

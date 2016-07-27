@@ -10,14 +10,10 @@
     <meta content="telphone=no, email=no" name="format-detection" />
     <meta name="HandheldFriendly" content="true">
     <link rel="icon" href='${require("../assets/images/logo.png")}' type="image/x-icon">
-    <!-- <script src="./vendor/modernizr-2.8.3.min.js"></script> -->
-    <!--[if lt IE 9]>
-      <script src="./vendor/lt-ie-9.min.js"></script>
-      <script src="./vendor/calc.min.js"></script>
-    <![endif]-->
+   
 
     <link rel="stylesheet" href="./vendor/blur-admin/lib/ionicons.css" >
-    <link rel="stylesheet" href="./vendor/blur-admin/lib/angular-toastr.css" >
+    <!-- <link rel="stylesheet" href="./vendor/blur-admin/lib/angular-toastr.css" > -->
     <link rel="stylesheet" href="./vendor/blur-admin/lib/animate.css" >
     <link rel="stylesheet" href="./vendor/blur-admin/lib/bootstrap.css" >
     <link rel="stylesheet" href="./vendor/blur-admin/lib/bootstrap-select.css" >
@@ -36,43 +32,22 @@
     <link rel="stylesheet" href="./vendor/blur-admin/lib/xeditable.css" >
     <link rel="stylesheet" href="./vendor/blur-admin/lib/style.css" >
 
+    <link rel="stylesheet" href="./vendor/blur-admin/main.css">
 
   </head>
   <body class="blur-theme">
-    <!--[if lt IE 10]>
-      <div class="browsehappy">
-        <p>
-          You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> to improve your experience.
-        </p>
-      </div>
-      <script type="text/javascript">
-      $(function() {
-        $(".browsehappy").click(function() {
-          (this).slideUp();
-        });
-      });
-      </script>
-    <![endif]-->
-    <svg class="loading" width="1000" height="1000" style="background-color: rgba(0,0,0,.5);" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
-      <g transform="translate(500,500)">
-        <rect class="rotate-45 rotate-back" x=-5 y=-5 width=10 height=10 stroke="black" stroke-width=20 fill="none"/>
-        <rect class="rotate-45 rotate" x=-50 y=-50 width=100 height=100 stroke="black" stroke-width=20 stroke-linejoin="bevel" fill="none"/>
-        <g transform="translate(-50,0) rotate(-45)"><polyline class="left" points="40,-40 50,-50 -40,-50 -50,-40 -50,50 -40,40" stroke="black" stroke-width=20 fill="none"/></g>
-        <g transform="translate(50,0) rotate(135)"><polyline class="right" points="40,-40 50,-50 -40,-50 -50,-40 -50,50 -40,40" stroke="black" stroke-width=20 fill="none"/></g>
-        <text y=-140 text-anchor="middle" font-weight="bold" font-size="3em" font-family="sans-serif">加载中...</text>
-      </g>
-    </svg>
+
     <div id="app" class="app">
+
       <topbar></topbar>
-      <link rel="stylesheet" href="./vendor/blur-admin/main.css">
-      <main v-bind:class="{'menu-collapsed':menuCollapsed}">
-          <router-view></router-view>
-      </main>
+
+      <router-view></router-view>
+
       <globalalert></globalalert>
-      <!-- <div class="container">
-        <router-view></router-view>
-        <alert></alert>
-      </div> -->
+
+      <div id="preloader" v-show="!pageFinishedLoading">
+        <div></div>
+      </div>
     </div>
     <!--[if lt IE 9]>
       <script src="./vendor/jquery-1.11.2.min.js"></script>
