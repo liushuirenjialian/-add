@@ -1,3 +1,26 @@
-<div class="globalAlert">
-  <alert> </alert>
+<!-- <div class="globalAlert" :class="[globalAlert.class,globalAlert.show]">
+<alert> </alert>
 </div>
+<div class="alert"  v-bind:class="[alert.class,alert.show]">
+<strong>{{alert.message}}</strong> 
+</div>
+
+<div class="modal fade">
+
+</div> -->
+
+<!-- <div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-content ng-scope">
+			<div class="modal-header bg-danger">
+				<i class="ion-flame modal-icon"></i>
+			</div>
+		</div>
+	</div>
+</div> toast toast-success toast toast-info toast toast-warning toast toast-error-->
+
+<div id="toast-container" class="toast-top-right">
+<div class="globalAlert"  v-bind:class="[globalAlert.class,globalAlert.show]">
+    <strong>{{globalAlert.msg}}</strong>
+    <!-- v-bind ,class binding  shothand-->
+</div></div>

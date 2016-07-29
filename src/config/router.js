@@ -74,6 +74,10 @@ module.exports = function (router) {
     '/register': {
       component: require('../components/views/register'),
       auth: false
+    },
+    '/global-alert':{
+      component: require('../components/common/global-alert'),
+      auth: false
     }
 
     //    '/reg':{
