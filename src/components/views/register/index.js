@@ -44,7 +44,7 @@ module.exports = {
           return;
         }
 
-        _this.$broadcast('showAlert', '注册成功，等待管理员审核!');
+        _this.$dispatch('showMsg', '注册成功，等待管理员审核!',2);
         // _this.$broadcast('showAlert', '注册成功，等待管理员审核!', 3);
             // var data = ret.data;
             // console.log(data)

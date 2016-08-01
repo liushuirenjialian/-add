@@ -16,20 +16,20 @@ module.exports = {
     // console.log(this.data);
   },
   events: {
+    // 信息，状态
     // toast-success toast toast-info toast toast-warning toast toast-error
-    // classname 0:操作成功 1：信息 bg-info 2：提示  bg-warning 3：错误 bg-danger
-    showGlobalalert: function (message, classname) {
+    showGlobalalert: function (message, status) {
       this.globalAlert.show = 'alert-show';
-      var alertStatus = classname;
+      var alertStatus = status;
       if (!alertStatus) { alertStatus = 0; }
       if (alertStatus === 1) {
         this.globalAlert.class = 'toast-error';
       } else if (alertStatus === 2) {
-        this.globalAlert.class = 'bg-warning';
+        this.globalAlert.class = 'toast-warning';
       } else if (alertStatus === 3) {
-        this.globalAlert.class = 'bg-danger';
+        this.globalAlert.class = 'toast-danger';
       } else {
-        this.globalAlert.class = 'bg-success';
+        this.globalAlert.class = 'toast-success';
       }
       this.globalAlert.msg = message;
       var interVal;

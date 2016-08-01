@@ -60,6 +60,30 @@ module.exports = function (router) {
               auth: true
             }
           }
+        },
+        '/users':{
+          name:'users',
+          component:function(agr){
+            require(['../components/views/users'],agr);
+          },
+          auth:true,
+          subRoutes:{
+            '/authority':{
+              name:'users-authority',
+              component:require('../components/views/users/authority'),
+              auth:true
+            },
+             '/game':{
+              name:'users-game',
+              component:require('../components/views/users/game'),
+              auth:true
+            },
+            '/user':{
+              name:'users-game',
+              component:require('../components/views/users/user'),
+              auth:true
+            }
+          }
         }
       }
     },
