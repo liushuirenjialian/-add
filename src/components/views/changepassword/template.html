@@ -1,0 +1,31 @@
+
+<div ba-panel="" ba-panel-class="profile-page">
+    <div class="panel profile-page animated zoomIn">
+        <div class="panel-body" ng-transclude="">
+            <div class="panel-content ng-scope">
+                <h3 class="with-line userinfo">新的密码</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row clearfix">
+                            <label for="inputFirstName" class="col-sm-3 control-label">密码</label>
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control" id="password" placeholder="密码"  v-model="password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row clearfix">
+                            <label for="inputLastName" class="col-sm-3 control-label">确认密码</label>
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control" id="confirmPassword" placeholder="确认密码" v-model="confirmPassword">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary btn-with-icon save-profile" v-on:click="checkPassword"><i class="ion-android-checkmark-circle"></i>修改密码</button>
+
+
+            </div>
+        </div>
+    </div>
+</div>

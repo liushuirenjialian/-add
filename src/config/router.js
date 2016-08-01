@@ -41,6 +41,10 @@ module.exports = function (router) {
           component: require('../components/views/profile'),
           auth: true
         },
+        '/changepassword':{
+          component:require('../components/views/changepassword'),
+          auth: true
+        },
         '/ticket': {
           name: 'ticket',
           component: function (resolve) {
@@ -60,7 +64,7 @@ module.exports = function (router) {
               auth: true
             }
           }
-        }
+        }   
       }
     },
     '/header': {
@@ -74,7 +78,8 @@ module.exports = function (router) {
     '/register': {
       component: require('../components/views/register'),
       auth: false
-    }
+    },
+   
 
     //    '/reg':{
     //   component: require('../components/views/reg'),
