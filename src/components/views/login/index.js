@@ -35,7 +35,7 @@ module.exports = {
         token.expires_at = expiredAt.getTime();
         ac_store.setToken(token);
         // 派发事件，沿着父链冒泡 推出去当前消息
-        _this.$dispatch('showAlert', '成功登录！');
+        _this.$broadcast('showAlert', '成功登录！');
         _this.getUserInfo();
       });
     },

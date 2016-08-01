@@ -42,6 +42,7 @@ App = Vue.extend({
       pageFinishedLoading: false
     };
   },
+
   components: {
     // topbar: require('../components/top/topbar')
     globalalert: require('../components/common/global-alert')
@@ -51,6 +52,7 @@ App = Vue.extend({
     this.pageFinishedLoading = false;
   },
   ready: function () {
+    
     console.log(new Date());
     this.pageFinishedLoading = true;
   },
@@ -60,6 +62,14 @@ App = Vue.extend({
     },
     toggleNoauth: function () {
       this.noauth = false;
+    },
+    sayHi: function () {
+      console.log("13232234");
+    },
+    showMsg: function (msg,classname) {
+      debugger
+      alert('ddd');
+      this.$broadcast("showGlobalalert", msg, classname);
     }
   }
 });

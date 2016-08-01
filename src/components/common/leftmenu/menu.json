@@ -14,19 +14,19 @@
     "subMenu": [{
         "text": "用户管理",
         "name": "users",
-        "link": "/system/users",
+        "link": "/home/users/user",
         "iClass": "",
         "authorities": ["ROLE_ADMIN", "ROLE_MODERATOR"]
     }, {
         "text": "权限管理",
         "name": "roles",
-        "link": "/system/users",
+        "link": "/home/users/authority",
         "iClass": "",
         "authorities": ["ROLE_ADMIN", "ROLE_MODERATOR"]
     }, {
         "text": "游戏管理",
-        "name": "games",
-        "link": "/system/games",
+        "name": "game ",
+        "link": "/home/users/game",
         "iClass": "",
         "authorities": ["ROLE_ADMIN", "ROLE_MODERATOR"]
     }]

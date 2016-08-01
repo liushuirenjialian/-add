@@ -5,6 +5,7 @@
 // module.exports都是node的全局对象
 
 
+
 // 需求：实现公用的ui组件开发，在不同的页面通过广播 使用通用组建开发var exprots=
 module.exports = function (router) {
 
@@ -60,6 +61,30 @@ module.exports = function (router) {
               auth: true
             }
           }
+        },
+        '/users':{
+          name:'users',
+          component:function(agr){
+            require(['../components/views/users'],agr);
+          },
+          auth:true,
+          subRoutes:{
+            '/authority':{
+              name:'users-authority',
+              component:require('../components/views/users/authority'),
+              auth:true
+            },
+             '/game':{
+              name:'users-game',
+              component:require('../components/views/users/game'),
+              auth:true
+            },
+            '/user':{
+              name:'users-game',
+              component:require('../components/views/users/user'),
+              auth:true
+            }
+          }
         }
       }
     },
@@ -73,6 +98,10 @@ module.exports = function (router) {
     },
     '/register': {
       component: require('../components/views/register'),
+      auth: false
+    },
+    '/global-alert':{
+      component: require('../components/common/global-alert'),
       auth: false
     }
 
