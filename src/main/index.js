@@ -18,6 +18,7 @@ ac_.range = require('lodash/range');
 ac_.findIndex = require('lodash/findIndex');
 ac_.remove = require('lodash/remove');
 ac_.join = require('lodash/join');
+ac_.assign = require('lodash/assign');
 
 window.ac_cookies = require('js-cookie');
 window.ac_util = require('../lib/util');
