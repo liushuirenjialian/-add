@@ -74,8 +74,8 @@ module.exports = {
         ctx.$router.go('/');
         return;
       }
-      var now = new Date().DateAdd('n', -5);
-      if (token.expires_at > now) {
+      var now = new Date().DateAdd('n', 5);
+      if (token.expires_at < now.getTime()) {
         this.refresh_token(ctx, function () {
           _this.requestDo(ctx, method, url, param, callback, headers);
         });

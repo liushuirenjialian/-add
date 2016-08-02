@@ -6,3 +6,4 @@ public
 Desktop.ini
 tmp.md
 build/appConfig.js
+*.log.*
