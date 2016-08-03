@@ -9,9 +9,6 @@ module.exports = {
       actionId: 1
     };
   },
-  components: {
-    menu: require('./menu')
-  },
   created: function () {
     this.$dispatch('showBreadcrumb', '分类管理');
   },

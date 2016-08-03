@@ -7,7 +7,7 @@ module.exports = {
       dropdownStatus: false,
       actionId: 1,
       page: 0,
-      size: 1,
+      size: 3,
       total: 0,
       pageList: []
     };
