@@ -1,4 +1,4 @@
-var myMenus = require('./menu.js');
+/* global ac_util ac_ ac_cookies */
 
 require('./style.scss');
 module.exports = {
@@ -6,12 +6,14 @@ module.exports = {
   replace: true,
   data: function () {
     return {
-      menuItems: myMenus.myMenusList
+      actionId: 1
     };
   },
   created: function () {
-    // console.log(this.menuItems);
+    this.$dispatch('showBreadcrumb', '分类管理');
   },
-  method: {
+  methods: {
+    logout: function () {
+    }
   }
 };

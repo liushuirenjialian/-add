@@ -2,11 +2,10 @@
 
 <main v-bind:class="{'menu-collapsed':menuCollapsed}">
 
-    <omolayout v-bind:actionId="actionId"></omolayout>
+    <omolayout></omolayout>
 
     <div class="al-main">
         <div class="al-content">
-            <content-top>
                 <div class="content-top clearfix">
                     <h1 class="al-title">{{pageName}}</h1>
                     <ul class="breadcrumb al-breadcrumb">
@@ -14,7 +13,6 @@
                         <li>{{pageName}}</li>
                     </ul>
                 </div>
-            </content-top>
             <!-- uiView:  -->
             <div>
                 <!-- uiView: undefined -->

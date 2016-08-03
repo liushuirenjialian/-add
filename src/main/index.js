@@ -45,7 +45,6 @@ App = Vue.extend({
   },
 
   components: {
-    // topbar: require('../components/top/topbar')
     globalalert: require('../components/common/global-alert')
   },
   created: function () {

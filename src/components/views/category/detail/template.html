@@ -1,0 +1,45 @@
+<div class="panel-heading clearfix">
+    <h3 class="panel-title">分类管理</h3></div>
+<div class="panel-body">
+    <div class="ba-wizard">
+        <form name="vm.addressForm" class="ng-pristine">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">分类名称</label>
+                        <input type="text" class="form-control ng-pristine" id="name" v-model="detail.name" placeholder="分类名称">
+                        <span class="help-block error-block basic-block">必填</span></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="productName">上级ID</label>
+                        <input type="text" class="form-control ng-pristine" v-model="detail.abcestry" placeholder="上级ID">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="productName">排序ID</label>
+                        <input type="text" class="form-control ng-pristine" v-model="detail.sort" placeholder="上级ID">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="productName">备注</label>
+                        <input type="text" class="form-control ng-pristine" v-model="detail.comment" placeholder="上级ID">
+                    </div>
+                </div>
+            </div>
+        </form>
+        <nav>
+            <ul class="pager ba-wizard-pager">
+                <li class="previous">
+                    <button type="button" class="btn btn-primary" v-on:click="backList"><span>←</span>返回</button>
+                </li>
+                <li class="next">
+                    <button type="button" class="btn btn-primary" v-on:click="save">保存 <span>→</span></button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
