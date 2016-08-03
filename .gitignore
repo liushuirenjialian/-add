@@ -6,5 +6,4 @@ public
 Desktop.ini
 tmp.md
 build/appConfig.js
-*.orig
-npm-debug.log.*
+*.log.*

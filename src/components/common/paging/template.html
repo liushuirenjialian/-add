@@ -1,0 +1,13 @@
+<paging v-bind:class="{'hide': !isshow}">
+<div class="btn-group" role="group" aria-label="First group">
+    <button type="button" class="btn btn-default" v-on:click="linkgo(1)" v-bind:disabled="prevStaus">首页</button>
+    <button type="button" class="btn btn-default" v-on:click="linkgo(pageNum-1)" v-bind:disabled="prevStaus">上一页</button>
+    <button type="button" class="btn" v-bind:class="{'btn-danger': n==pageNum, 'btn-default': n!=pageNum }" v-for="n in pageIndexList" v-on:click="linkgo(n)" >{{ n }}</button>
+    <button type="button" class="btn btn-default" v-on:click="linkgo(pageNum+1)" v-bind:disabled="nextStaus">下一页</button>
+    <button type="button" class="btn btn-default" v-on:click="linkgo(pageCount)" v-bind:disabled="nextStaus">尾页</button>
+
+    <div class="totaldiv">
+      <label>共<span>{{total}}</span>条</label>
+    </div>
+</div>
+</paging>

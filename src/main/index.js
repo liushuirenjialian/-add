@@ -18,6 +18,7 @@ ac_.range = require('lodash/range');
 ac_.findIndex = require('lodash/findIndex');
 ac_.remove = require('lodash/remove');
 ac_.join = require('lodash/join');
+ac_.assign = require('lodash/assign');
 
 window.ac_cookies = require('js-cookie');
 window.ac_util = require('../lib/util');
@@ -52,7 +53,7 @@ App = Vue.extend({
     this.pageFinishedLoading = false;
   },
   ready: function () {
-    
+
     console.log(new Date());
     this.pageFinishedLoading = true;
   },
@@ -90,4 +91,19 @@ if (__PRERELEASE__) {
 
 window.onload = function () {
    // document.querySelector('.loading').style.display = 'none';
+};
+
+Date.prototype.DateAdd = function (strInterval, Number) {
+  var dtTmp = this;
+  switch (strInterval) {
+    case 's' :return new Date(Date.parse(dtTmp) + (1000 * Number)); // 秒
+    case 'n' :return new Date(Date.parse(dtTmp) + (60000 * Number)); // 分
+    case 'h' :return new Date(Date.parse(dtTmp) + (3600000 * Number));  // 小时
+    case 'd' :return new Date(Date.parse(dtTmp) + (86400000 * Number));  // 天
+    case 'w' :return new Date(Date.parse(dtTmp) + ((86400000 * 7) * Number)); // 周
+    case 'q' :return new Date(dtTmp.getFullYear(), (dtTmp.getMonth()) + Number * 3, dtTmp.getDate(), dtTmp.getHours(), dtTmp.getMinutes(), dtTmp.getSeconds()); // 季度
+    case 'm' :return new Date(dtTmp.getFullYear(), (dtTmp.getMonth()) + Number, dtTmp.getDate(), dtTmp.getHours(), dtTmp.getMinutes(), dtTmp.getSeconds());  // 月份
+    case 'y' :return new Date((dtTmp.getFullYear() + Number), dtTmp.getMonth(), dtTmp.getDate(), dtTmp.getHours(), dtTmp.getMinutes(), dtTmp.getSeconds());  // 年
+    default: break;
+  }
 };

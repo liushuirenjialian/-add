@@ -13,28 +13,34 @@ module.exports = {
       callback(ret);
     }, headers);
   },
-  request: function (ctx, method, url, param, callback, headers) {
-    if (!param) {
-      param = {};
-    }
-    if (typeof(param) === 'function') {
-      callback = param;
-      param = {};
-    }
+  refresh_token: function (ctx, callback) {
+    var oldtoken = ac_store.getToken();
+    var param = {};
+    param.grant_type = 'refresh_token';
+    param.scope = 'read write';
+    param.client_secret = 'my-secret-token-to-change-in-production';
+    param.client_id = 'ticketapp';
+    param.refresh_token = oldtoken.refresh_token;
+    var url = '/oauth/token';
+    var headers = {
+    };
+    vueApp.http.options.emulateJSON = true;
+    this.request(ctx, 'POST', url, param, function (ret) {
+      var token = ret.data;
+      var expiredAt = new Date();
+      expiredAt.setSeconds(expiredAt.getSeconds() + token.expires_in);
+      token.expires_at = expiredAt.getTime();
+      ac_store.setToken(token);
+      callback(ret);
+    }, headers);
+  },
+  requestDo: function (ctx, method, url, param, callback, headers) {
     if (!headers) {
       var token = ac_store.getToken();
-      if (token === null || !token) {
-        alert('token超时，请重新登录！');
-        ctx.$router.go('/');
-        return;
-      }
       vueApp.http.options.emulateJSON = false;
-      // 'Content-Type': 'application/json;charset=UTF-8',
-      // 'Accept': 'application/json, text/plain, */*',
       headers = {
         'Authorization': 'Bearer ' + token.access_token
       };
-      // param = JSON.stringify(param);
     }
     ctx.$http({
       url: '/v1' + url,
@@ -52,5 +58,32 @@ module.exports = {
         callback(res);
       }
     });
+  },
+  request: function (ctx, method, url, param, callback, headers) {
+    var _this = this;
+    if (!param) {
+      param = {};
+    }
+    if (typeof(param) === 'function') {
+      callback = param;
+      param = {};
+    }
+    if (!headers) {
+      var token = ac_store.getToken();
+      if (token === null || !token) {
+        ctx.$router.go('/');
+        return;
+      }
+      var now = new Date().DateAdd('n', 5);
+      if (token.expires_at < now.getTime()) {
+        this.refresh_token(ctx, function () {
+          _this.requestDo(ctx, method, url, param, callback, headers);
+        });
+      } else {
+        _this.requestDo(ctx, method, url, param, callback, headers);
+      }
+    } else {
+      _this.requestDo(ctx, method, url, param, callback, headers);
+    }
   }
 };
