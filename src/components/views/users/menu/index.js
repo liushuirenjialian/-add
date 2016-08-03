@@ -7,9 +7,14 @@ module.exports = {
       actionId: 1,
       roleList: []
     };
-  }  
+  }, 
+  components: {
+    userList: require('../user'),
+    paging: require('../../../common/paging')
+  },
   created: function () {
     this.bindingRole ();
+    this.roleDetail ();
   },
   methods: {
     bindingRole: function() {
@@ -21,8 +26,16 @@ module.exports = {
           names.name = ret.data[i].name;
           names.text = ret.data[i].text;
           _this.roleList.push(names);
-        }
+        _this.roleDetail(ret.data[i].text);
+        }   
       });
+    },
+    roleDetail: function (names,e) {
+      var _this = this;
+      console.log(names);
+      // names是key
+      // _this.bingingtickets(names);
+
     }
   }
 };

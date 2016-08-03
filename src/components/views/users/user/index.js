@@ -6,7 +6,6 @@ module.exports = {
     return {
       actionId: 1,
       userList: [],
-      roleList: [],
       total: 0,
       page: 0,
       size: 5
@@ -26,19 +25,6 @@ module.exports = {
     }
   },
   methods: {
-    bindingRole: function () {
-      var _this = this;
-          // _this.roleList=list; see the callback data of request,for ,
-      var url='/api/author';
-      ac_http.request(_this, 'GET', url, function (ret) {
-        for (var i = 0; i < ret.data.length; i++) {
-          var names = {};
-          names.name = ret.data[i].name;
-          names.text = ret.data[i].text;
-          _this.roleList.push(names);
-        }
-      });
-    },
     bingingtickets: function (num) {
       // debugger
       var url = '/api/users';

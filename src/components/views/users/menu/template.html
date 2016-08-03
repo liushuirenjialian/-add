@@ -1,10 +1,10 @@
-f<div class="mail-navigation-container" ng-class="{'expanded' : !tabCtrl.navigationCollapsed}">
+<div class="mail-navigation-container" ng-class="{'expanded' : !tabCtrl.navigationCollapsed}">
     <div class="text-center">
         <button type="button" class="btn btn-default compose-button" ng-click="tabCtrl.showCompose('','','')">角色</button>
     </div>
     <!-- ngRepeat: t in tabCtrl.tabs -->
  <!--    <div ng-repeat="t in tabCtrl.tabs" ui-sref-active="active" class="mail-navigation ng-binding ng-scope" ui-sref="components.mail.label({label: t.label})" ng-click="selectTab(t.label)" href="#/components/mail/inbox">超级管理员<span class="new-mails ng-binding" ng-show="t.newMails">7</span></div> -->
- <div v-for="item in roleList" class="mail-navigation ng-binding ng-scope" i-sref="components.mail.label({label: t.label})" v-on:click="roleClick">{{item.text}}</div>
+ <div v-for="item in roleList" class="mail-navigation ng-binding ng-scope" i-sref="components.mail.label({label: t.label})" v-on:click="roleDetail(item.name,$event)">{{item.text}}</div>
     <!-- end ngRepeat: t in tabCtrl.tabs -->
    
     <!-- end ngRepeat: t in tabCtrl.tabs -->
