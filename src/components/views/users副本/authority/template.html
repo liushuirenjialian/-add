@@ -4,10 +4,10 @@
             <a href="" class="collapse-navigation-link ion-navicon"></a>
         </div>
         <label class="checkbox-inline custom-checkbox nowrap">
-            <input type="checkbox" id="inlineCheckbox01" value="option1"> <span class="select-all-label">选中全部</span></label>
+            <input type="checkbox" id="inlineCheckbox01" value="option1"> <span class="select-all-label">Select All</span></label>
         <button type="button" class="btn btn-icon refresh-button"><i class="ion-refresh"></i></button>
         <div class="btn-group dropdown" uib-dropdown="" v-bind:class="{'open':dropdownStatus}">
-            <button type="button" class="btn more-button dropdown-toggle" v-on:click="teggleDropdown">更多 <span class="caret"></span></button>
+            <button type="button" class="btn more-button dropdown-toggle" v-on:click="teggleDropdown">More <span class="caret"></span></button>
             <ul uib-dropdown-menu="" class="dropdown-menu">
                 <li><a href="">Action</a></li>
                 <li><a href="">Another action</a></li>
@@ -17,49 +17,34 @@
             </ul>
         </div>
     </div>
-    <div class="messages">      
+    <div class="messages">
         <table>
-            <tbody v-for='item in userList'>
-                <!-- ngRepeat: m in listCtrl.messages track by m.id | orderBy:'-date'-->
-                <tr  class="side-message-navigation-item little-human shineHover family">
+            <tbody>
+                <!-- ngRepeat: m in listCtrl.messages track by m.id | orderBy:'-date' -->
+                <tr ng-repeat="m in listCtrl.messages track by m.id | orderBy:'-date'" class="side-message-navigation-item little-human shineHover family">
                     <td class="check-td">
-                        <div class="mail-checkbox"> 
+                        <div class="mail-checkbox">
                             <label class="checkbox-inline custom-checkbox nowrap">
-                                <input type="checkbox"><span></span></label>
+                                <input type="checkbox"> <span></span></label>
                         </div>
                     </td>
                     <td class="photo-td" ui-sref="components.mail.detail({id: m.id, label: listCtrl.label})" href="#/components/mail/spam/8223sdffn"><img ng-src="../../../../assets/vendor/assets/img/app/profile/Andrey.png" class="little-human-picture" src="../../../../assets/vendor/assets/img/app/profile/Andrey.png"></td>
                     <td ui-sref="components.mail.detail({id: m.id, label: listCtrl.label})" href="#/components/mail/spam/8223sdffn">
                         <div class="name-container">
-                            <div><span class="name ng-binding">{{item.login}}</span></div>
-                            <div><span class="tag label label-primary family">{{item.activated}}</span></div>
+                            <div><span class="name ng-binding">Andrey Hrabouski</span></div>
+                            <div><span class="tag label label-primary family">family</span></div>
                         </div>
                     </td>
                     <td ui-sref="components.mail.detail({id: m.id, label: listCtrl.label})" href="#/components/mail/spam/8223sdffn">
-                        <div class="additional-info"><span class="subject ng-binding">{{item.authorities}}</span></div>
+                        <div class="additional-info"><span class="subject ng-binding">My App</span></div>
                     </td>
                     <td ui-sref="components.mail.detail({id: m.id, label: listCtrl.label})" href="#/components/mail/spam/8223sdffn">
-                        <div class="mail-body-part ng-binding">{{item.email}}</div>
+                        <div class="mail-body-part ng-binding">Hey Vlad. Lorem ipsum dolor sit amet!Consectetur My Falasson App elit. Aliquam sodales sem in nibh pellentesque, ac dignissim mi dapibus.</div>
                     </td>
-                    <td class="date"><span class="ng-binding">{{item.createdDate}}</span></td>
+                    <td class="date"><span class="ng-binding">Jun 20 07:05</span></td>
                 </tr>
                 <!-- end ngRepeat: m in listCtrl.messages track by m.id | orderBy:'-date' -->
             </tbody>
-         
         </table>
-   <!--      <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-danger">上一页</button>
-         <button type="button" class="btn btn-danger"></button> 
-        <ul id="pageA" class="btn btn-danger"></ul>
-        <button type="button" class="btn btn-danger">下一页</button></div> -->
-   
     </div>
-<!--  <div id="pagesNav">
-        <span id="pageP"> 上一页</span>
-          <ul id="pageA">
-              <li class="cur">1</li>
-              <li class="cur">2</li>
-          </ul>
-          <span id="pageN"> 上一页</span>
-    </div> -->
 </div>

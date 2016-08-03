@@ -1,15 +1,15 @@
 require('./style.scss');
 module.exports = {
-    template: require('./template.html'),
-    replace: true,
-    data: function() {
-        return {
-            account: '',
-            email: '',
-            password: ''
-        };
-    },
-    components: {
+  template: require('./template.html'),
+  replace: true,
+  data: function () {
+    return {
+      account: '',
+      email: '',
+      password: ''
+    };
+  },
+  components: {
     // alert: require('../../common/global-alert')
   },
   created: function () {
@@ -37,13 +37,12 @@ module.exports = {
       };
       ac_http.request(_this, 'post', url, param, function (ret) {
         if (ret.ret < 0) {
-           var data = ret.request.data;
+          // var data = ret.request.data;
                 // console.log(ret);
                 // alert(ret.data);
-            _this.$dispatch('showMsg', '信息填写不正确', 1);
+        _this.$dispatch('showMsg', '信息填写不正确', 1);
           return;
         }
-
         _this.$dispatch('showMsg', '注册成功，等待管理员审核!',2);
         // _this.$broadcast('showAlert', '注册成功，等待管理员审核!', 3);
             // var data = ret.data;
