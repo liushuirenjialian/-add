@@ -48,8 +48,11 @@
                 <li><a href="">其他</a></li>
             </ul>
         </div>
+        <div class="btn-group dropdown" uib-dropdown="" v-bind:class="{'open':dropdownStatus}">
+            <button type="button" class="btn more-button dropdown-toggle more-4" v-on:click="teggleDropdown">问题描述</button>
+        </div>
     </div>
-    <div class="messages">
+    <div class="messages" v-for="item in roleList">
         <table>
             <tbody>
                 <!-- ngRepeat: m in listCtrl.messages track by m.id | orderBy:'-date' -->
@@ -63,7 +66,7 @@
                     <td class="photo-td" ui-sref="components.mail.detail({id: m.id, label: listCtrl.label})" href="#/components/mail/spam/8223sdffn"><img ng-src="../../../../assets/vendor/assets/img/app/profile/Andrey.png" class="little-human-picture" src="../../../../assets/vendor/assets/img/app/profile/Andrey.png"></td>
                     <td ui-sref="components.mail.detail({id: m.id, label: listCtrl.label})" href="#/components/mail/spam/8223sdffn">
                         <div class="name-container">
-                            <div><span class="name ng-binding">{{id}}</span></div>
+                            <div><span class="name ng-binding">{{item.id}}</span></div>
                             <div><span class="tag label label-primary family">进行中</span></div>
                         </div>
                     </td>
@@ -75,13 +78,14 @@
 <!--                     <td ui-sref="components.mail.detail({id: m.id, label: listCtrl.label})" href="#/components/mail/spam/8223sdffn">
                         <div class="mail-body-part ng-binding">充值500元， 未到账，，，，</div>
                     </td> -->
-                    <td class="date"><span class="subject ng-binding">91</span></td>
-                    <td class="date"><span class="subject ng-binding">1区-精绝古城</span></td>
+                    <td class="date"><span class="subject ng-binding">{{item.channelName}}</span></td>
+                    <td class="date"><span class="subject ng-binding">{{item.gameRegion}}</span></td>
                     <td class="date"><span class="subject ng-binding">大R</span></td>
-                    <td class="date"><span class="subject ng-binding">充值问题</span></td>
+                    <td class="date"><span class="subject ng-binding">{{item.tags}}</span></td>
                     <td ui-sref="components.mail.detail({id: m.id, label: listCtrl.label})" href="#/components/mail/spam/8223sdffn">
-                        <div class="mail-body-part ng-binding">充值500元，未到账，，，，</div>
+                        <div class="mail-body-part ng-binding">{{item.content}}</div>
                     </td>
+                    <td><button class="status-button btn btn-xs btn-primary">详情</button></td>
                 </tr>
                 <!-- end ngRepeat: m in listCtrl.messages track by m.id | orderBy:'-date' -->
             </tbody>

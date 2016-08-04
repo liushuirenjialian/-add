@@ -4,34 +4,31 @@ module.exports = {
   replace: true,
   data: function () {
     return {
-      dropdownStatus: false,
-      actionId: 1
-      // user: ac_http.request(),
-      // id: ''
+      actionId: 1,
+      roleList: []
     };
   },
-  components: {
-    menu: require('../menu')
-  },
   created: function () {
-    this.$dispatch('showBreadcrumb', '工单列表');
-    // ac_http.request();
+    this.getAll();
   },
   methods: {
     teggleDropdown: function () {
       this.dropdownStatus = !this.dropdownStatus;
-    // },
-    // getAll: function () {
-    //   var url = '/api/tickets';
-    //   var _this = this;
-    //   var param = ac_http.request();
-    //   param.id = this.id;
-    //   ac_http.request(_this, 'GET', url, param, function (ret) {
-    //     if (ret.ret < 0) {
-    //       alert(ret.data.error); return;
-    //     }
-    //   ac_http.request(param);  
-    //   });
+    },
+    getAll: function () {
+      var url = '/api/tickets';
+      var _this = this;
+      ac_http.request(_this, 'GET', url,function (ret) {
+          for (var i = 0; i < ret.data.length; i++) {
+          var obj = {};
+          obj.id = ret.data[i].id;
+          obj.channelName = ret.data[i].channelName;
+          obj.gameRegion = ret.data[i].gameRegion;
+          obj.tags = ret.data[i].tags;
+          obj.content = ret.data[i].content;
+          _this.roleList.push(obj);
+        }
+      });
     }
   }
 };

@@ -10,90 +10,12 @@ var routerMap = require('./router-map');
 var routerMapTest = require('./router-map-test');
 module.exports = function (router) {
   // Define a router
-<<<<<<< HEAD
-// The main method to define route mappings for the router(routeMap)
-// adding vue-router to the mix ,all we need to do is map our components to the routes and let  vue-router knoe to render them,
-  router.map({
-    '': {
-      component: require('../components/views/login'),
-      auth: false
-    },
 
-    '/login': {
-      component: require('../components/views/login'),
-      auth: false
-    },
-
-    '/home': {
-      auth: true,
-      name: 'home',
-      component: function (resolve) {
-        ac_util.startLoading();
-        require(['../components/views/home'], resolve);
-      },
-      subRoutes: {
-
-        '/index': {
-          name: 'index',
-          component: require('../components/views/index'),
-          auth: true
-        },
-        '/profile': {
-          name: 'index',
-          component: require('../components/views/profile'),
-          auth: true
-        },
-        '/changepassword':{
-          component:require('../components/views/changepassword'),
-          auth: true
-        },
-        '/ticket': {
-          name: 'ticket',
-          component: function (resolve) {
-            // ac_util.startLoading();
-            require(['../components/views/ticket'], resolve);
-          },
-          auth: true,
-          subRoutes: {
-            '/list': {
-              name: 'ticket-list',
-              component: require('../components/views/ticket/list'),
-              auth: true
-            },
-            '/detail': {
-              name: 'ticket-detail',
-              component: require('../components/views/ticket/detail'),
-              auth: true
-            }
-          }
-        }   
-      }
-    },
-    '/header': {
-      component: require('../components/common/header'),
-      auth: true
-    },
-    '/alerts': {
-      component: require('../components/common/alerts'),
-      auth: true
-    },
-    '/register': {
-      component: require('../components/views/register'),
-      auth: false
-    },
-   
-
-    //    '/reg':{
-    //   component: require('../components/views/reg'),
-    //   auth:false
-    // },
-  });
-=======
   // The main method to define route mappings for the router(routeMap)
   // adding vue-router to the mix ,all we need to do is map our components to the routes and let  vue-router knoe to render them,
   var rmap = ac_.assign(routerMap, routerMapTest);
   router.map(rmap);
->>>>>>> aa769cc177f356a081b946c509f742f84a320c62
+
 
   router.beforeEach(function (transition) {
     var userInfo = ac_store.getUserInfo();

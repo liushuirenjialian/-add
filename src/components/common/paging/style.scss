@@ -1,8 +1,9 @@
-// @import "../../../assets/blur-admin/sass/app/_alerts.scss"
-paging {
+ paging {
   position: relative;
   .btn-group {
     position: relative;
+    width: 100%;
+    padding-top: 10px;
     .btn {
       min-width: 50px;
       border: 0px;

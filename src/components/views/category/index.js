@@ -4,17 +4,16 @@ require('./style.scss');
 module.exports = {
   template: require('./template.html'),
   replace: true,
-  props: {
-    logs: {
-      type: Array
-    }
+  data: function () {
+    return {
+      actionId: 1
+    };
   },
   created: function () {
-    ac_util.stopLoading();
+    this.$dispatch('showBreadcrumb', '分类管理');
   },
   methods: {
-    formatDate: function (stamp) {
-      return ac_util.formatDate(new Date(stamp), '%M月%d号 %H:%m:%s');
+    logout: function () {
     }
   }
 };

@@ -39,7 +39,7 @@ module.exports = {
         _this.getUserInfo();
       });
     },
-    getUserInfo: function() {
+    getUserInfo: function () {
       var url = '/api/account';
       var _this = this;
       ac_http.request(_this, 'GET', url, function(ret) {

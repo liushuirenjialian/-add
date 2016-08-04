@@ -28,10 +28,14 @@ module.exports = {
         component: require('../components/views/profile'),
         auth: true
       },
+      '/changepassword': {
+        name: 'index',
+        component: require('../components/views/changepassword'),
+        auth: true
+      },
       '/ticket': {
         name: 'ticket',
         component: function (resolve) {
-          // ac_util.startLoading();
           require(['../components/views/ticket'], resolve);
         },
         auth: true,
@@ -44,6 +48,25 @@ module.exports = {
           '/detail': {
             name: 'ticket-detail',
             component: require('../components/views/ticket/detail'),
+            auth: true
+          }
+        }
+      },
+      '/category': {
+        name: 'category',
+        component: function (resolve) {
+          require(['../components/views/category'], resolve);
+        },
+        auth: true,
+        subRoutes: {
+          '/list': {
+            name: 'category-list',
+            component: require('../components/views/category/list'),
+            auth: true
+          },
+          '/detail/:id': {
+            name: 'category-detail',
+            component: require('../components/views/category/detail'),
             auth: true
           }
         }

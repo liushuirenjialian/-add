@@ -49,9 +49,9 @@
         "iClass": "",
         "authorities": ""
     }, {
-        "text": "工单统计",
-        "name": "ticket-report",
-        "link": "/home/ticket/report",
+        "text": "分类管理",
+        "name": "category-list",
+        "link": "/home/category/list",
         "iClass": "",
         "authorities": ""
     }]
