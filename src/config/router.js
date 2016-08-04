@@ -6,9 +6,11 @@
 
 
 // 需求：实现公用的ui组件开发，在不同的页面通过广播 使用通用组建开发var exprots=
+var routerMap = require('./router-map');
+var routerMapTest = require('./router-map-test');
 module.exports = function (router) {
-
   // Define a router
+<<<<<<< HEAD
 // The main method to define route mappings for the router(routeMap)
 // adding vue-router to the mix ,all we need to do is map our components to the routes and let  vue-router knoe to render them,
   router.map({
@@ -86,13 +88,18 @@ module.exports = function (router) {
     //   auth:false
     // },
   });
+=======
+  // The main method to define route mappings for the router(routeMap)
+  // adding vue-router to the mix ,all we need to do is map our components to the routes and let  vue-router knoe to render them,
+  var rmap = ac_.assign(routerMap, routerMapTest);
+  router.map(rmap);
+>>>>>>> aa769cc177f356a081b946c509f742f84a320c62
 
   router.beforeEach(function (transition) {
     var userInfo = ac_store.getUserInfo();
     var hasLogin = true;
     if (userInfo === null || !userInfo) {
       hasLogin = false;
-
     }
     function doNext() {
       // var unauthenticated = window.authenticated === 'NO';

@@ -38,7 +38,7 @@ module.exports = {
         if (_this.alert.show === 'alert-show') {
           _this.alert.show = 'alert-hide';
         }
-      }, 2000);
+      }, 16000);
     } 
     // the use of way
   
