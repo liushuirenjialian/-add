@@ -38,7 +38,7 @@ module.exports = {
       });
     },
     showDetatil: function (id) {
-      this.$router.go('/home/category/detail/' + id);
+      this.$router.go('/home/ticket/detail/' + id);
     }
   }
 };

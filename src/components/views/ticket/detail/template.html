@@ -6,7 +6,7 @@
            ng-click="tabCtrl.navigationCollapsed=!tabCtrl.navigationCollapsed"></a>
       </div>
       <button ui-sref=""  type="button" class="back-button btn btn-default btn-with-icon"><i
-          class="ion-chevron-left"></i>Back
+          class="ion-chevron-left"></i><a v-link="{path:'/home/ticket/list'}">返回</a>
       </button>
     </div>
     <div class="person-info row">
@@ -26,16 +26,16 @@
       <div class="col-lg-4 col-md-6 col-xs-12 no-padding">
         <div class="contact-info phone-email">
           <div>
-            <span class="phone">用户账号：13800138000</span>
+            <span class="phone">用户账号：{{detail.id}}</span>
           </div>
           <div>
-            <span class="email">平台:应用宝</span>
+            <span class="email">平台:{{detail.channelName}}</span>
           </div>
           <div>
-            <span class="email">问题类型：BUG</span>
+            <span class="email">问题类型：{{detail.tags}}</span>
           </div>
           <div>
-            <span class="email">提交时间:2016-8-25</span>
+            <span class="email">提交时间:{{detail.updatedAt}}</span>
           </div>
         </div>
       </div>
@@ -43,7 +43,7 @@
       <div class="col-lg-4 col-md-6 col-xs-12 no-padding">
         <div class="contact-info position-address">
           <div>
-            <span class="position">游戏大区：1区</span>
+            <span class="position">游戏大区：{{detail.gameRegion}}</span>
           </div>
           <div>
             <span class="address">角色名：逍遥</span>
@@ -55,8 +55,8 @@
     </div>
     <div class="line"></div>
     <div class="message-details">
-      <span class="subject">问题描述：</span>
-      <span class="date">闪退</span>
+      <span class="email">问题描述：</span>
+      <span class="date">{{detail.content}}</span>
     </div>
     <div class="line"></div>
     <div ng-bind-html="detailCtrl.mail.body" class="message-body">
@@ -64,12 +64,18 @@
     </div>
     <div class="line"></div>
     <div class="attachment" ng-show="detailCtrl.mail.attachment">
-      <span class="file-links">客服回复：</span>
-      <div>
-      <span class="file-links">编辑关键字：</span>
-      </div>
+<!--       <span class="file-links">客服回复：</span> -->
+      <label for="textarea01">客服回复：</label>
+      <textarea class="form-control" id="textarea01"></textarea>
     </div>
     <div class="line" ng-show="detailCtrl.mail.attachment"></div>
+    <div class="line"></div>
+    <div class="attachment" ng-show="detailCtrl.mail.attachment">
+      <!-- <span class="file-links">编辑关键字：</span> -->
+      <label for="textarea01">编辑关键字：</label>
+      <input type="text" class="form-control input-sm" id="input2">
+    </div>
+    <div class="line"></div>
     <div class="answer-container">
       <button type="button" class="btn btn-with-icon" ng-click="tabCtrl.showCompose(detailCtrl.mail.subject,detailCtrl.mail.email,'')"><i class="ion-reply"></i>转给运营</button>
        <button type="button" class="btn btn-with-icon"><i class="ion-printer"></i>回复用户</button>

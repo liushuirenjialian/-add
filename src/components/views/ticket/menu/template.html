@@ -3,7 +3,7 @@
         <button type="button" class="btn btn-default compose-button" ng-click="tabCtrl.showCompose('','','')">工单状态</button>
     </div>
     <!-- ngRepeat: t in tabCtrl.tabs -->
-    <div ng-repeat="t in tabCtrl.tabs" ui-sref-active="active" class="mail-navigation ng-binding ng-scope" ui-sref="components.mail.label({label: t.label})" ng-click="selectTab(t.label)" href="#/components/mail/inbox">全部工单<span class="new-mails ng-binding" ng-show="t.newMails">7</span></div>
+    <div ng-repeat="t in tabCtrl.tabs" ui-sref-active="active" class="mail-navigation ng-binding ng-scope" ui-sref="components.mail.label({label: t.label})" ng-click="selectTab(t.label)" href="#/components/mail/inbox">全部工单<span class="new-mails ng-binding" ng-show="t.newMails">{{}}</span></div>
     <div ng-repeat="t in tabCtrl.tabs" ui-sref-active="active" class="mail-navigation ng-binding ng-scope" ui-sref="components.mail.label({label: t.label})" ng-click="selectTab(t.label)" href="#/components/mail/inbox">未处理<span class="new-mails ng-binding" ng-show="t.newMails">7</span></div>
     <div ng-repeat="t in tabCtrl.tabs" ui-sref-active="active" class="mail-navigation ng-binding ng-scope" ui-sref="components.mail.label({label: t.label})" ng-click="selectTab(t.label)" href="#/components/mail/inbox">进行中<span class="new-mails ng-binding" ng-show="t.newMails">7</span></div>
     <div ng-repeat="t in tabCtrl.tabs" ui-sref-active="active" class="mail-navigation ng-binding ng-scope" ui-sref="components.mail.label({label: t.label})" ng-click="selectTab(t.label)" href="#/components/mail/inbox">已回复<span class="new-mails ng-binding" ng-show="t.newMails">7</span></div>

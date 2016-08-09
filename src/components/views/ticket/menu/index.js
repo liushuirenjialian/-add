@@ -17,10 +17,9 @@ module.exports = {
       var url='/api/ticketStatus';
       ac_http.request(_this, 'GET', url, function (ret) {
         for (var i = 0; i < ret.data.length; i++) {
-          var names = {};
-          names.name = ret.data[i].name;
-          names.text = ret.data[i].text;
-          _this.roleList.push(names);
+          var obj = {};
+          _this.roleList = ret.data;
+          _this.roleList.push(param);
         }
       });
     }
