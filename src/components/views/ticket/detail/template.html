@@ -5,9 +5,6 @@
         <a href class="collapse-navigation-link ion-navicon"
            ng-click="tabCtrl.navigationCollapsed=!tabCtrl.navigationCollapsed"></a>
       </div>
-      <button ui-sref=""  type="button" class="back-button btn btn-default btn-with-icon"><i
-          class="ion-chevron-left"></i><a v-link="{path:'/home/ticket/list'}">返回</a>
-      </button>
     </div>
     <div class="person-info row">
       <div class="col-lg-4 col-md-12  no-padding">
@@ -79,7 +76,7 @@
     <div class="answer-container">
       <button type="button" class="btn btn-with-icon" ng-click="tabCtrl.showCompose(detailCtrl.mail.subject,detailCtrl.mail.email,'')"><i class="ion-reply"></i>转给运营</button>
        <button type="button" class="btn btn-with-icon"><i class="ion-printer"></i>回复用户</button>
-      <button type="button" class="btn btn-with-icon" ng-click="tabCtrl.showCompose(detailCtrl.mail.subject,'',detailCtrl.mail.body)"><i class="ion-forward"></i>返回列表</button>
+      <button type="button" class="btn btn-with-icon" ng-click="tabCtrl.showCompose(detailCtrl.mail.subject,'',detailCtrl.mail.body)"><i class="ion-forward"></i><a v-link="{path:'/home/ticket/list'}">返回列表</a></button>
     </div>
 
   </div>

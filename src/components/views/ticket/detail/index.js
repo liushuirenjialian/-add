@@ -24,7 +24,7 @@ module.exports = {
     },
     initData: function () {
       var _this = this;
-      var id = this.$route.params.id;
+      var id = this.$route.id;
       var url = 'api/tickets/{id}';
       ac_http.request(_this, 'GET', url, function (ret) {
         _this.detail = ret.data;
