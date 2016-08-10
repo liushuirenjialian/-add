@@ -19,6 +19,19 @@ app.use('/v1', function (req, res) {
   req.pipe(request(url)).pipe(res);
 });
 
+// app.error(function (err, req, res, next) {
+//   var ret = {};
+//   ret.message = '接口返回错误';
+//   ret.ret = -1;
+//   res.render(ret);
+// });
+
+process.on('uncaughtException', function (err) {
+  // 打印出错误
+  console.log(err);
+  // 打印出错误的调用栈方便调试
+  console.log(err.stack);
+});
 
 app.use('/', express.static(path.resolve(__dirname, './public')));
 

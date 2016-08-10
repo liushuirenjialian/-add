@@ -1,4 +1,4 @@
-
+var acIndexOf = require('lodash/indexOf');
 require('./style.scss');
 module.exports = {
   template: require('./template.html'),
@@ -6,15 +6,15 @@ module.exports = {
   props: ['total', 'size', 'page'],
   data: function () {
     return {
-      // total: 152,
-      // size: 10,
-      // page: 0,
       pageNum: 0,
       checknum: 0,
       pageIndexList: [],
+      sizeList: [10, 20, 50, 100],
       prevStaus: false,
       nextStaus: false,
-      isshow: true
+      isshow: true,
+      selectSize: 0,
+      beSizeBo: false
     };
   },
   watch: {
@@ -25,6 +25,13 @@ module.exports = {
     size: function () {
       // this.size = val;
       this.bindPaging();
+    },
+    selectSize: function () {
+      if (this.selectSize === '') {
+        this.selectSize = 10;
+      }
+      this.linkgo(1, this.beSizeBo);
+      this.beSizeBo = true;
     }
   },
   created: function () {
@@ -32,6 +39,7 @@ module.exports = {
   },
   methods: {
     bindPaging: function () {
+      this.isshow = true;
       this.pageCount = this.total % this.size === 0 ? this.total / this.size : Math.ceil(this.total / this.size);
       if (this.pageCount === 1) {
         this.isshow = false;
@@ -39,13 +47,17 @@ module.exports = {
       if (this.page > this.pageCount) {
         this.page = 0;
       }
+      if (!this.size) { this.size = 0;}
+      if (acIndexOf(this.sizeList, this.size) < 0) {
+        this.sizeList.push(this.size);
+      }
       this.bindPageButton();
     },
-    linkgo: function (num) {
-      if (this.pageNum === num) { return;}
+    linkgo: function (num, changeSize) {
+      if (this.pageNum === num && !changeSize) { return;}
       this.pageNum = num;
       this.bindPaging();
-      this.$dispatch('pagindGo', num - 1);
+      this.$dispatch('pagindGo', num - 1, this.selectSize);
     },
     buttonStausDo: function () {
       if (this.pageNum === 1) {

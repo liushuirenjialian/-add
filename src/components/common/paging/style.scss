@@ -4,21 +4,29 @@
     position: relative;
     width: 100%;
     padding-top: 10px;
-    .btn {
-      min-width: 50px;
-      border: 0px;
-    }
-    .btn:hover {
-      color: #ec1500;
-      border-color: #ec1500;
+    .paging-left {
+      float: left;
+      .btn {
+        min-width: 50px;
+        border: 0px;
+      }
+      .btn:hover {
+        color: #ec1500;
+        border-color: #ec1500;
+      }
+      .hide {
+        display: none;
+      }
     }
     .totaldiv {
       float: right;
       padding: 10px;
-      font-size: 15px;
+      font-size: 14px;
+      font-weight: 400;
+      select {
+        min-width: 60px;
+      }
     }
   }
-  .hide {
-    display: none;
-  }
+
 }
