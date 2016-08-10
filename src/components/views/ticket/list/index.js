@@ -7,7 +7,7 @@ module.exports = {
       actionId: 1,
       roleList: [],
       page: 0,
-      size: 11,
+      size: 2,
       total: 0
     };
   },
@@ -19,7 +19,8 @@ module.exports = {
     this.getAll(0);
   },
   events: {
-    pagindGo: function (num) {
+    pagindGo: function (num, size) {
+      this.size = size; 
       this.getAll(num);
     }
   },
