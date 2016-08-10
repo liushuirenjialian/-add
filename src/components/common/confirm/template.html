@@ -1,0 +1,14 @@
+<div class="modal fade ng-isolate-scope in" style="z-index: 1050; display: none;" :class="{'show': isshow}">
+    <div class="modal-dialog confirm">
+        <div class="modal-content">
+            <div class="modal-content">
+                <div class="modal-header bg-warning"><i class="ion-android-warning modal-icon"></i><span>提示</span></div>
+                <div class="modal-body text-center">确定是否删除？</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" v-on:click="confirmDo(true)">确定</button>
+                    <button type="button" class="btn btn-info" v-on:click="confirmDo(false)">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

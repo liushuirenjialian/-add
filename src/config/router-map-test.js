@@ -18,5 +18,13 @@ module.exports = {
   '/test-paging': {
     component: require('../components/test/test-paging'),
     auth: false
+  },
+  '/confirm': {
+    component: require('../components/common/confirm'),
+    auth: false
+  },
+  '/test-confirm': {
+    component: require('../components/test/test-confirm'),
+    auth: false
   }
 };
