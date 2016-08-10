@@ -7,7 +7,7 @@ module.exports = {
       dropdownStatus: false,
       actionId: 1,
       page: 0,
-      size: 3,
+      size: 10,
       total: 0,
       pageList: []
     };
@@ -20,7 +20,8 @@ module.exports = {
     this.bindList(0);
   },
   events: {
-    pagindGo: function (num) {
+    pagindGo: function (num, size) {
+      this.size = size;
       this.bindList(num);
     }
   },

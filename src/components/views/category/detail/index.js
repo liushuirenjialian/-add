@@ -8,10 +8,11 @@ module.exports = {
       detail: {
         id: 0,
         name: '',
-        abcestry: 0,
+        ancestry: '',
         sort: 0,
         comment: '',
-        createdAt: ''
+        createdAt: '',
+        parentId: 0
       }
     };
   },
@@ -37,10 +38,10 @@ module.exports = {
       var param = {};
       param.id = this.detail.id;
       param.name = this.detail.name;
-      param.abcestry = this.detail.abcestry;
       param.sort = this.detail.sort;
       param.comment = this.detail.comment;
       param.createdAt = this.detail.createdAt;
+      param.parentId = this.detail.parentId;
       var method = 'POST';
       if (param.id > 0) {
         method = 'PUT';

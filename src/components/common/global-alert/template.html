@@ -1,5 +1,10 @@
-<div id="toast-container" class="toast-top-center">
-    <div class="globalAlert" v-bind:class="[globalAlert.class,globalAlert.show]">
-        <strong>{{globalAlert.msg}}</strong>
+<div id="toast-container" class="toast-top-center" style="pointer-events: auto;" v-bind:class="{'alert-hide': !globalAlert.isshow}">
+    <div class="toast toast-info" toast="" style="" v-bind:class="[globalAlert.class]">
+        <button class="toast-close-button ng-scope" v-on:click="close()">×</button>
+        <div ng-switch="" on="allowHtml">
+            <div ng-switch-default="" class="toast-title" aria-label="Some title here">提示：</div>
+            <div ng-switch-default="" class="toast-message" aria-label="Type your message here">{{globalAlert.msg}}</div>
+        </div>
+        <div class="toast-progress" :style="{ width: globalAlert.barWidth + '%' }"></div>
     </div>
 </div>
