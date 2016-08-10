@@ -42,9 +42,6 @@ module.exports = {
       });
     },
     showDetatil: function (id) {
-<<<<<<< HEAD
-      this.$router.go('/home/ticket/detail/' + id);
-=======
       this.$router.go('/home/category/detail/' + id);
     },
     deleteData: function (id) { // 确定删除后，把倒腾的数据传回来
@@ -60,7 +57,6 @@ module.exports = {
     deleteDo: function (id) {
       this.confirmStatus = true; // 控制显示confirm
       this.id = id; // 传给子组件， 子组件再传回来
->>>>>>> fd1ab442f6aff99b8d894c4256b6d379da9658fd
     }
   }
 };
