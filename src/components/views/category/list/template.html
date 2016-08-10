@@ -1,46 +1,7 @@
-
-<<<<<<< HEAD
 <div class="panel-body">
     <div>
         <div class="add-row-editable-table">
             <button class="btn btn-primary" v-on:click="showDetatil('add')">增加</button>
-=======
-    <div class="panel-body">
-        <div>
-            <div class="add-row-editable-table">
-                <button class="btn btn-primary" v-on:click="showDetatil(0)">增加</button>
-            </div>
-            <table class="table table-bordered table-hover table-condensed">
-                <tbody>
-                    <tr>
-                        <td>id</td>
-                        <td>类型名称</td>
-                        <td>上级id</td>
-                        <td>排序id</td>
-                        <td>备注</td>
-                        <td>创建时间</td>
-                        <td>修改时间</td>
-                        <td>操作</td>
-                    </tr>
-                    <tr class="editable-row" v-for="item in pageList">
-                        <td class="ng-binding">{{item.id}}</td>
-                        <td><span class="editable">{{item.name}}</span></td>
-                        <td class="select-td"><span class="editable">{{item.ancestry}}</span></td>
-                        <td class="select-td"><span class="editable">{{item.sort}}</span></td>
-                        <td class="select-td"><span class="editable">{{item.comment}}</span></td>
-                        <td class="select-td"><span class="editable">{{item.createdAt}}</span></td>
-                        <td class="select-td"><span class="editable">{{item.updatedAt}}</span></td>
-                        <td>
-                            <div class="buttons">
-                                <button class="btn btn-primary editable-table-button btn-xs" v-on:click="showDetatil(item.id)">Edit</button>
-                                <button class="btn btn-danger editable-table-button btn-xs" ng-click="removeUser($index)">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-          <paging v-bind:total=total v-bind:size=size v-bind:page=page> </paging>
->>>>>>> lee
         </div>
         <table class="table table-bordered table-hover table-condensed">
             <tbody>
