@@ -41,7 +41,7 @@ module.exports = {
     bindPaging: function () {
       this.isshow = true;
       this.pageCount = this.total % this.size === 0 ? this.total / this.size : Math.ceil(this.total / this.size);
-      if (this.pageCount === 1) {
+      if (this.pageCount === 1 || this.total <= 0) {
         this.isshow = false;
       }
       if (this.page > this.pageCount) {

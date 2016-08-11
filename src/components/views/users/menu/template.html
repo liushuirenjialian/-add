@@ -1,17 +1,13 @@
-<div class="mail-navigation-container panel">
+<div class="mail-navigation-container">
     <div class="panel-heading clearfix">
-      <h3 class="panel-title">角色查询</h3>
+        <h3 class="panel-title">角色查询</h3>
     </div>
     <div class="mail-navigation" v-on:click="roleQuery('all')">所有用户</div>
     <div v-for="role in roleList" class="mail-navigation" v-link="{ name:'users-list', params: { rolename: role.name } }">{{role.text}}</div>
     <div class="labels">
         <div class="labels-title"></div>
-        <div class="labels-container">
-            <div class="label-item"><span class="tag label work">Work</span></div>
-            <div class="label-item"><span class="tag label family">Family</span></div>
-            <div class="label-item"><span class="tag label friend">Friend</span></div>
-            <div class="label-item"><span class="tag label study">Study</span></div>
-        </div>
     </div>
-    <div class="add-label-container"><i class="ion-plus-round"></i><span class="label-input-stub">增加新用户</span></div>
+    <div class="add-label-container">
+        <!-- <i class="ion-plus-round"></i> -->
+        <span class="label-input-stub btn btn-primary" v-link="{ name:'users-detail', params: { id: 'add' } }">增加新用户</span></div>
 </div>

@@ -23,9 +23,6 @@ module.exports = {
   components: {
     paging: require('../../../common/paging')
   },
-  created: function () {
-    console.log('created');
-  },
   events: {
     pagindGo: function (num, size) {
       this.size = size;
