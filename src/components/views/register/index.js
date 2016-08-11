@@ -15,7 +15,7 @@ module.exports = {
   created: function () {
     this.$dispatch('toggleNoauth');
   },
-  methods: {
+  methods: { 
     register: function () {
       var url = '/api/register';
       var param = {};
@@ -28,25 +28,10 @@ module.exports = {
       };
       ac_http.request(_this, 'post', url, param, function (ret) {
         if (ret.ret < 0) {
-<<<<<<< HEAD
-          // var data = ret.request.data;
-                // console.log(ret);
-                // alert(ret.data);
         _this.$dispatch('showMsg', '信息填写不正确', 1);
           return;
         }
         _this.$dispatch('showMsg', '注册成功，等待管理员审核!',2);
-        // _this.$broadcast('showAlert', '注册成功，等待管理员审核!', 3);
-            // var data = ret.data;
-            // console.log(data)
-            // ac_store.setUserInfo(data);
-            // _this.$dispatch('showAlert', '注册成功');
-=======
-          _this.$dispatch('showMsg', '信息填写不正确', 1);
-          return;
-        }
-        _this.$dispatch('showMsg', '注册成功，等待管理员审核!', 2);
->>>>>>> master
       }, headers);
     }
   }

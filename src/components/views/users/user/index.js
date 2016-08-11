@@ -52,6 +52,7 @@ module.exports = {
           }
           _this.userList.push(users) 
         }
+        //getAllregister, edit(parm), add(parm),delete,
       });
     } 
   }
