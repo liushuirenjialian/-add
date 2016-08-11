@@ -15,10 +15,13 @@ module.exports = {
   created: function () {
     this.$dispatch('showBreadcrumb', '系统管理');
   },
+  events: {
+    roleQuery: function (rolename) { 
+      this.$broadcast('listRoleQuery', rolename);
+    }
+  },
   methods: {
     logout: function () {
-
-      
     }
   }
 };

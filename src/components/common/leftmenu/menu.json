@@ -14,7 +14,7 @@
     "subMenu": [{
         "text": "用户管理",
         "name": "users",
-        "link": "/home/users/user",
+        "link": "/home/users/list/all",
         "iClass": "",
         "authorities": ["ROLE_ADMIN", "ROLE_MODERATOR"]
     }, {

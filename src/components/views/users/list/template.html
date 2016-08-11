@@ -1,0 +1,56 @@
+<div class="side-message-navigation expanded">
+    <div class="mail-messages-control side-message-navigation-item">
+        <div class="toggle-navigation-container">
+            <a href="" class="collapse-navigation-link ion-navicon"></a>
+        </div>
+        <label class="checkbox-inline custom-checkbox nowrap">
+            <input type="checkbox" id="inlineCheckbox01" value="option1"> <span class="select-all-label">选中全部</span></label>
+        <button type="button" class="btn btn-icon refresh-button"><i class="ion-refresh"></i></button>
+        <div class="btn-group dropdown" v-bind:class="{'open':dropdownStatus}">
+            <button type="button" class="btn more-button dropdown-toggle" v-on:click="teggleDropdown()">更多 <span class="caret"></span></button>
+            <ul uib-dropdown-menu="" class="dropdown-menu">
+                <li><a href="">Action</a></li>
+                <li><a href="">Another action</a></li>
+                <li><a href="">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="">Separated link</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="messages">
+        <table>
+            <tbody>
+                <tr class="side-message-navigation-item little-human shineHover family"  v-for='item in userList'>
+                    <td class="check-td">
+                        <div class="mail-checkbox">
+                            <label class="checkbox-inline custom-checkbox nowrap">
+                                <input type="checkbox"><span></span></label>
+                        </div>
+                    </td>
+                    <td class="photo-td"><img class="little-human-picture" src="../../../../assets/vendor/assets/img/app/profile/Andrey.png"></td>
+                    <td>
+                        <div class="name-container">
+                            <div><span class="name">{{item.login}}</span></div>
+                            <div><span class="tag label label-primary family">{{item.activated | formatUserActivated}}</span></div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="additional-info"><span class="subject">{{item.authorities}}</span></div>
+                    </td>
+                    <td>
+                       <div class="mail-body-part" v-text="item.email"></div>
+                    </td>
+                    <td class="date"><span>{{item.createdDate | formatDate}}</span></td>
+                    <td>
+                        <div class="buttons">
+                            <button class="btn btn-primary editable-table-button btn-xs" v-on:click="showDetatil(item.id)">编辑</button>
+                            <button class="btn btn-danger editable-table-button btn-xs" v-on:click="deleteDo(item.id)">删除</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+    <paging v-bind:total=total v-bind:size=size v-bind:page=page> </paging>
+</div>

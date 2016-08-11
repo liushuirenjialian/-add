@@ -83,14 +83,14 @@ module.exports = {
             component: require('../components/views/users/authority'),
             auth: true
           },
-          '/game': {
-            name: 'users-game',
-            component: require('../components/views/users/game'),
+          '/list/:rolename': {
+            name: 'users-list',
+            component: require('../components/views/users/list'),
             auth: true
           },
-          '/user': {
-            name: 'users-game',
-            component: require('../components/views/users/user'),
+          '/detail/:id': {
+            name: 'users-detail',
+            component: require('../components/views/users/detail'),
             auth: true
           }
         }
