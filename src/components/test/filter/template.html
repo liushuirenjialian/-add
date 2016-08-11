@@ -1,0 +1,13 @@
+<input type="text" name="name" v-model="message">
+
+<!-- <span v-text="message | wrap 'before' 'after'"></span> -->
+
+
+<span v-text="newMessage"></span>
+
+
+<div class="" v-for="item in list">
+  {{item.time | formatDay}}
+</div>
+
+<button type="button" name="button" v-on:click="update">updateList</button>

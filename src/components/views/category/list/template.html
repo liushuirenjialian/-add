@@ -21,8 +21,8 @@
                     <td class="select-td"><span class="editable">{{item.ancestry}}</span></td>
                     <td class="select-td"><span class="editable">{{item.sort}}</span></td>
                     <td class="select-td"><span class="editable">{{item.comment}}</span></td>
-                    <td class="select-td"><span class="editable">{{item.createdAt}}</span></td>
-                    <td class="select-td"><span class="editable">{{item.updatedAt}}</span></td>
+                    <td class="select-td"><span class="editable">{{item.createdAt | formatDate}}</span></td>
+                    <td class="select-td"><span class="editable">{{item.updatedAt | formatDate}}</span></td>
                     <td>
                         <div class="buttons">
                             <button class="btn btn-primary editable-table-button btn-xs" v-on:click="showDetatil(item.id)">编辑</button>

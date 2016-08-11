@@ -26,5 +26,9 @@ module.exports = {
   '/test-confirm': {
     component: require('../components/test/test-confirm'),
     auth: false
+  },
+  '/filter': {
+    component: require('../components/test/filter'),
+    auth: false
   }
 };

@@ -3,6 +3,7 @@
 var Vue = require('vue');
 var VueRouter = require('vue-router');
 var configRouter = require('../config/router.js');
+var filters = require('./filter');
 var App = {};
 var router = {};
 
@@ -19,15 +20,22 @@ ac_.findIndex = require('lodash/findIndex');
 ac_.remove = require('lodash/remove');
 ac_.join = require('lodash/join');
 ac_.assign = require('lodash/assign');
+ac_.forEach = require('lodash/forEach');
 
 window.ac_cookies = require('js-cookie');
 window.ac_util = require('../lib/util');
 window.ac_store = require('../lib/store');
 window.ac_http = require('../lib/http');
 
+
 window.ac_secret_things = {};
 
 window.vueApp = Vue;
+
+// 把所有的自定义过滤器加入到 vue filter 中
+ac_.forEach(filters, function (func, key) {
+  Vue.filter(key, func);
+});
 
 Vue.use(VueRouter);
 
