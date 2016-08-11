@@ -1,3 +1,85 @@
-<div class="">
-  dsadsad
+<div class="message-container" ng-class="{'expanded': tabCtrl.navigationCollapsed}">
+  <div class="message">
+    <div class="row">
+      <div class="toggle-navigation-container detail-page">
+        <a href class="collapse-navigation-link ion-navicon"
+           ng-click="tabCtrl.navigationCollapsed=!tabCtrl.navigationCollapsed"></a>
+      </div>
+    </div>
+    <div class="person-info row">
+      <div class="col-lg-4 col-md-12  no-padding">
+        <img class="human-picture" ng-src="../../../../assets/vendor/assets/img/app/profile/Andrey.png" class="little-human-picture" src="../../../../assets/vendor/assets/img/app/profile/Andrey.png">
+
+        <div class="name">
+          <h2 class="name-h"></h2>
+
+          <h2 class="name-h second-name"></h2>
+
+          <div>
+            <span class="mail-tag tag label"></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-xs-12 no-padding">
+        <div class="contact-info phone-email">
+          <div>
+            <span class="phone">用户账号：{{detail.id}}</span>
+          </div>
+          <div>
+            <span class="email">平台:{{detail.channelName}}</span>
+          </div>
+          <div>
+            <span class="email">问题类型：{{detail.tags}}</span>
+          </div>
+          <div>
+            <span class="email">提交时间:{{detail.updatedAt}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 col-xs-12 no-padding">
+        <div class="contact-info position-address">
+          <div>
+            <span class="position">游戏大区：{{detail.gameRegion}}</span>
+          </div>
+          <div>
+            <span class="address">角色名：逍遥</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+    </div>
+    <div class="line"></div>
+    <div class="message-details">
+      <span class="email">问题描述：</span>
+      <span class="date">{{detail.content}}</span>
+    </div>
+    <div class="line"></div>
+    <div ng-bind-html="detailCtrl.mail.body" class="message-body">
+      <span>说明图片：</span> 
+    </div>
+    <div class="line"></div>
+    <div class="attachment" ng-show="detailCtrl.mail.attachment">
+<!--       <span class="file-links">客服回复：</span> -->
+      <label for="textarea01">客服回复：</label>
+      <textarea class="form-control" id="textarea01"></textarea>
+    </div>
+    <div class="line" ng-show="detailCtrl.mail.attachment"></div>
+    <div class="line"></div>
+    <div class="attachment" ng-show="detailCtrl.mail.attachment">
+      <!-- <span class="file-links">编辑关键字：</span> -->
+      <label for="textarea01">编辑关键字：</label>
+      <input type="text" class="form-control input-sm" id="input2">
+    </div>
+    <div class="line"></div>
+    <div class="answer-container">
+      <button type="button" class="btn btn-with-icon" ng-click="tabCtrl.showCompose(detailCtrl.mail.subject,detailCtrl.mail.email,'')"><i class="ion-reply"></i>转给运营</button>
+       <button type="button" class="btn btn-with-icon"><i class="ion-printer"></i>回复用户</button>
+      <button type="button" class="btn btn-with-icon" ng-click="tabCtrl.showCompose(detailCtrl.mail.subject,'',detailCtrl.mail.body)"><i class="ion-forward"></i><a v-link="{path:'/home/ticket/list'}">返回列表</a></button>
+    </div>
+
+  </div>
+  <div ng-show="!detailCtrl.mail">
+  </div>
 </div>

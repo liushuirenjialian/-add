@@ -54,6 +54,10 @@ module.exports = {
       }
     }, function (res) {
       res.ret = -1;
+      if (!res.data) { res.data = {}; }
+      if (!res.data.message) {
+        res.data.message = '未知错误请重试！';
+      }
       if (callback) {
         callback(res);
       }

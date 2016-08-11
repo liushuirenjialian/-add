@@ -2,7 +2,7 @@ require('./style.scss');
 module.exports = {
   template: require('./template.html'),
   replace: true,
-  data: function() {
+  data: function () {
     return {
       account: '',
       password: ''
@@ -14,12 +14,12 @@ module.exports = {
   created: function () {
   },
   events: {
-    pagindGo: function (num) {
-      console.log(num);
+    pagindGo: function (num, size) {
+      console.log('num'+ num + 'size:' + size);
     }
   },
   methods: {
-    getUserInfo: function() {
+    getUserInfo: function () {
 
     }
   }

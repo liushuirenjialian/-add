@@ -6,20 +6,25 @@ module.exports = {
   data: function () {
     return {
       globalAlert: {
-        show: 'alert-hide',
+        isshow: false,
         class: 'toast-success',
-        msg: '操作成功'
+        msg: '操作成功',
+        times: 3000,
+        barWidth: 100
       }
     };
   },
   created: function () {
-    // console.log(this.data);
+    // 测试
+    // this.globalAlert.class = 'toast-warning';
+    // this.globalAlert.isshow = true;
+    // this.autoClose();
   },
   events: {
     // 信息，状态
     // toast-success toast toast-info toast toast-warning toast toast-error
     showGlobalalert: function (message, status) {
-      this.globalAlert.show = 'alert-show';
+      this.globalAlert.isshow = true;
       var alertStatus = status;
       if (!alertStatus) { alertStatus = 0; }
       if (alertStatus === 1) {
@@ -32,19 +37,38 @@ module.exports = {
         this.globalAlert.class = 'toast-success';
       }
       this.globalAlert.msg = message;
-      var interVal;
-      var _this = this;
-      interVal = setInterval(function () {
-        clearInterval(interVal);
-        if (_this.globalAlert.show === 'alert-show') {
-          _this.globalAlert.show = 'alert-hide';
-        }
-      }, 2000);
-    } 
+// <<<<<<< HEAD
+    //   var interVal;
+    //   var _this = this;
+    //   interVal = setInterval(function () {
+    //     clearInterval(interVal);
+    //     if (_this.globalAlert.show === 'alert-show') {
+    //       _this.globalAlert.show = 'alert-hide';
+    //     }
+    //   }, 2000);
+    // } 
+// =======
+      this.autoClose();
+    }
+// >>>>>>> master
   },
   methods: {
     close: function () {
-      // console.log("close");
+      this.globalAlert.isshow = false;
+    },
+    autoClose: function () {
+      var _this = this;
+      var i = 0;
+      var speed = 100 / (_this.globalAlert.times / 10);
+      _this.globalAlert.barWidth = 100;
+      var autoporess = setInterval(function () {
+        i += 1; // 0.2 =  4000 / 10 = 400. 100/400 =0.25
+        _this.globalAlert.barWidth = 100 - speed * i;
+        if (_this.globalAlert.barWidth <= 0 || _this.globalAlert.isshow === false) {
+          clearInterval(autoporess);
+          _this.globalAlert.isshow = false;
+        }
+      }, 10);
     }
   }
 };

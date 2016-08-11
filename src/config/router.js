@@ -7,10 +7,12 @@ var routerMap = require('./router-map');
 var routerMapTest = require('./router-map-test');
 module.exports = function (router) {
   // Define a router
+
   // The main method to define route mappings for the router(routeMap)
   // adding vue-router to the mix ,all we need to do is map our components to the routes and let  vue-router knoe to render them,
   var rmap = ac_.assign(routerMap, routerMapTest);
   router.map(rmap);
+
 
   router.beforeEach(function (transition) {
     var userInfo = ac_store.getUserInfo();

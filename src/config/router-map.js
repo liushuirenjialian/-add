@@ -28,6 +28,11 @@ module.exports = {
         component: require('../components/views/profile'),
         auth: true
       },
+      '/changepassword': {
+        name: 'index',
+        component: require('../components/views/changepassword'),
+        auth: true
+      },
       '/ticket': {
         name: 'ticket',
         component: function (resolve) {
@@ -40,7 +45,7 @@ module.exports = {
             component: require('../components/views/ticket/list'),
             auth: true
           },
-          '/detail': {
+          '/detail/:id': {
             name: 'ticket-detail',
             component: require('../components/views/ticket/detail'),
             auth: true

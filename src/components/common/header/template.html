@@ -11,8 +11,13 @@
                     <img src="../../../assets/vendor/assets/img/app/profile/Nasta.png"></a>
                 <ul class="top-dropdown-menu profile-dropdown dropdown-menu">
                     <li><i class="dropdown-arr"></i></li>
-                    <li><a v-link='{ path: "/home/profile" }'><i class="fa fa-user"></i>Profile</a></li>
+<!-- <<<<<<< HEAD -->
+                    <li><a v-link='{ path: "/home/profile" }' ><i class="fa fa-user"></i>Profile</a></li>
+                    <li><a v-link="{path:'/home/changepassword'}"><i class="fa fa-cog"></i>修改密码</a></li>
+<!-- ======= -->
+                   <!--  <li><a v-link='{ path: "/home/profile" }'><i class="fa fa-user"></i>Profile</a></li>
                     <li><a href=""><i class="fa fa-cog"></i>Settings</a></li>
+>>>>>>>  -->
                     <li><a href="" class="signout" v-on:click="logout"><i class="fa fa-power-off"></i>退出</a></li>
                 </ul>
             </div>

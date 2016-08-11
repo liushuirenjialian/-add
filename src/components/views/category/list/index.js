@@ -7,20 +7,24 @@ module.exports = {
       dropdownStatus: false,
       actionId: 1,
       page: 0,
-      size: 3,
+      size: 10,
       total: 0,
-      pageList: []
+      pageList: [],
+      confirmStatus: false,
+      id: 0
     };
   },
   components: {
-    paging: require('../../../common/paging')
+    paging: require('../../../common/paging'),
+    confirm: require('../../../common/confirm')
   },
   created: function () {
     this.$dispatch('showBreadcrumb', '分类管理');
     this.bindList(0);
   },
   events: {
-    pagindGo: function (num) {
+    pagindGo: function (num, size) {
+      this.size = size;
       this.bindList(num);
     }
   },
@@ -39,6 +43,20 @@ module.exports = {
     },
     showDetatil: function (id) {
       this.$router.go('/home/category/detail/' + id);
+    },
+    deleteData: function (id) { // 确定删除后，把倒腾的数据传回来
+      var url = '/api/categories/' + id;
+      var _this = this;
+      ac_http.request(_this, 'DELETE', url, function(res) {
+        if (res.ret < 0) {
+          _this.$dispatch('showMsg', res.data.message, 1); return;
+        }
+        _this.bindList(_this.page);  // 删除后刷新页面
+      });
+    },
+    deleteDo: function (id) {
+      this.confirmStatus = true; // 控制显示confirm
+      this.id = id; // 传给子组件， 子组件再传回来
     }
   }
 };

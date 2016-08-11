@@ -4,19 +4,53 @@ module.exports = {
   replace: true,
   data: function () {
     return {
-      dropdownStatus: false,
-      actionId: 1
+      actionId: 1,
+      roleList: [],
+      page: 0,
+      size: 2,
+      total: 0
     };
   },
   components: {
-    menu: require('../menu')
+    paging: require('../../../common/paging')
   },
   created: function () {
-    this.$dispatch('showBreadcrumb', '工单列表');
+    this.$dispatch('showBreadcrumb', '分类管理');
+    this.getAll(0);
+  },
+  events: {
+    pagindGo: function (num, size) {
+      this.size = size; 
+      this.getAll(num);
+    }
   },
   methods: {
     teggleDropdown: function () {
       this.dropdownStatus = !this.dropdownStatus;
+    },
+    showDetatil: function (id) {
+      this.$router.go('/home/ticket/detail/' + id);
+    },
+    getAll: function (num) {
+      var url = '/api/tickets';
+      var param = {};
+      param.page = num;
+      param.size = this.size;
+      this.page = num;
+      var _this = this;
+      ac_http.request(_this, 'GET', url, param, function (ret) {
+          _this.total = ret.headers('x-total-count');
+          _this.roleList = ret.data;
+        //   for (var i = 0; i < ret.data.length; i++) {
+        //   var obj = {};
+        //   obj.id = ret.data[i].id;
+        //   obj.channelName = ret.data[i].channelName;
+        //   obj.gameRegion = ret.data[i].gameRegion;
+        //   obj.tags = ret.data[i].tags;
+        //   obj.content = ret.data[i].content;
+        //   _this.roleList.push(obj);
+        // }
+      });
     }
   }
 };
