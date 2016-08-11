@@ -1,10 +1,7 @@
 /* global ac_util ac_ ac_cookies */
 // nodejs的moule.exports vuejs 的路由
-
 // node 的代码使用require加载模块，在模块中使用exports或者module.exports导出接口，require、
 // module.exports都是node的全局对象
-
-
 // 需求：实现公用的ui组件开发，在不同的页面通过广播 使用通用组建开发var exprots=
 var routerMap = require('./router-map');
 var routerMapTest = require('./router-map-test');

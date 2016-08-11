@@ -22,10 +22,8 @@ module.exports = {
       param.username = this.account;
       param.password = this.password;
       var _this = this;
-      // module.exports.oauth function ?
       ac_http.oauth(_this, url, param, function(ret) {
         if (ret.ret < 0) {
-          // 如何实现的广播
           _this.$broadcast('showAlert', '账号或密码错误!', 2);
           return;
         }

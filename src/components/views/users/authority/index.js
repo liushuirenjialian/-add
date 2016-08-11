@@ -15,8 +15,6 @@ module.exports = {
     this.$dispatch('showBreadcrumb', '权限管理');
   },
   methods: {
-    teggleDropdown: function () {
-      this.dropdownStatus = !this.dropdownStatus;
-    }
+   
   }
 };

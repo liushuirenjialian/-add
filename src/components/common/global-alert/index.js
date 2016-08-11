@@ -37,8 +37,20 @@ module.exports = {
         this.globalAlert.class = 'toast-success';
       }
       this.globalAlert.msg = message;
+// <<<<<<< HEAD
+    //   var interVal;
+    //   var _this = this;
+    //   interVal = setInterval(function () {
+    //     clearInterval(interVal);
+    //     if (_this.globalAlert.show === 'alert-show') {
+    //       _this.globalAlert.show = 'alert-hide';
+    //     }
+    //   }, 2000);
+    // } 
+// =======
       this.autoClose();
     }
+// >>>>>>> master
   },
   methods: {
     close: function () {

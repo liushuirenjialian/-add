@@ -3,18 +3,10 @@
         <button type="button" class="btn btn-default compose-button" ng-click="tabCtrl.showCompose('','','')">角色</button>
     </div>
     <!-- ngRepeat: t in tabCtrl.tabs -->
-    <div ng-repeat="t in tabCtrl.tabs" ui-sref-active="active" class="mail-navigation ng-binding ng-scope" ui-sref="components.mail.label({label: t.label})" ng-click="selectTab(t.label)" href="#/components/mail/inbox">超级管理员<span class="new-mails ng-binding" ng-show="t.newMails">7</span></div>
+ <!--    <div ng-repeat="t in tabCtrl.tabs" ui-sref-active="active" class="mail-navigation ng-binding ng-scope" ui-sref="components.mail.label({label: t.label})" ng-click="selectTab(t.label)" href="#/components/mail/inbox">超级管理员<span class="new-mails ng-binding" ng-show="t.newMails">7</span></div> -->
+ <div v-for="item in roleList" class="mail-navigation ng-binding ng-scope" i-sref="components.mail.label({label: t.label})" v-on:click="roleDetail(item.name,$event)">{{item.text}}</div>
     <!-- end ngRepeat: t in tabCtrl.tabs -->
-    <div ng-repeat="t in tabCtrl.tabs" ui-sref-active="active" class="mail-navigation ng-binding ng-scope" ui-sref="components.mail.label({label: t.label})" ng-click="selectTab(t.label)" href="#/components/mail/sent"> 用户<span class="new-mails ng-binding ng-hide" ng-show="t.newMails"></span></div>
-    <!-- end ngRepeat: t in tabCtrl.tabs -->
-    <div ng-repeat="t in tabCtrl.tabs" ui-sref-active="active" class="mail-navigation ng-binding ng-scope" ui-sref="components.mail.label({label: t.label})" ng-click="selectTab(t.label)" href="#/components/mail/important">匿名用户<span class="new-mails ng-binding ng-hide" ng-show="t.newMails"></span></div>
-    <!-- end ngRepeat: t in tabCtrl.tabs -->
-    <div ng-repeat="t in tabCtrl.tabs" ui-sref-active="active" class="mail-navigation ng-binding ng-scope" ui-sref="components.mail.label({label: t.label})" ng-click="selectTab(t.label)" href="#/components/mail/draft">客服<span class="new-mails ng-binding" ng-show="t.newMails">2</span></div>
-    <!-- end ngRepeat: t in tabCtrl.tabs -->
-    <div ng-repeat="t in tabCtrl.tabs" ui-sref-active="active" class="mail-navigation ng-binding ng-scope" ui-sref="components.mail.label({label: t.label})" ng-click="selectTab(t.label)" href="#/components/mail/spam">运营<span class="new-mails ng-binding ng-hide" ng-show="t.newMails"></span></div>
-    <!-- end ngRepeat: t in tabCtrl.tabs -->
-    <div ng-repeat="t in tabCtrl.tabs" ui-sref-active="active" class="mail-navigation ng-binding ng-scope" ui-sref="components.mail.label({label: t.label})" ng-click="selectTab(t.label)" href="#/components/mail/trash">研发<span class="new-mails ng-binding ng-hide" ng-show="t.newMails"></span></div>
-     <div ng-repeat="t in tabCtrl.tabs" ui-sref-active="active" class="mail-navigation ng-binding ng-scope" ui-sref="components.mail.label({label: t.label})" ng-click="selectTab(t.label)" href="#/components/mail/trash">游戏/渠道管理员<span class="new-mails ng-binding ng-hide" ng-show="t.newMails"></span></div>
+   
     <!-- end ngRepeat: t in tabCtrl.tabs -->
     <div class="labels">
         <div class="labels-title"></div>

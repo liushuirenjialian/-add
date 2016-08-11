@@ -17,62 +17,36 @@
             </ul>
         </div>
     </div>
-    <div class="messages">
+    <div class="messages">      
         <table>
-            <tbody>
-                <!-- ngRepeat: m in listCtrl.messages track by m.id | orderBy:'-date' -->
-                <tr ng-repeat="m in listCtrl.messages track by m.id | orderBy:'-date'" class="side-message-navigation-item little-human shineHover family">
+            <tbody v-for='item in userList'>
+                <!-- ngRepeat: m in listCtrl.messages track by m.id | orderBy:'-date'-->
+                <tr  class="side-message-navigation-item little-human shineHover family">
                     <td class="check-td">
-                        <div class="mail-checkbox">
+                        <div class="mail-checkbox"> 
                             <label class="checkbox-inline custom-checkbox nowrap">
-                                <input type="checkbox"> <span></span></label>
+                                <input type="checkbox"><span></span></label>
                         </div>
                     </td>
                     <td class="photo-td" ui-sref="components.mail.detail({id: m.id, label: listCtrl.label})" href="#/components/mail/spam/8223sdffn"><img ng-src="../../../../assets/vendor/assets/img/app/profile/Andrey.png" class="little-human-picture" src="../../../../assets/vendor/assets/img/app/profile/Andrey.png"></td>
                     <td ui-sref="components.mail.detail({id: m.id, label: listCtrl.label})" href="#/components/mail/spam/8223sdffn">
                         <div class="name-container">
-                            <div><span class="name ng-binding">system</span></div>
-                            <div><span class="tag label label-primary family">已激活</span></div>
+                            <div><span class="name ng-binding">{{item.login}}</span></div>
+                            <div><span class="tag label label-primary family">{{item.activated}}</span></div>
                         </div>
                     </td>
                     <td ui-sref="components.mail.detail({id: m.id, label: listCtrl.label})" href="#/components/mail/spam/8223sdffn">
-                        <div class="additional-info"><span class="subject ng-binding">ROLE_USER
-ROLE_ADMIN</span></div>
+                        <div class="additional-info"><span class="subject ng-binding">{{item.authorities}}</span></div>
                     </td>
                     <td ui-sref="components.mail.detail({id: m.id, label: listCtrl.label})" href="#/components/mail/spam/8223sdffn">
-                        <div class="mail-body-part ng-binding">system@localhost.com</div>
+                        <div class="mail-body-part ng-binding">{{item.email}}</div>
                     </td>
-                    <td class="date"><span class="ng-binding">25/07/16 17:17</span></td>
+                    <td class="date"><span class="ng-binding">{{item.createdDate}}</span></td>
                 </tr>
                 <!-- end ngRepeat: m in listCtrl.messages track by m.id | orderBy:'-date' -->
             </tbody>
-                <tbody>
-                <!-- ngRepeat: m in listCtrl.messages track by m.id | orderBy:'-date' -->
-                <tr ng-repeat="m in listCtrl.messages track by m.id | orderBy:'-date'" class="side-message-navigation-item little-human shineHover family">
-                    <td class="check-td">
-                        <div class="mail-checkbox">
-                            <label class="checkbox-inline custom-checkbox nowrap">
-                                <input type="checkbox"> <span></span></label>
-                        </div>
-                    </td>
-                    <td class="photo-td" ui-sref="components.mail.detail({id: m.id, label: listCtrl.label})" href="#/components/mail/spam/8223sdffn"><img ng-src="../../../../assets/vendor/assets/img/app/profile/Andrey.png" class="little-human-picture" src="../../../../assets/vendor/assets/img/app/profile/Andrey.png"></td>
-                    <td ui-sref="components.mail.detail({id: m.id, label: listCtrl.label})" href="#/components/mail/spam/8223sdffn">
-                        <div class="name-container">
-                            <div><span class="name ng-binding">user</span></div>
-                            <div><span class="tag label label-primary family">已激活</span></div>
-                        </div>
-                    </td>
-                    <td ui-sref="components.mail.detail({id: m.id, label: listCtrl.label})" href="#/components/mail/spam/8223sdffn">
-                        <div class="additional-info"><span class="subject ng-binding">ROLE_USER
-ROLE_ADMIN</span></div>
-                    </td>
-                    <td ui-sref="components.mail.detail({id: m.id, label: listCtrl.label})" href="#/components/mail/spam/8223sdffn">
-                        <div class="mail-body-part ng-binding">user@localhost.com</div>
-                    </td>
-                    <td class="date"><span class="ng-binding">25/07/16 17:17</span></td>
-                </tr>
-                <!-- end ngRepeat: m in listCtrl.messages track by m.id | orderBy:'-date' -->
-            </tbody>
+         
         </table>
     </div>
+    <paging v-bind:total=total v-bind:size=size v-bind:page=page> </paging>
 </div>

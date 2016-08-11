@@ -40,10 +40,6 @@ module.exports = {
         }
       }, 16000);
     } 
-    // the use of way
-  
-    // messaeShow:function(){
-    // }
   },
   methods: {
     close: function () {
