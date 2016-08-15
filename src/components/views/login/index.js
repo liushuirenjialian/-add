@@ -2,7 +2,7 @@ require('./style.scss');
 module.exports = {
   template: require('./template.html'),
   replace: true,
-  data: function() {
+  data: function () {
     return {
       account: '',
       password: ''
@@ -22,7 +22,7 @@ module.exports = {
       param.username = this.account;
       param.password = this.password;
       var _this = this;
-      ac_http.oauth(_this, url, param, function(ret) {
+      ac_http.oauth(_this, url, param, function (ret) {
         if (ret.ret < 0) {
           _this.$broadcast('showAlert', '账号或密码错误!', 2);
           return;
@@ -40,7 +40,7 @@ module.exports = {
     getUserInfo: function () {
       var url = '/api/account';
       var _this = this;
-      ac_http.request(_this, 'GET', url, function(ret) {
+      ac_http.request(_this, 'GET', url, function (ret) {
         ac_store.setUserInfo(ret.data);
         // router.go(path)  path跳转信息
         _this.$router.go('/home');

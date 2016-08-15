@@ -1,7 +1,8 @@
 var menus = require('json!./menu.json');
-
+var acStore = require('../../../lib/store');
 function getMyMenus() {
-  var userInfo = ac_store.getUserInfo();
+  var userInfo = acStore.getUserInfo();
+  if (!userInfo) { return {};}
   var authorities = userInfo.authorities;
   authorities.push('ROCES');
 
@@ -32,11 +33,10 @@ function getMyMenus() {
       }
     });
   });
-
   return myMenusList;
 }
 var myMenus = {
-  'myMenusList': getMyMenus()
+  myMenusList: getMyMenus()
 };
 
 module.exports = myMenus;

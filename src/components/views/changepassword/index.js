@@ -15,7 +15,6 @@ module.exports = {
     this.$dispatch('showBreadcrumb', '修改密码');
   },
   methods: {
-    
     checkPassword: function () {
       var url = '/api/account/change_password';
       var _this = this;
@@ -23,14 +22,14 @@ module.exports = {
       param.password = this.password;
       param.confirmPassword = this.confirmPassword;
       if (!this.password) {
-        alert('密码不能为空！'); return;
+        _this.$dispatch('showMsg', '密码不能为空！', 1); return;
       }
       if (this.password !== this.confirmPassword) {
-        alert('两次密码不同，请重新输入！'); return;
+        _this.$dispatch('showMsg', '两次密码不同，请重新输入！', 1); return;
       }
       ac_http.request(_this, 'POST', url, param, function (ret) {
         if (ret.ret < 0) {
-          alert(ret.data.error); return;
+          _this.$dispatch('showMsg', res.data.message, 1); return;
         }
       });
     }
@@ -40,4 +39,4 @@ module.exports = {
       this.actionId = id;
     }
   }
-}
+};

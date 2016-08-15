@@ -7,7 +7,7 @@ module.exports = {
     vueApp.http.options.emulateJSON = true;
     //  'Content-Type': 'application/x-www-form-urlencoded',
     var headers = {
-      'Authorization': 'Basic dGlja2V0YXBwOm15LXNlY3JldC10b2tlbi10by1jaGFuZ2UtaW4tcHJvZHVjdGlvbg=='
+      Authorization: 'Basic dGlja2V0YXBwOm15LXNlY3JldC10b2tlbi10by1jaGFuZ2UtaW4tcHJvZHVjdGlvbg=='
     };
     this.request(ctx, 'POST', url, param, function (ret) {
       callback(ret);
@@ -39,7 +39,7 @@ module.exports = {
       var token = ac_store.getToken();
       vueApp.http.options.emulateJSON = false;
       headers = {
-        'Authorization': 'Bearer ' + token.access_token
+        Authorization: 'Bearer ' + token.access_token
       };
     }
     ctx.$http({

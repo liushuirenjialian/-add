@@ -1,0 +1,28 @@
+.authority {
+  table {
+    width: 100%;
+    td {
+      text-align: center;
+      font-size: 15px;
+      font-weight: bold;
+      width: 50%;
+    }
+  }
+}
+
+
+.bootstrap-tagsinput {
+  .label {
+    margin: 10px;
+    columns: hand;
+  }
+}
+
+[data-role=remove]:after {
+    content: "×";
+    padding: 0 2px;
+}
+[data-role=right]:after {
+    content: "√";
+    padding: 0 2px;
+}

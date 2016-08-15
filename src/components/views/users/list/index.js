@@ -60,7 +60,7 @@ module.exports = {
     deleteData: function (id) { // 确定删除后，把倒腾的数据传回来
       var url = '/api/users/' + id;
       var _this = this;
-      ac_http.request(_this, 'DELETE', url, function(res) {
+      ac_http.request(_this, 'DELETE', url, function (res) {
         if (res.ret < 0) {
           _this.$dispatch('showMsg', res.data.message, 1); return;
         }

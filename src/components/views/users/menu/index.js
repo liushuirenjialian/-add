@@ -17,16 +17,6 @@ module.exports = {
       ac_http.request(_this, 'GET', url, function (ret) {
         _this.roleList = ret.data;
       });
-    },
-    roleQuery: function (rolename) {
-      console.log(rolename);
-      // this.$dispatch('roleQuery', rolename);
-      // '/home/users/list/' +
-      var data = {
-        name: 'users-list',
-        params: { rolename: rolename }
-      };
-      this.$router.go(data);
     }
   }
 };

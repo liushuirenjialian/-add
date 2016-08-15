@@ -2,39 +2,56 @@ require('./style.scss');
 module.exports = {
   template: require('./template.html'),
   replace: true,
+  route: {
+    data: function (transition) {
+      this.$dispatch('showBreadcrumb', '用户详情');
+      var login = transition.to.params.login;
+      this.initData(login);
+    }
+  },
   data: function () {
     return {
       detail: {
-        id: ''
+        id: '',
+        login: '',
+        firstName: '',
+        lastName: '',
+        email: '',
+        activated: '',
+        authorities: []
       }
     };
   },
-  created: function () {
-    this.$dispatch('showBreadcrumb', '用户详情');
-    this.initData();
+  components: {
+    authority: require('../authority')
   },
   methods: {
-    initData: function () {
-      var id = this.$route.params.id;
-      if (id === 'add') {return;}
-      var url = '/api/categories/' + id;
+    initData: function (login) {
+      if (login === 'add') {return;}
+      var url = '/api/users/' + login;
       var _this = this;
       ac_http.request(_this, 'GET', url, function (res) {
         _this.detail = res.data;
+        _this.$broadcast('loadAuthorities', _this.detail.authorities);
       });
     },
+    switchActivated: function () {
+      this.detail.activated = !this.detail.activated;
+    },
     backList: function () {
-      this.$router.go('/home/category/list');
+      this.$router.go('/home/users/list/all');
     },
     save: function () {
-      var url = '/api/categories';
+      var url = '/api/users';
       var param = {};
       param.id = this.detail.id;
-      param.name = this.detail.name;
-      param.sort = this.detail.sort;
-      param.comment = this.detail.comment;
-      param.createdAt = this.detail.createdAt;
-      param.parentId = this.detail.parentId;
+      param.login = this.detail.login;
+      param.firstName = this.detail.firstName;
+      param.lastName = this.detail.lastName;
+      param.email = this.detail.email;
+      param.activated = this.detail.activated;
+      param.langKey = 'zh-cn';
+      param.authorities = this.detail.authorities;
       var method = 'POST';
       if (param.id > 0) {
         method = 'PUT';
@@ -45,8 +62,17 @@ module.exports = {
           _this.$dispatch('showMsg', res.data.message, 1); return;
         }
         _this.detail.id = res.data.id;
-        _this.detail.createdAt = res.data.createdAt;
         _this.$dispatch('showMsg', '保存成功');
+      });
+    },
+    resetPassword: function () {
+      var url = '/api/users/resetPassword/' + this.detail.id;
+      var _this = this;
+      ac_http.request(_this, 'GET', url, function (res) {
+        if (res.ret < 0) {
+          _this.$dispatch('showMsg', res.data.message, 1); return;
+        }
+        _this.$dispatch('showMsg', '重置密码成功：' + res.data.data);
       });
     }
   }

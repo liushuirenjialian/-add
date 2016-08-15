@@ -78,17 +78,12 @@ module.exports = {
         },
         auth: true,
         subRoutes: {
-          '/authority': {
-            name: 'users-authority',
-            component: require('../components/views/users/authority'),
-            auth: true
-          },
           '/list/:rolename': {
             name: 'users-list',
             component: require('../components/views/users/list'),
             auth: true
           },
-          '/detail/:id': {
+          '/detail/:login': {
             name: 'users-detail',
             component: require('../components/views/users/detail'),
             auth: true

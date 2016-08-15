@@ -4,54 +4,58 @@
             <div class="toggle-navigation-container detail-page">
                 <a href="" class="collapse-navigation-link ion-navicon"></a>
             </div>
-            <button ui-sref="components.mail.label({label : detailCtrl.label})" type="button" class="back-button btn btn-default btn-with-icon" href="#/components/mail/inbox"><i class="ion-chevron-left"></i>Back</button>
+            <button type="button" class="back-button btn btn-default btn-with-icon" v-link="{ name:'users-list', params: { rolename: 'all' } }"><i class="ion-chevron-left"></i>返回</button>
         </div>
         <div class="person-info row">
-            <div class="col-lg-4 col-md-12 no-padding"><img  class="human-picture">
-                <div class="name">
-                    <h2 class="name-h ng-binding">Kostya</h2>
-                    <h2 class="name-h second-name ng-binding">Danovsky</h2>
-                    <div><span class="mail-tag tag label family">family</span></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="login">登录名</label>
+                    <input type="text" class="form-control" id="login" v-model="detail.login" placeholder="登录名">
+                    <span class="help-block error-block basic-block">必填</span></div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="firstName">名字</label>
+                    <input type="text" class="form-control" id="firstName" v-model="detail.firstName" placeholder="名字">
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-xs-12 no-padding">
-                <div class="contact-info phone-email">
-                    <div><i class="ion-iphone"></i> <span class="phone">777-777-7777</span></div>
-                    <div><i class="ion-email"></i> <span class="email ng-binding">schwart@mail.com</span></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="lastName">姓氏</label>
+                    <input type="text" class="form-control" id="lastName" v-model="detail.lastName" placeholder="姓氏">
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-xs-12 no-padding">
-                <div class="contact-info position-address">
-                    <div><span class="position ng-binding">Technical Chef</span></div>
-                    <div><span class="address">12 Nezavisimosti st. Vilnius, Lithuania</span></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="email">邮箱</label>
+                    <input type="email" class="form-control" id="email" v-model="detail.email" placeholder="邮箱">
                 </div>
             </div>
-        </div>
-        <div class="row"></div>
-        <div class="line"></div>
-        <div class="message-details"><span class="subject ng-binding">Street Art</span> <span class="date ng-binding">• 10:05 AM November 22 </span></div>
-        <div class="line"></div>
-        <div ng-bind-html="detailCtrl.mail.body" class="message-body ng-binding">
-            <p>Hey John, </p>
-            <p>Aliquam eu facilisis eros, quis varius est.</p>
-            <p>Consectetur adipiscing elit. Aliquam sodales sem in nibh pellentesque, ac dignissim mi dapibus.</p>
-            <p>Lorem ipsum dolor sit amet! Nullam imperdiet justo a ipsum laoreet euismod.</p>
-            <br>
-            <p>Cras tincidunt fermentum lectus, quis scelerisque lorem volutpat sed.Sed quis orci sed nisl sagittis viverra id at mauris. Nam venenatis mi nibh. Sed fringilla mattis vehic</p>
-        </div>
-        <div class="line"></div>
-        <div class="attachment" ng-show="detailCtrl.mail.attachment"><span class="file-links">1 Attachment - <a href="">View</a> | <a href="">Download</a></span>
-            <div><i class="file-icon ion-document"></i> <span class="file-name ng-binding">file.doc</span></div>
-        </div>
-        <div class="line" ng-show="detailCtrl.mail.attachment"></div>
-        <div class="answer-container">
-            <button type="button" class="btn btn-with-icon" ng-click="tabCtrl.showCompose(detailCtrl.mail.subject,detailCtrl.mail.email,'')"><i class="ion-reply"></i>Reply</button>
-            <button type="button" class="btn btn-with-icon" ng-click="tabCtrl.showCompose(detailCtrl.mail.subject,'',detailCtrl.mail.body)"><i class="ion-forward"></i>Forward</button>
-            <button type="button" class="btn btn-with-icon"><i class="ion-printer"></i>Print</button>
-            <button type="button" class="btn btn-with-icon"><i class="ion-android-remove-circle"></i>Spam</button>
-            <button type="button" class="btn btn-with-icon"><i class="ion-android-delete"></i>Delete</button>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="activated">激活状态</label>
+                    <div class="switch-container primary" id="activated" v-model="detail.activated" v-on:click="switchActivated">
+                        <div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-small bootstrap-switch-animate" v-bind:class="{'bootstrap-switch-off':!detail.activated,'bootstrap-switch-on':detail.activated}" style="width: 81px;">
+                            <div class="bootstrap-switch-container" style="width: 123px;" v-bind:class="{'switch-off':!detail.activated,'switch-on':detail.activated}">
+                                <span class="bootstrap-switch-handle-on bootstrap-switch-primary" style="width: 41px;position: absolute">是</span>
+                                <span class="bootstrap-switch-label" style="width: 41px;">&nbsp;</span>
+                                <span class="bootstrap-switch-handle-off bootstrap-switch-default" style="width: 41px;">否</span>
+                                <!-- <input type="checkbox" class="ng-pristine ng-valid ng-touched"> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <input type="text" class="form-control" v-model="detail.activated" placeholder="激活状态"> -->
+                </div>
+            </div>
+            <div class="col-md-12">
+                <authority :authorities.sync=detail.authorities> </authority>
+            </div>
         </div>
     </div>
-    <div ng-show="!detailCtrl.mail" class="ng-hide">
-        <h5 ng-class="text-center">Nothing to show</h5></div>
+
+    <div class="answer-container">
+        <button type="button" class="btn btn-with-icon" v-on:click="save"><i class="ion-printer"></i>保存</button>
+        <button type="button" class="btn btn-with-icon" v-on:click="resetPassword" :class="{'hide':!detail.id}"><i class="ion-printer"></i>重置密码</button>
+    </div>
+</div>
 </div>
