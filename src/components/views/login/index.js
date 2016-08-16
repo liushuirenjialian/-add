@@ -42,6 +42,7 @@ module.exports = {
       var _this = this;
       ac_http.request(_this, 'GET', url, function (ret) {
         ac_store.setUserInfo(ret.data);
+        // console.log(ac_store.getUserInfo());
         // router.go(path)  path跳转信息
         _this.$router.go('/home');
       });

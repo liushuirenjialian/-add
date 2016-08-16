@@ -16,7 +16,7 @@
             </td>
             <td>
                 <div class="bootstrap-tagsinput">
-                    <span class="label label-primary" v-for="role in roleList" v-show="!role.checked" v-on:click="addRole(role.name)" >{{role.text}}<span data-role="right"></span></span>
+                    <a class="label label-primary" v-for="role in roleList" v-show="!role.checked" v-on:click="addRole(role.name)" >{{role.text}}<span data-role="right"></span></a>
                 </div>
             </td>
         </tr>

@@ -1,28 +1,34 @@
 .authority {
   table {
     width: 100%;
-    td {
-      text-align: center;
-      font-size: 15px;
-      font-weight: bold;
-      width: 50%;
+    tr {
+      width: 100%;
+      td {
+        width: 50%;
+        text-align: center;
+        min-height: 200px;
+        .bootstrap-tagsinput {
+          height: 100%;
+          margin: 10px;
+          .label {
+            margin: 10px;
+            columns: hand;
+          }
+          a {
+            display: block;
+            max-width: 120px;
+            text-align: center;
+          }
+          [data-role=remove]:after {
+              content: "×";
+              padding: 0 2px;
+          }
+          [data-role=right]:after {
+              content: "√";
+              padding: 0 2px;
+          }
+        }
+      }
     }
   }
-}
-
-
-.bootstrap-tagsinput {
-  .label {
-    margin: 10px;
-    columns: hand;
-  }
-}
-
-[data-role=remove]:after {
-    content: "×";
-    padding: 0 2px;
-}
-[data-role=right]:after {
-    content: "√";
-    padding: 0 2px;
 }

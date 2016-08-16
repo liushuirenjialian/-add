@@ -6,10 +6,13 @@ module.exports = {
   replace: true,
   data: function () {
     return {
-      menuItems: myMenus.myMenusList
+      menuItems: []
     };
   },
   created: function () {
+    // debugger;
+    this.menuItems = myMenus.myMenusList(ac_store.getUserInfo());
+    // console.log('myMenus');
     // console.log(this.menuItems);
   },
   method: {
