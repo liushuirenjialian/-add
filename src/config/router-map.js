@@ -40,7 +40,7 @@ module.exports = {
         },
         auth: true,
         subRoutes: {
-          '/list': {
+          '/list/:status': {
             name: 'ticket-list',
             component: require('../components/views/ticket/list'),
             auth: true

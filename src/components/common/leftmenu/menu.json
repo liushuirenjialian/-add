@@ -39,7 +39,7 @@
     "subMenu": [{
         "text": "工单列表",
         "name": "ticket-list",
-        "link": "/home/ticket/list",
+        "link": "/home/ticket/list/all",
         "iClass": "",
         "authorities": ""
     }, {

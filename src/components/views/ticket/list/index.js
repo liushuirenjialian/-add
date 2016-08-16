@@ -2,26 +2,31 @@ require('./style.scss');
 module.exports = {
   template: require('./template.html'),
   replace: true,
+  route: {
+    data: function (transition) {
+      var status = transition.to.params.status;
+      this.status = status;
+      this.$dispatch('showBreadcrumb', '工单管理');
+      this.bindList(0);
+    }
+  },
   data: function () {
     return {
       actionId: 1,
+      status: '',
       roleList: [],
       page: 0,
-      size: 2,
+      size: 10,
       total: 0
     };
   },
   components: {
     paging: require('../../../common/paging')
   },
-  created: function () {
-    this.$dispatch('showBreadcrumb', '分类管理');
-    this.getAll(0);
-  },
   events: {
     pagindGo: function (num, size) {
-      this.size = size; 
-      this.getAll(num);
+      this.size = size;
+      this.bindList(num);
     }
   },
   methods: {
@@ -31,25 +36,19 @@ module.exports = {
     showDetatil: function (id) {
       this.$router.go('/home/ticket/detail/' + id);
     },
-    getAll: function (num) {
+    bindList: function (num) {
       var url = '/api/tickets';
       var param = {};
       param.page = num;
       param.size = this.size;
       this.page = num;
       var _this = this;
+      if (this.status !== 'all') {
+        url = '/api/tickets/search/' + this.status;
+      }
       ac_http.request(_this, 'GET', url, param, function (ret) {
-          _this.total = ret.headers('x-total-count');
-          _this.roleList = ret.data;
-        //   for (var i = 0; i < ret.data.length; i++) {
-        //   var obj = {};
-        //   obj.id = ret.data[i].id;
-        //   obj.channelName = ret.data[i].channelName;
-        //   obj.gameRegion = ret.data[i].gameRegion;
-        //   obj.tags = ret.data[i].tags;
-        //   obj.content = ret.data[i].content;
-        //   _this.roleList.push(obj);
-        // }
+        _this.total = ret.headers('x-total-count');
+        _this.roleList = ret.data;
       });
     }
   }

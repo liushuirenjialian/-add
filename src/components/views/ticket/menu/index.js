@@ -7,20 +7,25 @@ module.exports = {
       actionId: 1,
       roleList: []
     };
-  },  
+  },
   created: function () {
-    this.bindingRole ();
+    this.bindingRole();
   },
   methods: {
-    bindingRole: function() {
-      var _this=this;
-      var url='/api/ticketStatus';
+    bindingRole: function () {
+      var _this = this;
+      var url = '/api/ticketStatus';
       ac_http.request(_this, 'GET', url, function (ret) {
-        for (var i = 0; i < ret.data.length; i++) {
-          var obj = {};
-          _this.roleList = ret.data;
-          _this.roleList.push(param);
-        }
+        ret.data.forEach(function (item) {
+          for (key in item) {
+            if ({}.hasOwnProperty.call(item, key)) {
+              var data = {};
+              data.key = key;
+              data.val = item[key];
+              _this.roleList.push(data);
+            }
+          }
+        });
       });
     }
   }
