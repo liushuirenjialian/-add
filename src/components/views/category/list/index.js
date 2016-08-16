@@ -36,7 +36,7 @@ module.exports = {
       param.size = this.size;
       this.page = num;
       var _this = this;
-      ac_http.request(_this, 'GET', url, param, function(ret) {
+      ac_http.request(_this, 'GET', url, param, function (ret) {
         _this.pageList = ret.data;
         _this.total = ret.headers('x-total-count');
       });
@@ -47,7 +47,7 @@ module.exports = {
     deleteData: function (id) { // 确定删除后，把倒腾的数据传回来
       var url = '/api/categories/' + id;
       var _this = this;
-      ac_http.request(_this, 'DELETE', url, function(res) {
+      ac_http.request(_this, 'DELETE', url, function (res) {
         if (res.ret < 0) {
           _this.$dispatch('showMsg', res.data.message, 1); return;
         }

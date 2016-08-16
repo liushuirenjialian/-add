@@ -12,8 +12,8 @@ module.exports = {
     confirm: require('../../common/confirm')
   },
   methods: {
-    confirm: function (data) {
-      console.log("data:"+ data);
+    confirm: function () {
+      // console.log("data:"+ data);
     },
     deleteData: function (n) {
       this.confirmStatus = true;

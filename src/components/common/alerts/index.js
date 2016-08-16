@@ -39,7 +39,7 @@ module.exports = {
           _this.alert.show = 'alert-hide';
         }
       }, 16000);
-    } 
+    }
   },
   methods: {
     close: function () {
