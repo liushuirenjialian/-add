@@ -1,0 +1,23 @@
+.panel-body {
+  width: 100%;
+}
+.flow-list {
+  border-bottom: 1px solid;
+  .from {
+    border-bottom: 1px dotted;
+  }
+  h3 {
+    margin: 20px;
+    border: 1px;
+    font-size: 14px;
+    span {
+      float: right;
+      margin-right: 100px;
+      color: darksalmon;
+    }
+  }
+  p {
+    font-size: 14px;
+    margin: 20px;
+  }
+}

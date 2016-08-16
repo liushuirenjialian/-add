@@ -6,21 +6,23 @@
                 <tbody>
                     <tr>
                         <td>id</td>
-                        <td>平台<span class="caret"></span></td>
+                        <td>游戏名称<span class="caret"></span></td>
+                        <td>渠道<span class="caret"></span></td>
                         <td>大区<span class="caret"></span></td>
-                        <td>用户等级<span class="caret"></span></td>
+                        <td>创建时间<span class="caret"></span></td>
                         <td>当前状态<span class="caret"></span></td>
-                        <td>问题类型<span class="caret"></span></td>
-                        <td>问题描述</td>
                         <td>查看详情</td>
+                        <td>
+                          操作
+                        </td>
                     </tr>
                     <tr class="editable-row" v-for="item in roleList">
-                        <td class="ng-binding">{{item.id}}</td>
+                        <td>{{item.id}}</td>
+                        <td><span class="editable">{{item.gameName}}</span></td>
                         <td><span class="editable">{{item.channelName}}</span></td>
-                        <td class="select-td"><span class="editable">{{item.gameRegion}}</span></td>
-                        <td class="select-td"><span class="editable">{{}}</span></td>
-                        <td class="select-td"><span class="editable">{{item.status}}</span></td>
-                        <td class="select-td"><span class="editable">{{item.tags}}</span></td>
+                        <td><span class="editable">{{item.gameRegion}}</span></td>
+                        <td class="select-td"><span class="editable">{{item.createdAt | formatDate}}</span></td>
+                        <td class="select-td"><span class="editable">{{{item.status | formatTicketStatus}}}</span></td>
                         <td class="select-td"><span class="editable">{{item.content}}</span></td>
                         <td>
                             <div class="buttons">
@@ -32,6 +34,6 @@
             </table>
           <paging v-bind:total=total v-bind:size=size v-bind:page=page> </paging>
         </div>
-    </div> 
+    </div>
     </div>
 </div>

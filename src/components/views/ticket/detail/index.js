@@ -5,15 +5,21 @@ module.exports = {
   data: function () {
     return {
       actionId: 1,
+      showFlow: false,
       detail: {
         id: 0,
         gameRegion: '',
         channelName: '',
-        content:'',
-        tags:'',
-        updatedAt:''
+        content: '',
+        tags: '',
+        updatedAt: '',
+        replyContent: ''
       }
     };
+  },
+  components: {
+    flow: require('../flow'),
+    flowlist: require('../flowList')
   },
   created: function () {
     this.$dispatch('showBreadcrumb', '工单详情');
@@ -32,6 +38,12 @@ module.exports = {
     },
     backList: function () {
       this.$router.go('/home/ticket/detail');
+    },
+    showFlowDo: function () {
+      this.showFlow = true;
+    },
+    replyDo: function () {
+
     }
   }
 };

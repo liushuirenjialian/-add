@@ -1,0 +1,32 @@
+<div role="dialog" class="modal fade ng-isolate-scope in" size="md" index="0" style="z-index: 1050; display: none;" :class="{'show': isshow}">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-content ng-scope">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-label="Close" v-on:click="close"><em class="ion-ios-close-empty sn-link-close"></em></button>
+                    <h4 class="modal-title" id="myModalLabel">工单流转</h4></div>
+                <div class="modal-body">
+                  <form>
+                      <div class="row">
+                          <div class="col-md-12">
+                              <div class="form-group">
+                                  <label for="toUserName">转给谁：</label>
+                                  <input type="text" class="form-control ng-pristine" id="toUserName" v-model="toUserName" placeholder="转给谁">
+                                  <span class="help-block error-block basic-block">必填</span></div>
+                          </div>
+                          <div class="col-md-12">
+                              <div class="form-group">
+                                  <label for="productName">问题描述</label>
+                                  <textarea class="form-control" id="replyContent" v-model="formContent" placeholder="问题描述"></textarea>
+                              </div>
+                          </div>
+                      </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" ng-click="save()">确定流转</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

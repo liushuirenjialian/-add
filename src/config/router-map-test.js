@@ -30,5 +30,13 @@ module.exports = {
   '/filter': {
     component: require('../components/test/filter'),
     auth: false
+  },
+  '/flowList': {
+    component: require('../components/views/ticket/flowList'),
+    auth: false
+  },
+  '/flow': {
+    component: require('../components/views/ticket/flow'),
+    auth: false
   }
 };

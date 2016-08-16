@@ -34,6 +34,9 @@ module.exports = {
   },
   setUserInfo: function (userInfo) {
     this.save('nami_userinfo', userInfo);
+  },
+  logout: function () {
+    this.setUserInfo(null);
+    this.setToken(null);
   }
-
 };

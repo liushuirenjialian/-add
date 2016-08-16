@@ -58,6 +58,12 @@ module.exports = {
       if (!res.data.message) {
         res.data.message = '未知错误请重试！';
       }
+      if (res.error && res.error !== 'invalid_token') {
+        ac_store.logout();
+        ctx.$dispatch('showMsg', 'token超时，请重新登录！', 1);
+        ctx.$router.go('/login');
+        return;
+      }
       if (callback) {
         callback(res);
       }

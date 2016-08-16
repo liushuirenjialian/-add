@@ -24,8 +24,7 @@ module.exports = {
       var url = '/api/logout';
       var _this = this;
       ac_http.request(_this, 'POST', url, function () {
-        ac_store.setUserInfo(null);
-        ac_store.setToken(null);
+        ac_store.logout();
         _this.$router.go('/login');
       });
     }
