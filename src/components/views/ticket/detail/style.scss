@@ -4,3 +4,24 @@
 .btn-with-icon a {
 	color:white;
 }
+
+
+.answer-container {
+	float: none;
+	text-align: right;
+	margin-bottom: 10px;
+}
+
+.flowlist {
+	// top: 60px;
+	.panel-heading {
+		border-top: 1px solid;
+	}
+}
+
+.attachment {
+	span {
+		font-size: 14px;
+		font-weight: bold;
+	}
+}

@@ -1,17 +1,31 @@
-<div class="panel  with-scroll animated zoomIn" zoom-in="">
+<div class="panel  with-scroll animated zoomIn" zoom-in="" style="z-index: 1050; display: none;" :class="{'show': isshow}">
 
     <div class="panel-heading clearfix">
         <h3 class="panel-title">工单流转</h3></div>
     <div class="panel-body">
-        <div class="flow-list">
+        <div class="flow-list" v-for="(index, flow) in flowList">
+            <div  class="xh">
+               <span>{{index+1}}</span>
+           </div>
+
             <div class="from">
-                <h3>张三<span>流转时间：2016-12-20 22:22</span></h3>
-                <p>请教这个问题如何处理？</p>
+                <h3>{{flow.fromUserName}}<span>提问时间：{{flow.createdAt | formatDate}}</span></h3>
+                <p>问：{{{flow.fromContent}}}</p>
             </div>
             <div class="to">
-                <h3>李四<span>回复时间：2016-12-21 09:22</span></h3>
-                <p>请教这个问题如何处理？</p>
-
+                <h3>{{flow.toUserName}}<span :class="{'hide': !flow.content}">回复时间：{{flow.reliedAt | formatDate}}</span></h3>
+                <p :class="{'hide': flow.content}">
+                  <i class="tag label family">等待回复中。。</i>
+                </p>
+                <p :class="{'hide': !flow.content}">回复：{{{flow.content}}}</p>
+                <div :class="{'hide': user.login != flow.toUserName , 'hide2': flow.content}">
+                <div class="to-input">
+                  <input type="text" name="name" class="editable-input form-control" v-model="flow.newContent">
+                </div>
+                <div class="to-button">
+                    <button type="button" class="btn btn-success" v-on:click="replyDo(flow)">回复</button>
+                </div>
+                </div>
             </div>
         </div>
     </div>

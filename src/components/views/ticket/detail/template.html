@@ -10,16 +10,23 @@
             <div class="col-md-6 col-xs-12 no-padding">
                 <div class="contact-info">
                     <div>
-                        <span>用户账号：{{detail.id}}</span>
+                        <span>工单编号：{{detail.serialNumber}}</span>
                     </div>
                     <div>
-                        <span>平台:{{detail.channelName}}</span>
+                        <span>游戏+版本号：{{detail.gameName}} + {{detail.gameVersion}} </span>
                     </div>
                     <div>
-                        <span>问题类型：{{detail.tags}}</span>
+                        <span>游戏大区：{{detail.gameRegion}}</span>
+                    </div>
+
+                    <div>
+                        <span>问题类型：{{detail.majorCategory}}</span>
                     </div>
                     <div>
-                        <span>提交时间:{{detail.updatedAt | formatDate}}</span>
+                        <span>提交时间：{{detail.createdAt | formatDate}}</span>
+                    </div>
+                    <div>
+                        <span>更新时间：{{detail.updatedAt | formatDate}}</span>
                     </div>
                 </div>
             </div>
@@ -27,10 +34,14 @@
             <div class="col-md-6 col-xs-12 no-padding">
                 <div class="contact-info">
                     <div>
-                        <span>游戏大区：{{detail.gameRegion}}</span>
+                        <span>平台+渠道：{{detail.platform}} + {{detail.channelName}}</span>
+                    </div>
+
+                    <div>
+                        <span>通行证ID：{{detail.hoolaiPassportId}}</span>
                     </div>
                     <div>
-                        <span>角色名：逍遥</span>
+                        <span>联系电话：{{detail.customerMobile}}</span>
                     </div>
                     <div>
                         <span>工单状态：{{{detail.status | formatTicketStatus}}}</span>
@@ -46,31 +57,34 @@
         <div class="line"></div>
         <div class="message-details">
             <span>问题描述：</span>
-            <span class="date">{{detail.content}}</span>
+            <span>{{detail.content}}</span>
         </div>
-        <div class="line"></div>
-        <div ng-bind-html="detailCtrl.mail.body" class="message-body">
+        <!-- <div class="line"></div>
+        <div class="message-body">
             <span>说明图片：</span>
-        </div>
+        </div> -->
         <div class="line"></div>
-        <div class="attachment" ng-show="detailCtrl.mail.attachment">
+        <div class="attachment">
             <label for="replyContent">客服回复：</label>
-            <textarea class="form-control" id="replyContent" v-model="detail.replyContent"></textarea>
+            <textarea class="form-control" id="replyContent" v-model="detail.replyContent" :class="{'hide':detail.status>7}"></textarea>
+            <span :class="{'hide':detail.status < 7}">{{{detail.replyContent}}}</span>
         </div>
         <div class="line"></div>
         <div class="line"></div>
         <div class="attachment">
             <label for="tags">编辑关键字：</label>
-            <input type="text" class="form-control input-sm" id="tags" v-model="detail.tags">
+            <input type="text" class="form-control input-sm" id="tags" v-model="detail.tags" :class="{'hide':detail.status>7}">
+            <span :class="{'hide':detail.status < 7}">{{{detail.tags}}}</span>
         </div>
         <div class="line"></div>
         <div class="answer-container">
-            <button type="button" class="btn btn-with-icon" v-on:click="showFlowDo" :class="{'hide': detail.status>=6}"><i class="ion-reply"></i>转给运营</button>
+            <button type="button" class="btn btn-with-icon" v-on:click="showFlowDo" :class="{'hide': detail.status>=6}"><i class="ion-reply"></i>工单流转</button>
             <button type="button" class="btn btn-with-icon" v-on:click="replyDo" :class="{'hide': detail.status>=6}"><i class="ion-printer"></i>回复用户</button>
         </div>
+        <flowlist> </flowlist>
     </div>
 
-    <flow :isshow.sync=showFlow> </flow>
+    <flow :isshow.sync=showFlow v-on:flow-save="refreshFlow"> </flow>
 
-    <!-- <flowlist> </flowlist> -->
+
 </div>

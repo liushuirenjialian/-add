@@ -5,30 +5,45 @@ module.exports = {
   props: ['isshow'],
   data: function () {
     return {
-      toUserName: '',
-      formContent: ''
+      ticketId: '',
+      flowList: [],
+      user: ac_store.getUserInfo()
     };
   },
-  created: function () {
-    // this.isshow = true;
+  events: {
+    loadFlowList: function (ticketId) {
+      this.isshow = false;
+      this.ticketId = ticketId;
+      this.initData(ticketId);
+    }
   },
   methods: {
-    close: function () {
-      this.isshow = false;
+    initData: function (ticketId) {
+      var _this = this;
+      var url = '/api/flows/find/' + ticketId;
+      ac_http.request(_this, 'GET', url, function (res) {
+        res.data.forEach(function (item) {
+          item.newContent = '';
+        });
+        _this.flowList = res.data;
+        if (_this.flowList.length > 0) {
+          _this.isshow = true;
+        }
+      });
     },
-    save: function () {
-      var url = '/api/flow';
+    replyDo: function (flow) {
+      var url = '/api/flows/reply';
       var param = {};
-      param.ticketid = this.ticketid;
-      param.toUserName = this.toUserName;
-      param.formContent = this.formContent;
-      var method = 'POST';
+      param.id = flow.id;
+      param.content = flow.newContent;
+      var method = 'PUT';
       var _this = this;
       ac_http.request(_this, method, url, param, function (res) {
         if (res.ret < 0) {
           _this.$dispatch('showMsg', res.data.message, 1); return;
         }
-        _this.detail.id = res.data.id;
+        flow.content = res.data.content;
+        flow.reliedAt = res.data.reliedAt;
         _this.$dispatch('showMsg', '保存成功');
       });
     }

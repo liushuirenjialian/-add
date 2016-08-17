@@ -17,14 +17,14 @@
                           <div class="col-md-12">
                               <div class="form-group">
                                   <label for="productName">问题描述</label>
-                                  <textarea class="form-control" id="replyContent" v-model="formContent" placeholder="问题描述"></textarea>
+                                  <textarea class="form-control" id="replyContent" v-model="fromContent" placeholder="问题描述"></textarea>
                               </div>
                           </div>
                       </div>
                   </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" ng-click="save()">确定流转</button>
+                    <button type="button" class="btn btn-primary" v-on:click="save()">确定流转</button>
                 </div>
             </div>
         </div>

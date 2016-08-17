@@ -1,23 +1,57 @@
 .panel-body {
   width: 100%;
+  .panel-heading {
+    border-top: 1px solid;
+  }
+  .hide2 {
+    display: none;
+  }
 }
 .flow-list {
   border-bottom: 1px solid;
+  margin: 15px;
   .from {
     border-bottom: 1px dotted;
   }
+  .xh {
+    // top: -15px;
+    position: relative;
+    float: right;
+    width: 30px;
+    height: 30px;
+    background-color: #1b8db8;
+    border-radius: 25px;
+    span {
+      font-weight: bold;
+      height: 30px;
+      line-height: 30px;
+      display: block;
+      color: #FFF;
+      text-align: center
+    }
+  }
+  .to {
+    i {
+      // float: right;
+      width: 130px;
+    }
+    .to-button {
+      position: relative;
+      margin: 10px;
+    }
+  }
   h3 {
-    margin: 20px;
+    margin: 5px;
     border: 1px;
     font-size: 14px;
     span {
-      float: right;
-      margin-right: 100px;
+      // float: right;
+      // margin-right: 100px;
       color: darksalmon;
     }
   }
   p {
     font-size: 14px;
-    margin: 20px;
+    margin: 10px;
   }
 }

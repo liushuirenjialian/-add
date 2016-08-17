@@ -5,31 +5,37 @@ module.exports = {
   props: ['isshow'],
   data: function () {
     return {
+      ticketId: '',
       toUserName: '',
-      formContent: ''
+      fromContent: ''
     };
   },
   created: function () {
     // this.isshow = true;
+  },
+  events: {
+    loadTicketId: function (ticketId) {
+      this.ticketId = ticketId;
+    }
   },
   methods: {
     close: function () {
       this.isshow = false;
     },
     save: function () {
-      var url = '/api/flow';
+      var url = '/api/flows/post';
       var param = {};
-      param.ticketid = this.ticketid;
+      param.ticketId = this.ticketId;
       param.toUserName = this.toUserName;
-      param.formContent = this.formContent;
+      param.fromContent = this.fromContent;
       var method = 'POST';
       var _this = this;
       ac_http.request(_this, method, url, param, function (res) {
         if (res.ret < 0) {
           _this.$dispatch('showMsg', res.data.message, 1); return;
         }
-        _this.detail.id = res.data.id;
-        _this.$dispatch('showMsg', '保存成功');
+        _this.isshow = false; // 保存成功后关闭
+        _this.$dispatch('flow-save', res.data);
       });
     }
   }
