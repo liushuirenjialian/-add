@@ -1,33 +1,37 @@
 .messages .little-human .date {
-	float: left;
-	margin: 15px 10px 0 5px;
+  float: left;
+  margin: 15px 10px 0 5px;
   font-size: 13px;
   white-space: nowrap;
 }
+
 .mail-messages-control .btn-group .more-1 {
-	margin-left: 65px;
+  margin-left: 65px;
 }
+
 .mail-messages-control .btn-group .more-2 {
-	margin-left: 50px;
+  margin-left: 50px;
 }
+
 .mail-messages-control .btn-group .more-3 {
-	margin-left: 50px;
+  margin-left: 50px;
 }
+
 .mail-messages-control .btn-group .more-4 {
-	margin-left: 50px;
+  margin-left: 50px;
 }
 
 .table {
-	thead {
-		text-align: center;
-	}
+  thead {
+    text-align: center;
+  }
 }
 
 .editable-row {
-	.content {
-		max-width: 200px;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-	}
+  .content {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }

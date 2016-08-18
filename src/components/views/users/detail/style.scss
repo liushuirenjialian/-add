@@ -1,12 +1,14 @@
 .switch-off {
   margin-left: -41px;
+
   .bootstrap-switch-handle-off {
-    margin-left: 0px;
+    margin-left: 0;
   }
 }
 
 .switch-on {
-  margin-left: 0px;
+  margin-left: 0;
+
   .bootstrap-switch-handle-off {
     margin-left: -41px;
   }

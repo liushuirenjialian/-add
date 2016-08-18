@@ -1,5 +1,4 @@
-<paging>
-<div class="btn-group" role="group" aria-label="First group">
+<div class="btn-group paging" role="group" aria-label="First group">
   <div class="paging-left" v-bind:class="{'hide': !isshow}">
     <button type="button" class="btn btn-default" v-on:click="linkgo(1)" v-bind:disabled="prevStaus">首页</button>
     <button type="button" class="btn btn-default" v-on:click="linkgo(pageNum-1)" v-bind:disabled="prevStaus">上一页</button>
@@ -16,4 +15,3 @@
       <label>共<span>{{total}}</span>条</label>
     </div>
 </div>
-</paging>

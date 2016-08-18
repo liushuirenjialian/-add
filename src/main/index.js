@@ -51,7 +51,6 @@ App = Vue.extend({
       pageFinishedLoading: false
     };
   },
-
   components: {
     globalalert: require('../components/common/global-alert')
   },
