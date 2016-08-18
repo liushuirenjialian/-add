@@ -1,4 +1,4 @@
-<div class="mail-navigation-container" ng-class="{'expanded' : !tabCtrl.navigationCollapsed}">
+<div class="mail-navigation-container">
     <div class="text-center">
         <button type="button" class="btn btn-default compose-button">工单状态</button>
     </div>
@@ -15,5 +15,5 @@
             <div class="label-item"><span class="tag label study">Study</span></div>
         </div> -->
     </div>
-    <div class="add-label-container"><i class="ion-plus-round"></i><span class="label-input-stub">增加工单</span></div>
+    <div class="add-label-container"  v-link="{ name:'ticket-edit', params: { id: 'add' } }"><i class="ion-plus-round"></i><span class="label-input-stub">增加工单</span></div>
 </div>

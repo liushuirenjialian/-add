@@ -4,8 +4,8 @@ module.exports = {
   replace: true,
   data: function () {
     return {
-      account: '',
-      password: ''
+      num: '',
+      size: ''
     };
   },
   components: {
@@ -15,7 +15,9 @@ module.exports = {
   },
   events: {
     pagindGo: function (num, size) {
-      console.log('num'+ num + 'size:' + size);
+      this.num = num;
+      this.size = size;
+      // console.log('num'+ num + 'size:' + size);
     }
   },
   methods: {

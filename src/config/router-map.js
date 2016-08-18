@@ -49,6 +49,11 @@ module.exports = {
             name: 'ticket-detail',
             component: require('../components/views/ticket/detail'),
             auth: true
+          },
+          '/edit/:id': {
+            name: 'ticket-edit',
+            component: require('../components/views/ticket/edit'),
+            auth: true
           }
         }
       },

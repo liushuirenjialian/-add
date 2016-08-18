@@ -9,9 +9,10 @@
 }
 .flow-list {
   border-bottom: 1px solid;
+  border-color: #DDD;
   margin: 15px;
   .from {
-    border-bottom: 1px dotted;
+    border-bottom: 1px dotted #CCC;
   }
   .xh {
     // top: -15px;
@@ -32,8 +33,7 @@
   }
   .to {
     i {
-      // float: right;
-      width: 130px;
+      width: 160px;
     }
     .to-button {
       position: relative;
@@ -44,10 +44,14 @@
     margin: 5px;
     border: 1px;
     font-size: 14px;
+    label {
+      color: #379BE9;
+      margin-right: 15px;
+    }
     span {
       // float: right;
       // margin-right: 100px;
-      color: darksalmon;
+      color: #999;
     }
   }
   p {

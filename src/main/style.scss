@@ -5,3 +5,22 @@
 .show {
   display: block;
 }
+
+
+.edit-form {
+  margin: 20px 45px 20px 45px;
+    .buttons {
+      float: none;
+      text-align: right;
+      margin: 10px 10px 10px 0px;
+      .btn {
+        margin-top: 3px;
+        background-color: #63bbb2;
+        border: none;
+        color: white;
+        width: 100px;
+        -webkit-transition: none;
+        transition: none;
+      }
+    }
+}
