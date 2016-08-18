@@ -7,6 +7,9 @@ module.exports = {
   formatDay: function (time) {
     return moment(time).format('YYYY-MM-DD');
   },
+  formatDateRelative: function(time) {
+  	return moment(time).fromNow();
+  },
   formatUserActivated: function (bo) {
     if (bo === true) {
       return '已激活';
