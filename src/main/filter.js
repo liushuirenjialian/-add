@@ -9,8 +9,8 @@ module.exports = {
     if (!time) { return '';}
     return moment(time).format('YYYY-MM-DD');
   },
-  formatDateRelative: function(time) {
-  	return moment(time).fromNow();
+  formatDateRelative: function (time) {
+    return moment(time).fromNow();
   },
   formatUserActivated: function (bo) {
     if (bo === true) {
