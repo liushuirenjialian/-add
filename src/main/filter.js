@@ -2,9 +2,11 @@ var moment = require('moment');
 
 module.exports = {
   formatDate: function (time) {
+    if (!time) { return '';}
     return moment(time).format('YYYY-MM-DD HH:mm:ss');
   },
   formatDay: function (time) {
+    if (!time) { return '';}
     return moment(time).format('YYYY-MM-DD');
   },
   formatUserActivated: function (bo) {

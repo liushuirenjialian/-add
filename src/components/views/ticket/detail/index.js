@@ -31,11 +31,11 @@ module.exports = {
   methods: {
     initData: function (id) {
       var _this = this;
-      _this.$broadcast('loadTicketId', id);
-      _this.$broadcast('loadFlowList', id);
       var url = '/api/tickets/' + id;
       ac_http.request(_this, 'GET', url, function (res) {
         _this.detail = res.data;
+        _this.$broadcast('loadTicketId', id);
+        _this.$broadcast('loadFlowList', id);
       });
     },
     backList: function () {
@@ -68,7 +68,7 @@ module.exports = {
       var _this = this;
       ac_http.request(_this, 'GET', url, function (res) {
         if (res.ret < 0) {
-          _this.$dispatch('showMsg', '已经最后一个了', 1); return;
+          _this.$dispatch('showMsg', '已经最后一个了', 2); return;
         }
         _this.$router.go('/home/ticket/detail/' + res.data.id);
       });
@@ -78,7 +78,7 @@ module.exports = {
       var _this = this;
       ac_http.request(_this, 'GET', url, function (res) {
         if (res.ret < 0) {
-          _this.$dispatch('showMsg', '已经最后一个了', 1); return;
+          _this.$dispatch('showMsg', '已经最后一个了', 2); return;
         }
         _this.$router.go('/home/ticket/detail/' + res.data.id);
       });
@@ -88,7 +88,7 @@ module.exports = {
       var _this = this;
       ac_http.request(_this, 'GET', url, function (res) {
         if (res.ret < 0) {
-          _this.$dispatch('showMsg', '已经最后一个了', 1); return;
+          _this.$dispatch('showMsg', '已经最后一个了', 2); return;
         }
         _this.$router.go('/home/ticket/detail/' + res.data.id);
       });

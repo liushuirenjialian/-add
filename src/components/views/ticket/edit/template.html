@@ -1,0 +1,123 @@
+<div class="message-container">
+    <div class="message">
+        <div class="row">
+            <button type="button" class="back-button btn btn-default btn-with-icon" v-link="{ name:'ticket-list', params: { status: 'all' } }"><i class="ion-chevron-left"></i>返回</button>
+        </div>
+        <div class="form-info row">
+            <form name="editForm" class="edit-form">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="serialNumber">工单编号：</label>
+                            <input type="text" class="form-control ng-pristine" id="serialNumber" v-model="detail.serialNumber" placeholder="分类名称">
+                            <span class="help-block error-block basic-block">必填</span></div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="gameNameId">游戏ID：</label>
+                            <input type="text" class="form-control ng-pristine" id="gameNameId" v-model="detail.gameNameId" placeholder="游戏ID">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="gameName">游戏：</label>
+                            <input type="text" class="form-control ng-pristine" id="gameName" v-model="detail.gameName" placeholder="游戏">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="gameVersion">版本号：</label>
+                            <input type="text" class="form-control ng-pristine" id="gameVersion" v-model="detail.gameVersion" placeholder="版本号">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="roleName">角色名称：</label>
+                            <input type="text" class="form-control ng-pristine" id="roleName" v-model="detail.roleName" placeholder="角色名称">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="majorCategory">问题类型：</label>
+                            <input type="text" class="form-control ng-pristine" id="majorCategory" v-model="detail.majorCategory" placeholder="问题类型">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="createdAt">提交时间：</label>
+                            <input type="text" class="form-control ng-pristine" id="createdAt" v-model="detail.createdAt | formatDate" placeholder="提交时间">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="platform">平台</label>
+                            <input type="text" class="form-control ng-pristine" id="platform" v-model="detail.platform" placeholder="平台">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="channelName">渠道</label>
+                            <input type="text" class="form-control ng-pristine" id="channelName" v-model="detail.channelName" placeholder="渠道">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="hoolaiPassportId">通行证ID：</label>
+                            <input type="text" class="form-control ng-pristine" id="hoolaiPassportId" v-model="detail.hoolaiPassportId" placeholder="通行证ID">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="customerMobile">联系电话：</label>
+                            <input type="text" class="form-control ng-pristine" id="customerMobile" v-model="detail.customerMobile" placeholder="联系电话">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="status">工单状态：</label>
+                            <input type="text" class="form-control ng-pristine" id="status" v-model="detail.status" placeholder="工单状态">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="firstFlowUserName">客服：</label>
+                            <input type="text" class="form-control ng-pristine" id="firstFlowUserName" v-model="detail.firstFlowUserName" placeholder="客服">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="updatedAt">更新时间：</label>
+                            <input type="text" class="form-control ng-pristine" id="updatedAt" v-model="detail.updatedAt | formatDate" placeholder="更新时间">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="content">问题描述：</label>
+                            <input type="text" class="form-control ng-pristine" id="content" v-model="detail.content" placeholder="问题描述">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="replyContent">客服回复：</label>
+                            <input type="text" class="form-control ng-pristine" id="replyContent" v-model="detail.replyContent" placeholder="客服回复">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="tags">编辑关键字：</label>
+                            <input type="text" class="form-control ng-pristine" id="tags" v-model="detail.tags" placeholder="关键字">
+                        </div>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="buttons">
+                    <button type="button" class="btn btn-with-icon" v-on:click="save"><i class="ion-printer"></i>保存</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>
