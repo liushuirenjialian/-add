@@ -39,7 +39,7 @@ module.exports = {
       });
     },
     backList: function () {
-      this.$router.go('/home/ticket/detail');
+      this.$router.go('/ticket/detail');
     },
     showFlowDo: function () {
       this.showFlow = true;
@@ -70,7 +70,7 @@ module.exports = {
         if (res.ret < 0) {
           _this.$dispatch('showMsg', '已经最后一个了', 2); return;
         }
-        _this.$router.go('/home/ticket/detail/' + res.data.id);
+        _this.$router.go('/ticket/detail/' + res.data.id);
       });
     },
     next: function () {
@@ -80,7 +80,7 @@ module.exports = {
         if (res.ret < 0) {
           _this.$dispatch('showMsg', '已经最后一个了', 2); return;
         }
-        _this.$router.go('/home/ticket/detail/' + res.data.id);
+        _this.$router.go('/ticket/detail/' + res.data.id);
       });
     },
     nextUntreated: function () {
@@ -90,7 +90,7 @@ module.exports = {
         if (res.ret < 0) {
           _this.$dispatch('showMsg', '已经最后一个了', 2); return;
         }
-        _this.$router.go('/home/ticket/detail/' + res.data.id);
+        _this.$router.go('/ticket/detail/' + res.data.id);
       });
     }
   }

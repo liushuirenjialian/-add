@@ -1,8 +1,4 @@
 module.exports = {
-  '': {
-    component: require('../components/views/login'),
-    auth: false
-  },
   '/login': {
     component: require('../components/views/login'),
     auth: false
@@ -11,7 +7,7 @@ module.exports = {
     component: require('../components/views/register'),
     auth: false
   },
-  '/home': {
+  '': {
     auth: true,
     name: 'home',
     component: function (resolve) {
@@ -24,12 +20,12 @@ module.exports = {
         auth: true
       },
       '/profile': {
-        name: 'index',
+        name: 'profile',
         component: require('../components/views/profile'),
         auth: true
       },
       '/changepassword': {
-        name: 'index',
+        name: 'changepassword',
         component: require('../components/views/changepassword'),
         auth: true
       },

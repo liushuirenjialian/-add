@@ -31,7 +31,7 @@ module.exports = function (router) {
       } else {
         if ((transition.to.path === '/login' || transition.to.path === '/') && userInfo) {
           // 取消当前切换并重定向到另一个路由
-          transition.redirect('/home');
+          transition.redirect('/index');
         } else {
           // 调用此函数处理切换过程的下一步
           transition.next();

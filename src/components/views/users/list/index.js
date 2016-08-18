@@ -55,7 +55,7 @@ module.exports = {
       this.dropdownStatus = !this.dropdownStatus;
     },
     showDetatil: function (id) {
-      this.$router.go('/home/users/detail/' + id);
+      this.$router.go('/users/detail/' + id);
     },
     deleteData: function (id) { // 确定删除后，把倒腾的数据传回来
       var url = '/api/users/' + id;

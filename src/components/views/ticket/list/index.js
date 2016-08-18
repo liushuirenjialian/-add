@@ -34,7 +34,7 @@ module.exports = {
       this.dropdownStatus = !this.dropdownStatus;
     },
     showDetatil: function (id) {
-      this.$router.go('/home/ticket/detail/' + id);
+      this.$router.go('/ticket/detail/' + id);
     },
     bindList: function (num) {
       var url = '/api/tickets';

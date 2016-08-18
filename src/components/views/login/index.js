@@ -44,7 +44,7 @@ module.exports = {
         ac_store.setUserInfo(ret.data);
         // console.log(ac_store.getUserInfo());
         // router.go(path)  path跳转信息
-        _this.$router.go('/home');
+        _this.$router.go({ name: 'index' });
       });
     }
   }

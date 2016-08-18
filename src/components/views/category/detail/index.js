@@ -31,7 +31,7 @@ module.exports = {
       });
     },
     backList: function () {
-      this.$router.go('/home/category/list');
+      this.$router.go('/category/list');
     },
     save: function () {
       var url = '/api/categories';

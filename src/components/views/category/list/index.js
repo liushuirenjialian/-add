@@ -42,7 +42,7 @@ module.exports = {
       });
     },
     showDetatil: function (id) {
-      this.$router.go('/home/category/detail/' + id);
+      this.$router.go('/category/detail/' + id);
     },
     deleteData: function (id) { // 确定删除后，把倒腾的数据传回来
       var url = '/api/categories/' + id;

@@ -39,7 +39,7 @@ module.exports = {
       this.detail.activated = !this.detail.activated;
     },
     backList: function () {
-      this.$router.go('/home/users/list/all');
+      this.$router.go('/users/list/all');
     },
     save: function () {
       var url = '/api/users';
