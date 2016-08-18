@@ -10,7 +10,8 @@ module.exports = {
         class: 'toast-success',
         msg: '操作成功',
         times: 3000,
-        barWidth: 100
+        barWidth: 100,
+        autoporess: null
       }
     };
   },
@@ -45,15 +46,18 @@ module.exports = {
       this.globalAlert.isshow = false;
     },
     autoClose: function () {
+      if (this.autoporess) {
+        clearInterval(this.autoporess);
+      }
       var _this = this;
       var i = 0;
       var speed = 100 / (_this.globalAlert.times / 10);
       _this.globalAlert.barWidth = 100;
-      var autoporess = setInterval(function () {
+      this.autoporess = setInterval(function () {
         i += 1; // 0.2 =  4000 / 10 = 400. 100/400 =0.25
         _this.globalAlert.barWidth = 100 - speed * i;
         if (_this.globalAlert.barWidth <= 0 || _this.globalAlert.isshow === false) {
-          clearInterval(autoporess);
+          clearInterval(this.autoporess);
           _this.globalAlert.isshow = false;
         }
       }, 10);

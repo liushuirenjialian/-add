@@ -5,6 +5,12 @@
               <a href="" class="collapse-navigation-link ion-navicon"></a>
           </div>
           <button type="button" class="back-button btn btn-default btn-with-icon" v-link="{ name:'ticket-list', params: { status: 'all' } }"><i class="ion-chevron-left"></i>返回</button>
+          <div class="tools-right">
+            <button type="button" class="back-button btn btn-default btn-with-icon" v-on:click="prve()"><i class="ion-chevron-up"></i>上一个</button>
+            <button type="button" class="back-button btn btn-default btn-with-icon" v-on:click="next()"><i class="ion-chevron-down"></i>下一个</button>
+            <button type="button" class="back-button btn btn-default btn-with-icon" v-on:click="nextUntreated()"><i class="ion-chevron-right"></i>未处理</button>
+          </div>
+
       </div>
         <div class="person-info row">
             <div class="col-md-6 col-xs-12 no-padding">
@@ -18,16 +24,16 @@
                     <div>
                         <span>游戏大区：{{detail.gameRegion}}</span>
                     </div>
-
+                    <div>
+                        <span>角色名称：{{detail.roleName}}</span>
+                    </div>
                     <div>
                         <span>问题类型：{{detail.majorCategory}}</span>
                     </div>
                     <div>
                         <span>提交时间：{{detail.createdAt | formatDate}}</span>
                     </div>
-                    <div>
-                        <span>更新时间：{{detail.updatedAt | formatDate}}</span>
-                    </div>
+
                 </div>
             </div>
 
@@ -48,6 +54,9 @@
                     </div>
                     <div>
                         <span>客服：{{detail.firstFlowUserName}}</span>
+                    </div>
+                    <div>
+                        <span>更新时间：{{detail.updatedAt | formatDate}}</span>
                     </div>
                 </div>
             </div>

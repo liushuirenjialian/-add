@@ -62,6 +62,36 @@ module.exports = {
         _this.detail.status = res.data.status;
         _this.$dispatch('showMsg', '保存成功');
       });
+    },
+    prve: function () {
+      var url = '/api/tickets/' + this.detail.id + '/prve';
+      var _this = this;
+      ac_http.request(_this, 'GET', url, function (res) {
+        if (res.ret < 0) {
+          _this.$dispatch('showMsg', '已经最后一个了', 1); return;
+        }
+        _this.$router.go('/home/ticket/detail/' + res.data.id);
+      });
+    },
+    next: function () {
+      var url = '/api/tickets/' + this.detail.id + '/next';
+      var _this = this;
+      ac_http.request(_this, 'GET', url, function (res) {
+        if (res.ret < 0) {
+          _this.$dispatch('showMsg', '已经最后一个了', 1); return;
+        }
+        _this.$router.go('/home/ticket/detail/' + res.data.id);
+      });
+    },
+    nextUntreated: function () {
+      var url = '/api/tickets/' + this.detail.id + '/nextUntreated';
+      var _this = this;
+      ac_http.request(_this, 'GET', url, function (res) {
+        if (res.ret < 0) {
+          _this.$dispatch('showMsg', '已经最后一个了', 1); return;
+        }
+        _this.$router.go('/home/ticket/detail/' + res.data.id);
+      });
     }
   }
 };

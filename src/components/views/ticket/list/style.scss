@@ -16,3 +16,18 @@
 .mail-messages-control .btn-group .more-4 {
 	margin-left: 50px;
 }
+
+.table {
+	thead {
+		text-align: center;
+	}
+}
+
+.editable-row {
+	.content {
+		max-width: 200px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+}

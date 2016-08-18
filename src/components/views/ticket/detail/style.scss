@@ -25,3 +25,13 @@
 		font-weight: bold;
 	}
 }
+
+.tools-right {
+	position: relative;
+	float: right;
+	margin-right: 10px;
+	.btn {
+		margin: 5px;
+	}
+
+}
