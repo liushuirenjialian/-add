@@ -90,7 +90,26 @@ module.exports = {
             auth: true
           }
         }
-      }
+      },
+      '/game': {
+        name: 'game',
+        component: function (resolve) {
+          require(['../components/views/game'], resolve);
+        },
+        auth: true,
+        subRoutes: {
+          '/list': {
+            name: 'game-list',
+            component: require('../components/views/game/list'),
+            auth: true
+          },
+          '/detail/:id': {
+            name: 'category-detail',
+            component: require('../components/views/game/detail'),
+            auth: true
+          }
+        }
+      },
     }
   }
 };

@@ -19,10 +19,23 @@
         "authorities": ["ROLE_ADMIN", "ROLE_MODERATOR"]
     }, {
         "text": "游戏管理",
-        "name": "game ",
-        "link": "/users/game",
+        "name": "game",
+        "link": "/game/list",
         "iClass": "",
-        "authorities": ["ROLE_ADMIN", "ROLE_MODERATOR"]
+        "authorities": ["ROLE_ADMIN", "ROLE_MODERATOR"],
+         "subMenu": [{
+        "text": "权限列表",
+        "name": "game-list",
+        "link": "/game/list/all",
+        "iClass": "",
+        "authorities": ""
+    }, {
+        "text": "权限详情",
+        "name": "game-list",
+        "link": "/game/detail",
+        "iClass": "",
+        "authorities": ""
+    }]
     }]
 }, {
     "text": "工单管理",
