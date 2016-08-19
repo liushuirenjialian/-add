@@ -1,0 +1,38 @@
+<div class="form-info">
+    <div class="row">
+        <button type="button" class="back-button btn btn-default btn-with-icon" v-link="{ name:'game-list' }"><i class="ion-chevron-left"></i>返回</button>
+    </div>
+    <div class="row from-centent">
+       <div class="row">
+         <div class="col-md-6">
+             <div class="detail-group">
+                 <label>游戏名称：</label>
+                 <span>{{detail.name}}</span>
+            </div>
+         </div>
+         <div class="col-md-6">
+             <div class="detail-group">
+                 <label>描述：</label>
+                 <span>{{detail.description}}</span>
+            </div>
+         </div>
+         <div class="col-md-6">
+             <div class="detail-group">
+                 <label>创建日期：</label>
+                 <span>{{detail.createdAt | formatDate}}</span>
+            </div>
+         </div>
+         <div class="col-md-6">
+             <div class="detail-group">
+                 <label>修改日期：</label>
+                 <span>{{detail.updatedAt | formatDate}}</span>
+            </div>
+         </div>
+       </div>
+
+      <div class="line"></div>
+      <div class="buttons">
+          <button type="button" class="btn btn-with-icon" v-link="{ name:'game-edit', params: { id: detail.id }}"><i class="ion-printer"></i>编辑</button>
+      </div>
+    </div>
+</div>

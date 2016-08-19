@@ -72,6 +72,30 @@ module.exports = {
           }
         }
       },
+      '/game': {
+        name: 'category',
+        component: function (resolve) {
+          require(['../components/views/game'], resolve);
+        },
+        auth: true,
+        subRoutes: {
+          '/list': {
+            name: 'game-list',
+            component: require('../components/views/game/list'),
+            auth: true
+          },
+          '/detail/:id': {
+            name: 'game-detail',
+            component: require('../components/views/game/detail'),
+            auth: true
+          },
+          '/edit/:id': {
+            name: 'game-edit',
+            component: require('../components/views/game/edit'),
+            auth: true
+          }
+        }
+      },
       '/users': {
         name: 'users',
         component: function (agr) {

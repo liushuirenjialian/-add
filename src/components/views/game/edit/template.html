@@ -1,0 +1,27 @@
+<div class="form-info">
+    <div class="row">
+        <button type="button" class="back-button btn btn-default btn-with-icon" v-link="{ name:'game-list' }"><i class="ion-chevron-left"></i>返回</button>
+    </div>
+    <div class="row from-centent">
+        <form name="editForm" class="edit-form">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">游戏名称</label>
+                        <input type="text" class="form-control ng-pristine" id="name" v-model="detail.name" placeholder="分类名称">
+                        <span class="help-block error-block basic-block">必填</span></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="description">描述</label>
+                        <input type="text" class="form-control ng-pristine" id="description" v-model="detail.description" placeholder="描述">
+                    </div>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="buttons">
+                <button type="button" class="btn btn-with-icon" v-on:click="save"><i class="ion-printer"></i>保存</button>
+            </div>
+        </form>
+    </div>
+</div>

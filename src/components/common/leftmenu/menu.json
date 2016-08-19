@@ -20,7 +20,7 @@
     }, {
         "text": "游戏管理",
         "name": "game ",
-        "link": "/users/game",
+        "link": "/game/list",
         "iClass": "",
         "authorities": ["ROLE_ADMIN", "ROLE_MODERATOR"]
     }]
