@@ -10,7 +10,7 @@ module.exports = {
     };
   },
   created: function () {
-    this.$dispatch('showBreadcrumb', '分类管理');
+    this.$dispatch('showBreadcrumb', '游戏管理');
   },
   methods: {
     logout: function () {
