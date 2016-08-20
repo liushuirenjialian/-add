@@ -1,0 +1,23 @@
+<div class="row users-game">
+    <div class="col-md-6">
+        <h3>拥有的游戏</h3>
+    </div>
+    <div class="col-md-6">
+        <h3>其他的游戏</h3>
+    </div>
+    <div class="col-md-6">
+        <div class="row bootstrap-tagsinput">
+            <div class="col-md-6" v-for="game in gameList" v-show="game.checked" v-on:click="removeUserGame(game)">
+                <a class="label label-primary">{{ game.name }}<span data-role="remove"></span></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row bootstrap-tagsinput">
+            <div class="col-md-6 " v-for="game in gameList" v-show="!game.checked" v-on:click="addUserGame(game)">
+                <a class="label label-primary">{{ game.name }}<span data-role="right"></span></a>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -18,12 +18,14 @@ module.exports = {
         lastName: '',
         email: '',
         activated: '',
-        authorities: []
+        authorities: [],
+        games: []
       }
     };
   },
   components: {
-    authority: require('../authority')
+    authority: require('../authority'),
+    game: require('../game')
   },
   methods: {
     initData: function (login) {
@@ -33,6 +35,7 @@ module.exports = {
       ac_http.request(_this, 'GET', url, function (res) {
         _this.detail = res.data;
         _this.$broadcast('loadAuthorities', _this.detail.authorities);
+        _this.$broadcast('loadUserGames', _this.detail.games);
       });
     },
     switchActivated: function () {
@@ -44,14 +47,9 @@ module.exports = {
     save: function () {
       var url = '/api/users';
       var param = {};
-      param.id = this.detail.id;
-      param.login = this.detail.login;
-      param.firstName = this.detail.firstName;
-      param.lastName = this.detail.lastName;
-      param.email = this.detail.email;
-      param.activated = this.detail.activated;
-      param.langKey = 'zh-cn';
-      param.authorities = this.detail.authorities;
+      ac_.forEach(this.detail, function (val, key) {
+        param[key] = val;
+      });
       var method = 'POST';
       if (param.id > 0) {
         method = 'PUT';
@@ -74,6 +72,9 @@ module.exports = {
         }
         _this.$dispatch('showMsg', '重置密码成功：' + res.data.data);
       });
+    },
+    syncGames: function (games) {
+      this.detail.games = games;
     }
   }
 };

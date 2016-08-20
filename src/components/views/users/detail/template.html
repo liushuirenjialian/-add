@@ -50,6 +50,10 @@
             <div class="col-md-12">
                 <authority :authorities.sync=detail.authorities> </authority>
             </div>
+            <div class="col-md-12">
+                <game v-on:sync-games="syncGames"> </game>
+            </div>
+
         </div>
     </div>
 
