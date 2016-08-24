@@ -1,0 +1,36 @@
+<div class="side-message-navigation expanded">
+    <div class="mail-messages-control side-message-navigation-item">
+        <div class="panel-body">
+            <div>
+                <table class="table table-bordered table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <!-- <td>id</td> -->
+                            <td>来自</td>
+                            <td>时间<span class="caret"></span></td>
+                            <td>状态</td>
+                            <td>消息内容</td>
+                            <td>
+                                操作
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="editable-row" v-for="item in roleList" @click="readMessage(item)">
+                            <td><span class="editable">{{item.fromUserName}}</span></td>
+                            <td class="select-td"><span class="editable">{{item.createAt | formatDate}}</span></td>
+                            <td class="select-td"><span class="editable">{{{item.status | formatMessageStatus}}}</span></td>
+                            <td class="content"><span class="editable">{{item.content}}</span></td>
+                            <td>
+                                <div class="buttons">
+                                    <button class="status-button btn btn-xs btn-primary" v-link='{ path: item.toUrl }' >详情</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <paging v-bind:total=total v-bind:size=size v-bind:page=page> </paging>
+            </div>
+        </div>
+    </div>
+</div>

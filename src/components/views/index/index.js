@@ -16,8 +16,7 @@ module.exports = {
     omolayout: require('../../common/layout')
   },
   created: function () {
-    // ac_util.stopLoading();
-    // this.pageFinishedLoading = false;
+    this.$dispatch('showBreadcrumb', '仪表盘');
   },
   ready: function () {
     // ac_util.stopLoading();

@@ -13,21 +13,25 @@
                     <li><i class="dropdown-arr"></i></li>
                     <li><a v-link='{ path: "/profile" }' ><i class="fa fa-user"></i>个人信息</a></li>
                     <li><a v-link="{path:'/changepassword'}"><i class="fa fa-cog"></i>修改密码</a></li>
+                    <li><a v-link="{path:'/message/list/all'}"><i class="fa fa-bell-o"></i>我的消息</a></li>
                     <li><a class="nav-link" href="#" class="signout" v-on:click="logout"><i class="fa fa-power-off"></i>退出</a></li>
                 </ul>
             </div>
+            <!-- <div class="">
+                 <label>欢迎您: <span>admin</span></label>
+            </div> -->
             <ul class="al-msg-center clearfix">
-                <li uib-dropdown="" class="dropdown">
-                    <a href="" uib-dropdown-toggle="" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                <li uib-dropdown="" class="dropdown" :class="{'hide': noReadCount == 0}">
+                    <a v-link='{ path: "/message/list/0" }' class="dropdown-toggle">
                         <i class="fa fa-bell-o"></i>
-                        <span>5</span>
+                        <span>{{noReadCount}}</span>
                         <div class="notification-ring"></div>
                     </a>
-                    <div uib-dropdown-menu="" class="top-dropdown-menu dropdown-menu"><i class="dropdown-arr"></i>
+                    <div class="top-dropdown-menu dropdown-menu"><i class="dropdown-arr"></i>
                         <div class="header clearfix"><strong>Notifications</strong> <a href="">Mark All as Read</a> <a href="">Settings</a></div>
                         <a href="">See all notifications</a></div>
                 </li>
-                <li uib-dropdown="" class="dropdown">
+                <!-- <li uib-dropdown="" class="dropdown">
                     <a href="" class="msg dropdown-toggle" uib-dropdown-toggle="" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-envelope-o"></i><span>5</span>
                         <div class="notification-ring"></div>
@@ -35,7 +39,7 @@
                     <div uib-dropdown-menu="" class="top-dropdown-menu dropdown-menu"><i class="dropdown-arr"></i>
                         <div class="header clearfix"><strong>Messages</strong> <a href="">Mark All as Read</a> <a href="">Settings</a></div>
                         <a href="">See all messages</a></div>
-                </li>
+                </li> -->
             </ul>
         </div>
     </div>
