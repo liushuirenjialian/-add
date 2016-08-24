@@ -51,9 +51,10 @@ module.exports = {
         this.status = -1;
         // url = '/api/tickets/search/' + this.status;
       }
+      // param.gameId = 23;
       param.status = this.status;
       param.games = this.getCheckedGames();
-      url = '/api/tickets/getList';
+      url = '/api/tickets/queryList';
       ac_http.request(_this, 'GET', url, param, function (res) {
         _this.total = res.headers('x-total-count');
         _this.roleList = res.data;
@@ -78,13 +79,13 @@ module.exports = {
       this.bindList(0);
     },
     getCheckedGames: function () {
-      var games = '';
+      var games = [];
       ac_.forEach(this.myGames, function (item) {
         if (item.checked) {
-          games += item.id + ',';
+          games.push(item.id);
         }
       });
-      return games;
+      return games.join(',');
     }
   }
 };
