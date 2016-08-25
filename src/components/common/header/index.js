@@ -5,15 +5,29 @@ module.exports = {
   replace: true,
   data: function () {
     return {
+      noReadCount: 0,
       menuShow: true,
       settingShow: false,
       user: ac_store.getUserInfo()
     };
   },
   created: function () {
-    // console.log(this.data);
+    var _this = this;
+    _this.getMyNoReadMessage();
+    setInterval(function () {
+      _this.getMyNoReadMessage();
+    }, 50000);
   },
   methods: {
+    getMyNoReadMessage: function () {
+      var url = '/api/messages/myNoRead';
+      var _this = this;
+      ac_http.request(_this, 'GET', url, function (res) {
+        if (res.ret > 0) {
+          _this.noReadCount = res.data;
+        }
+      });
+    },
     toggleMenu: function () {
       this.$dispatch('toggleCollapsed');
     },

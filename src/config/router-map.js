@@ -114,6 +114,20 @@ module.exports = {
             auth: true
           }
         }
+      },
+      '/message': {
+        name: 'message',
+        component: function (resolve) {
+          require(['../components/views/message'], resolve);
+        },
+        auth: true,
+        subRoutes: {
+          '/list/:status': {
+            name: 'message-list',
+            component: require('../components/views/message/list'),
+            auth: true
+          }
+        }
       }
     }
   }
