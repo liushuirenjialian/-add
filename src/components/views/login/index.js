@@ -24,6 +24,10 @@ module.exports = {
       var _this = this;
       ac_http.oauth(_this, url, param, function (ret) {
         if (ret.ret < 0) {
+          if (ret.data.error === 'unauthorized') {
+            _this.$broadcast('showAlert', '此账号未激活!', 2);
+            return;
+          }
           _this.$broadcast('showAlert', '账号或密码错误!', 2);
           return;
         }

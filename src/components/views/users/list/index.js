@@ -17,6 +17,8 @@ module.exports = {
       total: 0,
       page: 0,
       size: 10,
+      order: 'id',
+      sort: 'desc',
       rolename: ''
     };
   },
@@ -42,6 +44,7 @@ module.exports = {
       var param = {};
       param.page = num;
       param.size = this.size;
+      param.sort = this.order + ',' + this.sort;
       this.page = num;
       if (this.rolename !== 'all') {
         url = '/api/users/search/' + this.rolename;

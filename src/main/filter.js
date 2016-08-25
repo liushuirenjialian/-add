@@ -20,9 +20,9 @@ module.exports = {
   },
   formatUserActivated: function (bo) {
     if (bo === true) {
-      return '已激活';
+      return '<span class="tag label work">已激活</span>';
     }
-    return '未激活';
+    return '<span class="tag label friend">未激活</span>';
   },
   formatTicketStatus: function (status) {
     if (status === 0) {

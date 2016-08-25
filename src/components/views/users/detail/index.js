@@ -6,18 +6,20 @@ module.exports = {
     data: function (transition) {
       this.$dispatch('showBreadcrumb', '用户详情');
       var login = transition.to.params.login;
+      this.truePassword = '';
       this.initData(login);
     }
   },
   data: function () {
     return {
+      truePassword: '',
       detail: {
         id: '',
         login: '',
         firstName: '',
         lastName: '',
         email: '',
-        activated: '',
+        activated: true,
         authorities: [],
         games: []
       }
@@ -45,6 +47,7 @@ module.exports = {
       this.$router.go('/users/list/all');
     },
     save: function () {
+      this.truePassword = '';
       var url = '/api/users';
       var param = {};
       ac_.forEach(this.detail, function (val, key) {
@@ -60,6 +63,7 @@ module.exports = {
           _this.$dispatch('showMsg', res.data.message, 1); return;
         }
         _this.detail.id = res.data.id;
+        _this.truePassword = res.headers('truePassword');
         _this.$dispatch('showMsg', '保存成功');
       });
     },
@@ -70,7 +74,8 @@ module.exports = {
         if (res.ret < 0) {
           _this.$dispatch('showMsg', res.data.message, 1); return;
         }
-        _this.$dispatch('showMsg', '重置密码成功：' + res.data.data);
+        _this.truePassword = res.data.data;
+        _this.$dispatch('showMsg', '重置密码成功！');
       });
     },
     syncGames: function (games) {
