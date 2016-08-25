@@ -20,6 +20,9 @@ module.exports = {
         content: '',
         tags: '',
         updatedAt: '',
+        majorCategoryInfo: {
+          name: ''
+        },
         replyContent: ''
       }
     };
@@ -33,7 +36,12 @@ module.exports = {
       var _this = this;
       var url = '/api/tickets/' + id;
       ac_http.request(_this, 'GET', url, function (res) {
-        _this.detail = res.data;
+        var item = res.data;
+        if (!item.majorCategoryInfo) {
+          item.majorCategoryInfo = {};
+          item.majorCategoryInfo.name = '';
+        }
+        _this.detail = item;
         _this.$broadcast('loadTicketId', id);
         _this.$broadcast('loadFlowList', id);
       });

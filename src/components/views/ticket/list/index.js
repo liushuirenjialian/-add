@@ -57,6 +57,12 @@ module.exports = {
       url = '/api/tickets/queryList';
       ac_http.request(_this, 'GET', url, param, function (res) {
         _this.total = res.headers('x-total-count');
+        res.data.forEach(function (item) {
+          if (!item.majorCategoryInfo) {
+            item.majorCategoryInfo = {};
+            item.majorCategoryInfo.name = '';
+          }
+        });
         _this.roleList = res.data;
       });
     },

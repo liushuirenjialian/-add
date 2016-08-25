@@ -26,6 +26,7 @@
                             <td>创建时间</td>
                             <td>当前状态</td>
                             <td>客服</td>
+                            <td>问题类型</td>
                             <td>查看详情</td>
                             <td>
                                 操作
@@ -42,6 +43,7 @@
                             <td class="select-td"><span class="editable">{{item.createdAt | formatDate}}</span></td>
                             <td class="select-td"><span class="editable">{{{item.status | formatTicketStatus}}}</span></td>
                             <td><span class="editable">{{item.firstFlowUserName}}</span></td>
+                            <td><span class="editable">{{item.majorCategoryInfo.name}}</span></td>
                             <td class="select-td content"><span class="editable" title="{{item.content}}">{{item.content}}</span></td>
                             <td>
                                 <div class="buttons">
