@@ -29,7 +29,8 @@ module.exports = {
   },
   components: {
     flow: require('../flow'),
-    flowlist: require('../flowList')
+    flowlist: require('../flowList'),
+    answerlist: require('../answerList')
   },
   methods: {
     initData: function (id) {

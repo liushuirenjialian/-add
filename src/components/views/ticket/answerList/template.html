@@ -1,0 +1,32 @@
+<div class="panel  with-scroll animated zoomIn" zoom-in="" style="z-index: 1050; display: none;" :class="{'show': isshow}">
+
+    <div class="panel-heading clearfix">
+        <h3 class="panel-title">客服服务信息</h3></div>
+    <div class="panel-body">
+        <div class="flow-list" v-for="(index, flow) in flowList">
+            <div  class="xh">
+               <span>{{index+1}}</span>
+           </div>
+
+            <div class="from">
+                <h3><label>{{flow.fromUserName}} --> {{flow.toUserName}}</label><span>提问时间：{{flow.createdAt | formatDate}}</span></h3>
+                <p>问：{{{flow.fromContent}}}</p>
+            </div>
+            <div class="to">
+                <h3><span :class="{'hide': !flow.content}">回复时间：{{flow.reliedAt | formatDate}}</span></h3>
+                <p :class="{'hide': flow.content}">
+                  <i class="tag label family">等待回复解答中。。</i>
+                </p>
+                <p :class="{'hide': !flow.content}">回复：{{{flow.content}}}</p>
+                <div :class="{'hide': user.login != flow.toUserName , 'hide2': flow.content}">
+                <div class="to-input">
+                  <input type="text" name="name" class="editable-input form-control" v-model="flow.newContent">
+                </div>
+                <div class="to-button">
+                    <button type="button" class="btn btn-success" v-on:click="replyDo(flow)">回复</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
