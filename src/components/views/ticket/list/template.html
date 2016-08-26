@@ -1,45 +1,60 @@
 <div class="side-message-navigation expanded">
     <div class="mail-messages-control side-message-navigation-item">
-      <div class="panel-body">
-        <div>
-            <table class="table table-bordered table-hover table-condensed">
-              <thead>
-                    <tr>
-                        <td>id</td>
-                        <td>游戏名称<span class="caret"></span></td>
-                        <td>平台 + 渠道</td>
-                        <td>大区</td>
-                        <td>角色名称</td>
-                        <td>创建时间</td>
-                        <td>当前状态</td>
-                        <td>客服</td>
-                        <td>查看详情</td>
-                        <td>
-                          操作
-                        </td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="editable-row" v-for="item in roleList">
-                        <td>{{item.id}}</td>
-                        <td><span class="editable">{{item.gameName}}</span></td>
-                        <td><span class="editable">{{item.platform}} + {{item.channelName}}</span></td>
-                        <td><span class="editable">{{item.gameRegion}}</span></td>
-                        <td><span class="editable">{{item.roleName}}</span></td>
-                        <td class="select-td"><span class="editable">{{item.createdAt | formatDate}}</span></td>
-                        <td class="select-td"><span class="editable">{{{item.status | formatTicketStatus}}}</span></td>
-                        <td><span class="editable">{{item.firstFlowUserName}}</span></td>
-                        <td class="select-td content"><span class="editable" title="{{item.content}}">{{item.content}}</span></td>
-                        <td>
-                            <div class="buttons">
-                                <button class="status-button btn btn-xs btn-primary" v-on:click="showDetatil(item.id)">详情</button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-          <paging v-bind:total=total v-bind:size=size v-bind:page=page> </paging>
+        <div class="panel-body">
+            <div class="add-row-editable-table">
+                <div class="social-profiles row clearfix">
+                    <div class="col-md-3 col-sm-4" v-for="game in myGames">
+                       <a class="sn-link" :class="{'connected':game.checked}"
+                        target="_blank" v-on:click="searchGame(game)"><i class="socicon socicon-github"></i>
+                        <span>{{game.name}}</span> <em class="ion-ios-close-empty sn-link-close" ng-mousedown="unconnect(item)"></em></a>
+
+                    </div>
+                    <div class="col-md-3 col-sm-4" v-show="myGames.length==0">
+                         <a class="sn-link"> <span>请先授权游戏。。</span> </a>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <table class="table table-bordered table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <td>id</td>
+                            <td>游戏名称<span class="caret"></span></td>
+                            <td>平台 + 渠道</td>
+                            <td>大区</td>
+                            <td>角色名称</td>
+                            <td>创建时间</td>
+                            <td>当前状态</td>
+                            <td>客服</td>
+                            <td>问题类型</td>
+                            <td>查看详情</td>
+                            <td>
+                                操作
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="editable-row" v-for="item in roleList">
+                            <td>{{item.id}}</td>
+                            <td><span class="editable">{{item.gameName}}</span></td>
+                            <td><span class="editable">{{item.platform}} + {{item.channelName}}</span></td>
+                            <td><span class="editable">{{item.gameRegion}}</span></td>
+                            <td><span class="editable">{{item.roleName}}</span></td>
+                            <td class="select-td"><span class="editable">{{item.createdAt | formatDate}}</span></td>
+                            <td class="select-td"><span class="editable">{{{item.status | formatTicketStatus}}}</span></td>
+                            <td><span class="editable">{{item.firstFlowUserName}}</span></td>
+                            <td><span class="editable">{{item.majorCategoryInfo.name}}</span></td>
+                            <td class="select-td content"><span class="editable" title="{{item.content}}">{{item.content}}</span></td>
+                            <td>
+                                <div class="buttons">
+                                    <button class="status-button btn btn-xs btn-primary" v-on:click="showDetatil(item.id)">详情</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <paging v-bind:total=total v-bind:size=size v-bind:page=page> </paging>
+            </div>
         </div>
-    </div>
     </div>
 </div>

@@ -1,56 +1,54 @@
 <div class="side-message-navigation expanded">
     <div class="mail-messages-control side-message-navigation-item">
-        <div class="toggle-navigation-container">
-            <a href="" class="collapse-navigation-link ion-navicon"></a>
-        </div>
-        <!-- <label class="checkbox-inline custom-checkbox nowrap">
-            <input type="checkbox" id="inlineCheckbox01" value="option1"> <span class="select-all-label">选中全部</span></label> -->
-        <button type="button" class="btn btn-icon refresh-button"><i class="ion-refresh"></i></button>
-        <div class="btn-group dropdown" v-bind:class="{'open':dropdownStatus}">
-            <button type="button" class="btn more-button dropdown-toggle" v-on:click="teggleDropdown()">更多 <span class="caret"></span></button>
-            <ul uib-dropdown-menu="" class="dropdown-menu">
-                <li><a href="">Action</a></li>
-                <li><a href="">Another action</a></li>
-                <li><a href="">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="">Separated link</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="messages">
-        <table>
-            <tbody>
-                <tr class="side-message-navigation-item little-human shineHover family"  v-for='item in userList'>
-                    <!-- <td class="check-td">
-                        <div class="mail-checkbox">
-                            <label class="checkbox-inline custom-checkbox nowrap">
-                                <input type="checkbox"><span></span></label>
-                        </div>
-                    </td> -->
-                    <td class="photo-td"><img class="little-human-picture" src="../../../../assets/vendor/assets/img/app/profile/Andrey.png"></td>
-                    <td>
-                        <div class="name-container">
-                            <div><span class="name">{{item.login}}</span></div>
-                            <div><span class="tag label label-primary" v-bind:class="{'family':item.activated}">{{item.activated | formatUserActivated}}</span></div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="additional-info"><span class="subject">{{item.firstName}}</span></div>
-                    </td>
-                    <td>
-                       <div class="mail-body-part" v-text="item.email"></div>
-                    </td>
-                    <td class="date"><span>{{item.createdDate | formatDate}}</span></td>
-                    <td>
-                        <div class="buttons">
-                            <button class="btn btn-primary editable-table-button btn-xs" v-on:click="showDetatil(item.login)">编辑</button>
-                            <button class="btn btn-danger editable-table-button btn-xs" v-on:click="deleteDo(item.login)">删除</button>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
+        <div class="panel-body">
+            <!-- <div class="add-row-editable-table">
+                <div class="social-profiles row clearfix">
+                    <div class="col-md-3 col-sm-4" v-for="game in myGames">
+                       <a class="sn-link" :class="{'connected':game.checked}"
+                        target="_blank" v-on:click="searchGame(game)"><i class="socicon socicon-github"></i>
+                        <span>{{game.name}}</span> <em class="ion-ios-close-empty sn-link-close" ng-mousedown="unconnect(item)"></em></a>
 
-        </table>
+                    </div>
+                    <div class="col-md-3 col-sm-4" v-show="myGames.length==0">
+                         <a class="sn-link"> <span>请先授权游戏。。</span> </a>
+                    </div>
+                </div>
+            </div> -->
+            <div>
+                <table class="table table-bordered table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <td>序号</td>
+                            <td>登录名</td>
+                            <td>是否激活</td>
+                            <td>姓名</td>
+                            <td>邮箱</td>
+                            <td>创建时间<span class="caret"></span></td>
+                            <td>创建人</td>
+                            <td>
+                                操作
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="editable-row" v-for="(index,item) in userList">
+                            <td>{{ index + 1 + (page + 1) * size - size }}</td>
+                            <td><span class="editable">{{item.login}}</span></td>
+                            <td><span class="editable">{{{item.activated | formatUserActivated}}}</span></td>
+                            <td><span class="editable">{{item.firstName}}</span></td>
+                            <td><span class="editable">{{item.email}}</span></td>
+                            <td class="select-td"><span class="editable">{{item.createdDate | formatDate}}</span></td>
+                            <td><span class="editable">{{item.createdBy}}</span></td>
+                            <td>
+                                <div class="buttons">
+                                    <button class="status-button btn btn-xs btn-primary" v-on:click="showDetatil(item.login)">详情</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <paging v-bind:total=total v-bind:size=size v-bind:page=page> </paging>
+            </div>
+        </div>
     </div>
-    <paging v-bind:total=total v-bind:size=size v-bind:page=page> </paging>
 </div>

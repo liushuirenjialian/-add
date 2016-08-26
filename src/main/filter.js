@@ -9,14 +9,20 @@ module.exports = {
     if (!time) { return '';}
     return moment(time).format('YYYY-MM-DD');
   },
+  formatMessageStatus: function (status) {
+    if (status === 1) {
+      return '<span class="tag label study">已读</span>';
+    }
+    return '<span class="tag label family">未读</span>';
+  },
   formatDateRelative: function (time) {
     return moment(time).fromNow();
   },
   formatUserActivated: function (bo) {
     if (bo === true) {
-      return '已激活';
+      return '<span class="tag label work">已激活</span>';
     }
-    return '未激活';
+    return '<span class="tag label friend">未激活</span>';
   },
   formatTicketStatus: function (status) {
     if (status === 0) {

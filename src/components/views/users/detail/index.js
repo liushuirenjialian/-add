@@ -6,24 +6,28 @@ module.exports = {
     data: function (transition) {
       this.$dispatch('showBreadcrumb', '用户详情');
       var login = transition.to.params.login;
+      this.truePassword = '';
       this.initData(login);
     }
   },
   data: function () {
     return {
+      truePassword: '',
       detail: {
         id: '',
         login: '',
         firstName: '',
         lastName: '',
         email: '',
-        activated: '',
-        authorities: []
+        activated: true,
+        authorities: [],
+        games: []
       }
     };
   },
   components: {
-    authority: require('../authority')
+    authority: require('../authority'),
+    game: require('../game')
   },
   methods: {
     initData: function (login) {
@@ -33,6 +37,7 @@ module.exports = {
       ac_http.request(_this, 'GET', url, function (res) {
         _this.detail = res.data;
         _this.$broadcast('loadAuthorities', _this.detail.authorities);
+        _this.$broadcast('loadUserGames', _this.detail.games);
       });
     },
     switchActivated: function () {
@@ -42,16 +47,12 @@ module.exports = {
       this.$router.go('/users/list/all');
     },
     save: function () {
+      this.truePassword = '';
       var url = '/api/users';
       var param = {};
-      param.id = this.detail.id;
-      param.login = this.detail.login;
-      param.firstName = this.detail.firstName;
-      param.lastName = this.detail.lastName;
-      param.email = this.detail.email;
-      param.activated = this.detail.activated;
-      param.langKey = 'zh-cn';
-      param.authorities = this.detail.authorities;
+      ac_.forEach(this.detail, function (val, key) {
+        param[key] = val;
+      });
       var method = 'POST';
       if (param.id > 0) {
         method = 'PUT';
@@ -62,6 +63,7 @@ module.exports = {
           _this.$dispatch('showMsg', res.data.message, 1); return;
         }
         _this.detail.id = res.data.id;
+        _this.truePassword = res.headers('truePassword');
         _this.$dispatch('showMsg', '保存成功');
       });
     },
@@ -72,8 +74,12 @@ module.exports = {
         if (res.ret < 0) {
           _this.$dispatch('showMsg', res.data.message, 1); return;
         }
-        _this.$dispatch('showMsg', '重置密码成功：' + res.data.data);
+        _this.truePassword = res.data.data;
+        _this.$dispatch('showMsg', '重置密码成功！');
       });
+    },
+    syncGames: function (games) {
+      this.detail.games = games;
     }
   }
 };

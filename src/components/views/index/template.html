@@ -1,3 +1,15 @@
-<p>
-  主页
-</p>
+<div class="row">
+ <div class="col-md-12 col-lg-4 index-report" v-for="game in gameReport">
+   <div class="panel  xsmall-panel light-text animated zoomIn">
+       <div class="panel-heading clearfix">
+       <h3 class="panel-title">{{game.gameName}}</h3></div>
+       <div class="panel-body">
+          <p>一共 <span>{{game.count}}</span> 个工单</p>
+          <label>待处理 <span>{{game.status0}}</span></label>
+          <label>进行中 <span>{{game.status1}}</span></label>
+          <label>已回复 <span>{{game.status8}}</span></label>
+          <label>工单结束 <span>{{game.status9}}</span></label>
+       </div>
+   </div>
+ </div>
+</div>

@@ -6,7 +6,7 @@ module.exports = {
     data: function (transition) {
       var status = transition.to.params.status;
       this.status = status;
-      this.$dispatch('showBreadcrumb', '工单管理');
+      this.$dispatch('showBreadcrumb', '我的消息');
       this.bindList(0);
     }
   },
@@ -24,9 +24,6 @@ module.exports = {
   components: {
     paging: require('../../../common/paging')
   },
-  created: function () {
-    this.bindMyGames();
-  },
   events: {
     pagindGo: function (num, size) {
       this.size = size;
@@ -41,7 +38,7 @@ module.exports = {
       this.$router.go('/ticket/detail/' + id);
     },
     bindList: function (num) {
-      var url = '/api/tickets';
+      var url = '/api/messages';
       var param = {};
       param.page = num;
       param.size = this.size;
@@ -49,49 +46,21 @@ module.exports = {
       var _this = this;
       if (this.status === 'all') {
         this.status = -1;
-        // url = '/api/tickets/search/' + this.status;
       }
-      // param.gameId = 23;
+      param.sort = 'id,desc';
       param.status = this.status;
-      param.games = this.getCheckedGames();
-      url = '/api/tickets/queryList';
+      url = '/api/messages/queryList';
       ac_http.request(_this, 'GET', url, param, function (res) {
         _this.total = res.headers('x-total-count');
-        res.data.forEach(function (item) {
-          if (!item.majorCategoryInfo) {
-            item.majorCategoryInfo = {};
-            item.majorCategoryInfo.name = '';
-          }
-        });
         _this.roleList = res.data;
       });
     },
-    bindMyGames: function () {
-      var url = '/api/users/myGames';
+    readMessage: function (item) {
+      var url = '/api/messages/read/' + item.id;
       var _this = this;
-      ac_http.request(_this, 'GET', url, function (res) {
-        res.data.forEach(function (item) {
-          item.checked = false;
-        });
-        _this.myGames = res.data;
+      ac_http.request(_this, 'PUT', url, function () {
+        item.status = 1;
       });
-    },
-    searchGame: function (game) {
-      ac_.forEach(this.myGames, function (item) {
-        if (item.id === game.id) {
-          item.checked = !game.checked;
-        }
-      });
-      this.bindList(0);
-    },
-    getCheckedGames: function () {
-      var games = [];
-      ac_.forEach(this.myGames, function (item) {
-        if (item.checked) {
-          games.push(item.id);
-        }
-      });
-      return games.join(',');
     }
   }
 };

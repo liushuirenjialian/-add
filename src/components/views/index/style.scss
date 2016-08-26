@@ -1,0 +1,23 @@
+.index-report {
+  .panel-body {
+    p {
+      margin-bottom: 20px;
+    }
+
+    span {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    label {
+      margin-left: 15px;
+      margin-bottom: 20px;
+      width: 40%;
+
+      span {
+        float: right;
+        margin-right: 30px;
+      }
+    }
+  }
+}
