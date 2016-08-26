@@ -6,10 +6,7 @@ module.exports = {
   replace: true,
   data: function () {
     return {
-      pageFinishedLoading: false,
-      menuCollapsed: false,
-      pageName: '仪表盘',
-      actionId: 0
+      gameReport: []
     };
   },
   components: {
@@ -17,13 +14,15 @@ module.exports = {
   },
   created: function () {
     this.$dispatch('showBreadcrumb', '仪表盘');
-  },
-  ready: function () {
-    // ac_util.stopLoading();
-    // this.pageFinishedLoading = true;
+    this.bindGameReport();
   },
   methods: {
-    logout: function () {
+    bindGameReport: function () {
+      var url = '/api/report/gameTicketCount';
+      var _this = this;
+      ac_http.request(_this, 'GET', url, function (res) {
+        _this.gameReport = res.data;
+      });
     }
   },
   events: {
