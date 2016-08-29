@@ -11,7 +11,17 @@
                           <div class="col-md-12">
                               <div class="form-group">
                                   <label for="toUserName">转给谁：</label>
-                                  <input type="text" class="form-control ng-pristine" id="toUserName" v-model="toUserName" placeholder="转给谁">
+                                  <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                      <label>职位</label>
+                                      <vselect :options=roleOptions :value.sync=rolevalue placeholder="职位"></vselect>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                      <label>人</label>
+                                      <vselect :options=personOptions :value.sync=person placeholder="人物"></vselect>
+                                    </div>
+                                  </div>
+
                                   <span class="help-block error-block basic-block">必填</span></div>
                           </div>
                           <div class="col-md-12">
