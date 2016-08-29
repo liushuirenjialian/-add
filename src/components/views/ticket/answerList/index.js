@@ -7,7 +7,9 @@ module.exports = {
     return {
       ticketId: '',
       flowList: [],
-      user: ac_store.getUserInfo()
+      user: ac_store.getUserInfo(),
+      replyContent:'',
+      tags:''
     };
   },
   events: {
@@ -20,30 +22,30 @@ module.exports = {
   methods: {
     initData: function (ticketId) {
       var _this = this;
-      var url = '/api/flows/find/' + ticketId;
+      // /api/ticket-replies/find/
+      debugger
+      var url = '/api/ticket-replies/find/' + ticketId;
       ac_http.request(_this, 'GET', url, function (res) {
-        res.data.forEach(function (item) {
-          item.newContent = '';
-        });
+        // res.data.forEach(function (item) {
+        //   item.newContent = '';
+        // });
         _this.flowList = res.data;
-        if (_this.flowList.length > 0) {
-          _this.isshow = true;
-        }
       });
     },
+
     replyDo: function (flow) {
-      var url = '/api/flows/reply';
+      var url = '/api/tickets/replyDo';
       var param = {};
-      param.id = flow.id;
-      param.content = flow.newContent;
+      param.id = this.ticketId;
+      param.content = this.replyContent;
       var method = 'PUT';
       var _this = this;
-      ac_http.request(_this, method, url, param, function (res) {
-        if (res.ret < 0) {
-          _this.$dispatch('showMsg', res.data.message, 1); return;
+      debugger
+      ac_http.request(_this, method, url, param, function (ret) {
+        if (ret.ret < 0) {
+          _this.$dispatch('showMsg', ret.data.message, 1); return;
         }
-        flow.content = res.data.content;
-        flow.reliedAt = res.data.reliedAt;
+        _this.status=ret.data.message;
         _this.$dispatch('showMsg', '保存成功');
       });
     }

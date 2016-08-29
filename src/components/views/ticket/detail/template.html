@@ -62,7 +62,6 @@
             </div>
         </div>
         <div class="row">
-
         </div>
         <div class="line"></div>
         <div class="message-details">
@@ -91,15 +90,7 @@
             <button type="button" class="btn btn-with-icon" v-on:click="showFlowDo" :class="{'hide': detail.status>=6}"><i class="ion-reply"></i>工单流转</button>
             <button type="button" class="btn btn-with-icon" v-on:click="replyDo" :class="{'hide': detail.status>=6}"><i class="ion-printer"></i>回复用户</button>
         </div>
-        <div class="row">
-          <div class="col-md-6">
-         <flowlist> </flowlist>
-          </div>
-       <div class="col-md-6">
-         <answerlist></answerlist>
-          </div>
-        </div>
-
+        <flowlist> </flowlist>
     </div>
 
     <flow :isshow.sync=showFlow v-on:flow-save="refreshFlow"> </flow>
