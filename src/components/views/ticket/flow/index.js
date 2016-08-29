@@ -61,7 +61,6 @@ module.exports = {
         _this.person = '';
         _this.personOptions = [];
         _this.person = res.data[0].login;
-        _this.toUserName = res.data[0].login;
         res.data.forEach(function (item) {
           _this.personOptions.push(item.login);
         });
@@ -74,7 +73,7 @@ module.exports = {
       var url = '/api/flows/post';
       var param = {};
       param.ticketId = this.ticketId;
-      param.toUserName = this.toUserName;
+      param.toUserName = this.person;
       param.fromContent = this.fromContent;
       var method = 'POST';
       var _this = this;
