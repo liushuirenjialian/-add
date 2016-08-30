@@ -51,20 +51,22 @@ module.exports = {
     },
     getPerson: function () {
       var _this = this;
-      var url = '/api/users/search/' + _this.role[_this.rolevalue];
-      var method = 'GET';
-      ac_http.request(_this, method, url, function (res) {
-        if (res.ret < 0) {
-          _this.dispatch('showMsg', res.data.message, 1);
-          return;
-        }
-        _this.person = '';
-        _this.personOptions = [];
-        _this.person = res.data[0].login;
-        res.data.forEach(function (item) {
-          _this.personOptions.push(item.login);
+      _this.person = '';
+      _this.personOptions = [];
+      if (_this.role[_this.rolevalue] !== undefined) {
+        var url = '/api/users/search/' + _this.role[_this.rolevalue];
+        var method = 'GET';
+        ac_http.request(_this, method, url, function (res) {
+          if (res.ret < 0) {
+            _this.dispatch('showMsg', res.data.message, 1);
+            return;
+          }
+          _this.person = res.data[0].login;
+          res.data.forEach(function (item) {
+            _this.personOptions.push(item.login);
+          });
         });
-      });
+      }
     },
     close: function () {
       this.isshow = false;
