@@ -1,28 +1,71 @@
-<div ba-panel="" ba-panel-class="profile-page">
-    <div class="panel profile-page animated zoomIn">
-        <div class="panel-body" ng-transclude="">
-            <div class="panel-content ng-scope">
-                <h3 class="with-line userinfo"><span>{{user.login}}</span>：个人信息</h3>
+<div class="row mail-client-container transparent">
+  <div class="col-md-12">
+    <div ba-panel="" ba-panel-class="xmedium-panel mail-panel">
+      <div class="panel xmedium-panel mail-panel animated zoomIn">
+        <div class="form-container">
+          <div class="form-info">
+            <!-- <div class="row">
+                          <h3 class="with-line userinfo"><span>{{user.login}}</span>：个人信息</h3>
+                      </div> -->
+            <div class="row from-centent">
+              <form name="editForm" class="edit-form">
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group row clearfix">
-                            <label for="inputFirstName" class="col-sm-3 control-label">名字</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="inputFirstName" placeholder="名字"  v-model="user.firstName">
-                            </div>
+                  <div class="col-md-6">
+                    <div class="form-group row clearfix">
+                      <label for="inputFirstName" class="col-sm-3 control-label">头像</label>
+                      <div class="col-sm-9">
+                        <div class="userpic">
+                          <div class="userpic-wrapper"><img :src="user.avatar ? user.avatar:'../../../vendor/assets/img/app/profile/Nasta.png'" @click="uploadPicture()"></div>
+                          <i class="ion-ios-close-outline ng-scope" @click="removePicture()"></i>
+                          <a href="javascript:void(0)" class="change-userpic" @click="uploadPicture()">上传头像</a>
+                          <input type="file" id="uploadFile" name="myfile" accept="image/*" v-on:change="uploadAvatar">
                         </div>
+                      </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group row clearfix">
-                            <label for="inputLastName" class="col-sm-3 control-label">邮箱</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="email" placeholder="邮箱" v-model="user.email">
-                            </div>
-                        </div>
-                    </div>
+                  </div>
+                  <div class="col-md-6"></div>
                 </div>
-                <button type="button" class="btn btn-primary btn-with-icon save-profile" v-on:click="updateProfile"><i class="ion-android-checkmark-circle"></i>更新信息</button>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="login">登录名</label>
+                      <input type="text" class="form-control ng-pristine" id="login" v-model="user.login" placeholder="游戏名称" disabled="">
+                      <span class="help-block error-block basic-block">必填</span></div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="firstName">名字</label>
+                      <input type="text" class="form-control ng-pristine" id="firstName" v-model="user.firstName" placeholder="游戏名称">
+                      <span class="help-block error-block basic-block">必填</span></div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="email">描述</label>
+                      <input type="text" class="form-control ng-pristine" id="email" v-model="user.email" placeholder="描述">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="qq">企业QQ</label>
+                      <input type="text" class="form-control ng-pristine" id="qq" v-model="user.qq" placeholder="企业QQ">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="phone">手机号</label>
+                      <input type="text" class="form-control ng-pristine" id="phone" v-model="user.phone" placeholder="手机号">
+                    </div>
+                  </div>
+                </div>
+                <div class="line"></div>
+                <div class="buttons">
+                  <button type="button" class="btn btn-with-icon" v-on:click="updateProfile"><i class="ion-printer"></i>保存</button>
+                </div>
+              </form>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>

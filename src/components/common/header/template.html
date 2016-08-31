@@ -8,7 +8,7 @@
         <div class="user-profile clearfix">
             <div class="al-user-profile dropdown" v-bind:class="{ open: settingShow }" v-on:click="toggleSetting">
                 <a class="profile-toggle-link dropdown-toggle">
-                    <img src="../../../assets/vendor/assets/img/app/profile/Nasta.png"></a>
+                    <img :src="user.avatar ? user.avatar:'../../../vendor/assets/img/app/profile/Nasta.png'"></a>
                 <ul class="top-dropdown-menu profile-dropdown dropdown-menu">
                     <li><i class="dropdown-arr"></i></li>
                     <li><a v-link='{ path: "/profile" }' ><i class="fa fa-user"></i>个人信息</a></li>
