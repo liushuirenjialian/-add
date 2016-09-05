@@ -10,7 +10,6 @@
             <button type="button" class="back-button btn btn-default btn-with-icon" v-on:click="next()"><i class="ion-chevron-down"></i>下一个</button>
             <button type="button" class="back-button btn btn-default btn-with-icon" v-on:click="nextUntreated()"><i class="ion-chevron-right"></i>未处理</button>
           </div>
-
       </div>
         <div class="person-info row">
             <div class="col-md-6 col-xs-12 no-padding">
@@ -90,7 +89,17 @@
             <button type="button" class="btn btn-with-icon" v-on:click="showFlowDo" :class="{'hide': detail.status>=6}"><i class="ion-reply"></i>工单流转</button>
             <button type="button" class="btn btn-with-icon" v-on:click="replyDo" :class="{'hide': detail.status>=6}"><i class="ion-printer"></i>回复用户</button>
         </div>
-        <flowlist> </flowlist>
+        <div class="row">
+          <div class="col-md-6">
+          <answerlist></answerlist>
+
+          </div>
+       <div class="col-md-6">
+         <flowlist> </flowlist>
+          </div>
+        </div>
+
+        <!-- <flowlist> </flowlist> -->
     </div>
 
     <flow :isshow.sync=showFlow v-on:flow-save="refreshFlow"> </flow>

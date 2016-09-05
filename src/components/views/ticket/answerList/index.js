@@ -5,7 +5,7 @@ module.exports = {
   props: ['isshow'],
   data: function () {
     return {
-      ticketId: '',
+      ticketId: 0,
       flowList: [],
       user: ac_store.getUserInfo(),
       replyContent:'',
@@ -22,30 +22,24 @@ module.exports = {
   methods: {
     initData: function (ticketId) {
       var _this = this;
-      // /api/ticket-replies/find/
-      debugger
       var url = '/api/ticket-replies/find/' + ticketId;
       ac_http.request(_this, 'GET', url, function (res) {
-        // res.data.forEach(function (item) {
-        //   item.newContent = '';
-        // });
         _this.flowList = res.data;
       });
     },
-
-    replyDo: function (flow) {
+    replyDo: function () {
       var url = '/api/tickets/replyDo';
       var param = {};
-      param.id = this.ticketId;
+      param.ticketId = this.ticketId;
       param.content = this.replyContent;
-      var method = 'PUT';
+      var method='PUT';
       var _this = this;
-      debugger
-      ac_http.request(_this, method, url, param, function (ret) {
-        if (ret.ret < 0) {
-          _this.$dispatch('showMsg', ret.data.message, 1); return;
+      ac_http.request(_this, method, url, param, function (res) {
+        if (res.ret < 0) {
+          _this.$dispatch('showMsg', '信息错误', 1); return;
         }
-        _this.status=ret.data.message;
+        // _this.status=ret.data.status;
+        _this.initData(_this.ticketId);
         _this.$dispatch('showMsg', '保存成功');
       });
     }

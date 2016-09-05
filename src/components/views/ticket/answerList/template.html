@@ -1,4 +1,4 @@
-<div class="panel  with-scroll animated zoomIn" zoom-in="" style="z-index: 1050; display: none;" :class="{'show': isshow}">
+<div class="panel  with-scroll animated zoomIn" zoom-in="" style="z-index: 1050; " :class="{'show': isshow}">
 
     <div class="panel-heading clearfix">
        <label for="replyContent"><h3 class="panel-title">客服信息回复</h3></div></label>
@@ -11,16 +11,16 @@
          <button type="submit" class="btn btn-success submit" v-on:click="replyDo">回复</button>
         </div>
     <div class="panel-body">
-        <div class="flow-list" v-for="flow in flowList">
+        <div class="flow-list" v-for="(ind,flow) in flowList">
             <div  class="xh">
-               <span>{{index+1}}</span>
+               <span>{{ind+1}}</span>
            </div>
             <div class="from">
-                <h3><label>{{flow.fromUserName}} ----{{flow.fromUserId}}</label><span>提问时间：{{flow.createdAt | formatDate}}</span></h3>
-                <p>问：{{{flow.content}}}</p>
+                <h3><label>{{flow.fromUserName}} ---{{flow.fromUserId}}</label><span>时间：{{flow.createdAt | formatDate}}</span></h3>
+                <p>回复内容:{{{flow.content}}}</p>
             </div>
-            <div class="to">
-                <h3><span :class="{'hide': !flow.content}">回复时间：{{flow.reliedAt | formatDate}}</span></h3>
+          <!--   <div class="to">
+                <h3><span :class="{'hide': !flow.content}">提问{{flow.reliedAt | formatDate}}</span></h3>
                 <p :class="{'hide': flow.content}">
                   <i class="tag label family">等待回复解答中。。</i>
                 </p>
