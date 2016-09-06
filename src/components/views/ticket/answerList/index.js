@@ -8,8 +8,8 @@ module.exports = {
       ticketId: 0,
       flowList: [],
       user: ac_store.getUserInfo(),
-      replyContent:'',
-      tags:''
+      replyContent: '',
+      tags: ''
     };
   },
   events: {
@@ -25,6 +25,9 @@ module.exports = {
       var url = '/api/ticket-replies/find/' + ticketId;
       ac_http.request(_this, 'GET', url, function (res) {
         _this.flowList = res.data;
+        if (_this.flowList.length > 0) {
+          _this.isshow = true;
+        }
       });
     },
     replyDo: function () {
@@ -32,11 +35,11 @@ module.exports = {
       var param = {};
       param.ticketId = this.ticketId;
       param.content = this.replyContent;
-      var method='PUT';
+      var method = 'PUT';
       var _this = this;
       ac_http.request(_this, method, url, param, function (res) {
         if (res.ret < 0) {
-          _this.$dispatch('showMsg', '信息错误', 1); return;
+          _this.$dispatch('showMsg', res.data.message, 1); return;
         }
         // _this.status=ret.data.status;
         _this.initData(_this.ticketId);
