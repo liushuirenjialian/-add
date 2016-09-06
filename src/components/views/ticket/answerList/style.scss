@@ -1,0 +1,77 @@
+.panel-body {
+  width: 100%;
+
+  .panel-heading {
+    border-top: 1px solid;
+  }
+
+  .hide2 {
+    display: none;
+  }
+
+  .submit {
+    margin-top: 10px;
+  }
+}
+
+.flow-list {
+  border-bottom: 1px solid;
+  border-color: #ddd;
+  margin: 15px;
+
+  .from {
+    border-bottom: 1px dotted #ccc;
+  }
+
+  .xh {
+    // top: -15px;
+    position: relative;
+    float: right;
+    width: 30px;
+    height: 30px;
+    background-color: #1b8db8;
+    border-radius: 25px;
+
+    span {
+      font-weight: bold;
+      height: 30px;
+      line-height: 30px;
+      display: block;
+      color: #fff;
+      text-align: center;
+    }
+  }
+
+  .to {
+    i {
+      width: 160px;
+    }
+
+    .to-button {
+      position: relative;
+      margin: 10px;
+    }
+  }
+
+  h3 {
+    margin: 5px;
+    border: 1px;
+    font-size: 14px;
+
+    label {
+      color: #379be9;
+      margin-right: 15px;
+    }
+
+    span {
+      // float: right;
+      // margin-right: 100px;
+      color: #999;
+    }
+  }
+
+  p {
+    font-size: 14px;
+    margin: 10px;
+  }
+}
