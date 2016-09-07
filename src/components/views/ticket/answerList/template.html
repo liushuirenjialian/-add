@@ -1,39 +1,41 @@
 <div class="panel  with-scroll animated zoomIn" zoom-in="" style="z-index: 1050;" :class="{'show': isshow}">
-
-    <div class="panel-heading clearfix">
-       <label for="replyContent"><h3 class="panel-title">客服信息回复</h3></div></label>
-        <div class="panel-body">
-         <textarea class="form-control" placeholder="回复信息" id="replyContent" v-model="replyContent"></textarea>
-         <div class="line"></div>
-        <div class="line"></div>
-         <!-- <label for="tags">编辑关键字：</label> -->
-        <!--   <input type="text" class="form-control submit" placeholder="关键词" v-model="tags"> -->
-         <button type="submit" class="btn btn-success submit" v-on:click="replyDo">回复</button>
+  <div class="panel-heading clearfix">
+    <label for="replyContent">
+      <h3 class="panel-title">客服信息回复</h3></div>
+  </label>
+  <div class="panel-body" :class="{'hide':status==9}">
+    <textarea class="form-control" placeholder="回复信息" id="replyContent" v-model="replyContent"></textarea>
+    <div class="line"></div>
+    <div class="line"></div>
+    <button type="submit" class="btn btn-success submit" v-on:click="replyDo">回复</button>
+  </div>
+  <div class="panel-body">
+    <div class="flow-list" v-for="(index,flow) in flowList">
+      <div class="xh">
+        <span>{{index+1}}</span>
+      </div>
+      <div class="from">
+        <div class="customer" v-show="flow.sourceId==1">
+          <h3><label>{{flow.fromUserName}}</label><span>回复 时间：{{flow.createAt | formatDate}}</span></h3>
+          <p>{{{flow.content}}}</p>
         </div>
-    <div class="panel-body">
-        <div class="flow-list" v-for="(ind,flow) in flowList">
-            <div  class="xh">
-               <span>{{ind+1}}</span>
-           </div>
-            <div class="from">
-                <h3><label>{{flow.fromUserName}}</label><span>回复 时间：{{flow.createdAt | formatDate}}</span></h3>
-                <p>回复内容:{{{flow.content}}}</p>
-            </div>
-          <!--   <div class="to">
-                <h3><span :class="{'hide': !flow.content}">提问{{flow.reliedAt | formatDate}}</span></h3>
-                <p :class="{'hide': flow.content}">
-                  <i class="tag label family">等待回复解答中。。</i>
-                </p>
-                <p :class="{'hide': !flow.content}">回复：{{{flow.content}}}</p>
-                <div :class="{'hide': user.login != flow.toUserName , 'hide2': flow.content}">
-                <div class="to-input">
-                <!--   <input type="text" name="name" class="editable-input form-control" v-model="flow.newContent">
-                </div> -->
-                <div class="to-button">
-                  <!--   <button type="button" class="btn btn-success" v-on:click="replyDo(flow)">回复</button> -->
-                </div>
-                </div>
-            </div>
+        <div class="user" v-show="flow.sourceId==0">
+          <h3><label>用户</label><span>追问 时间：{{flow.createAt | formatDate}}</span></h3>
+          <p>{{{flow.content}}}</p>
         </div>
+        <div class="row reply-img">
+          <div :id="'replysFile'+index" class="list-unstyled row">
+            <a v-for="item in flow.files" data-pinterest-text="Pin it" data-tweet-text="share it on twitter" class="col-md-3"
+            :href="item.url" :data-sub-html=flow.content>
+              <img class="img-responsive" :src="item.url">
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="to-button">
+      </div>
     </div>
+  </div>
+</div>
+</div>
 </div>

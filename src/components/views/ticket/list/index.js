@@ -18,6 +18,7 @@ module.exports = {
       page: 0,
       size: 10,
       total: 0,
+      sort: 'id,desc',
       myGames: []
     };
   },
@@ -52,6 +53,7 @@ module.exports = {
         // url = '/api/tickets/search/' + this.status;
       }
       // param.gameId = 23;
+      param.sort = this.sort;
       param.status = this.status;
       param.games = this.getCheckedGames();
       url = '/api/tickets/queryList';

@@ -53,19 +53,28 @@
     }
   }
 
+  .customer {
+    label {
+      color: #21912c;
+    }
+  }
+
+  .user {
+    label {
+      color: #379be9;
+    }
+  }
+
   h3 {
     margin: 5px;
     border: 1px;
     font-size: 14px;
 
     label {
-      color: #379be9;
       margin-right: 15px;
     }
 
     span {
-      // float: right;
-      // margin-right: 100px;
       color: #999;
     }
   }
@@ -74,4 +83,8 @@
     font-size: 14px;
     margin: 10px;
   }
+}
+
+.reply-img {
+  padding: 10px;
 }

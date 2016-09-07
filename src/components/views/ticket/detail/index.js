@@ -13,6 +13,7 @@ module.exports = {
     return {
       actionId: 1,
       showFlow: false,
+      showDetatil: false,
       detail: {
         id: 0,
         gameRegion: '',
@@ -23,16 +24,35 @@ module.exports = {
         majorCategoryInfo: {
           name: ''
         },
-        replyContent: ''
+        replyContent: '',
+        files: []
       }
     };
+  },
+  ready: function () {
+    // this.bindThumbnials();
+  },
+  events: {
+    replyOK: function (ticket) {
+      this.detail.status = ticket.status;
+      this.detail.updatedAt = ticket.updatedAt;
+      this.detail.firstFlowUserName = ticket.firstFlowUserName;
+    }
   },
   components: {
     flow: require('../flow'),
     flowlist: require('../flowList'),
-    answerlist: require('../answerList')
+    answerlist: require('../answerList'),
+    editDetail: require('../editDetail')
   },
   methods: {
+    bindThumbnials: function () {
+      if (this.detail.files) {
+        lightGallery(document.getElementById('aniimatedThumbnials'), {
+          thumbnail: true
+        });
+      }
+    },
     initData: function (id) {
       var _this = this;
       var url = '/api/tickets/' + id;
@@ -44,7 +64,12 @@ module.exports = {
         }
         _this.detail = item;
         _this.$broadcast('loadTicketId', id);
-        _this.$broadcast('loadFlowList', id);
+        _this.$broadcast('loadFlowList', id, res.data.status);
+        _this.$broadcast('loadEditDetail', item);
+        var inter = setInterval(function () {
+          _this.bindThumbnials();
+          clearInterval(inter);
+        }, 100);
       });
     },
     backList: function () {
@@ -53,8 +78,15 @@ module.exports = {
     showFlowDo: function () {
       this.showFlow = true;
     },
+    showEditDetailDo: function () {
+      this.showDetatil = true;
+    },
     refreshFlow: function () {
       this.$broadcast('loadFlowList', this.detail.id);
+    },
+    refreshEditDetail: function (ticket) {
+      this.detail.majorCategoryInfo.name = ticket.majorCategoryInfo.name;
+      this.detail.tags = ticket.tags;
     },
     replyDo: function () {
       var url = '/api/tickets/reply';

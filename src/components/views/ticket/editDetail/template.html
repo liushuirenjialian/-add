@@ -1,0 +1,32 @@
+<div role="dialog" class="modal fade ng-isolate-scope in" size="md" index="0" style="z-index: 1050; display: none;" :class="{'show': isshow}">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" aria-label="Close" v-on:click="close"><em class="ion-ios-close-empty sn-link-close"></em></button>
+          <h4 class="modal-title" id="myModalLabel">编辑工单</h4></div>
+      <div class="modal-body ticket-edit-detail">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="majorCategory">问题类型：</label>
+              <select v-model="detail.majorCategory">
+                <option v-for="item in majorCategorys" :selected="item.value==detail.majorCategory">{{item.text}}<option>
+              </select>
+              <!-- <vselect :options=majorCategorys on-change="consoleCallback" :value.sync=detail.majorCategory placeholder="问题类型" class="vselect"></vselect> -->
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="tags">编辑关键字：</label>
+              <input type="text" class="form-control ng-pristine" id="tags" v-model="detail.tags" placeholder="关键字">
+            </div>
+          </div>
+        </div>
+        <div class="line"></div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" v-on:click="save()">保存</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

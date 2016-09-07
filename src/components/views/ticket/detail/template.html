@@ -1,108 +1,122 @@
 <div class="message-container">
-    <div class="message">
-      <div class="row">
-          <div class="toggle-navigation-container detail-page">
-              <a href="" class="collapse-navigation-link ion-navicon"></a>
-          </div>
-          <button type="button" class="back-button btn btn-default btn-with-icon" v-link="{ name:'ticket-list', params: { status: 'all' } }"><i class="ion-chevron-left"></i>返回</button>
-          <div class="tools-right">
-            <button type="button" class="back-button btn btn-default btn-with-icon" v-on:click="prve()"><i class="ion-chevron-up"></i>上一个</button>
-            <button type="button" class="back-button btn btn-default btn-with-icon" v-on:click="next()"><i class="ion-chevron-down"></i>下一个</button>
-            <button type="button" class="back-button btn btn-default btn-with-icon" v-on:click="nextUntreated()"><i class="ion-chevron-right"></i>未处理</button>
-          </div>
+  <div class="message">
+    <div class="row">
+      <div class="toggle-navigation-container detail-page">
+        <a href="" class="collapse-navigation-link ion-navicon"></a>
       </div>
-        <div class="person-info row">
-            <div class="col-md-6 col-xs-12 no-padding">
-                <div class="contact-info">
-                    <div>
-                        <span>工单编号：{{detail.serialNumber}}</span>
-                    </div>
-                    <div>
-                        <span>游戏+版本号：{{detail.gameName}} + {{detail.gameVersion}} </span>
-                    </div>
-                    <div>
-                        <span>游戏大区：{{detail.gameRegion}}</span>
-                    </div>
-                    <div>
-                        <span>角色名称：{{detail.roleName}}</span>
-                    </div>
-                    <div>
-                        <span>问题类型：{{detail.majorCategoryInfo.name}}</span>
-                    </div>
-                    <div>
-                        <span>提交时间：{{detail.createdAt | formatDate}}</span>
-                    </div>
+      <button type="button" class="back-button btn btn-default btn-with-icon" v-link="{ name:'ticket-list', params: { status: 'all' } }"><i class="ion-chevron-left"></i>返回</button>
+      <div class="tools-right">
+        <button type="button" class="back-button btn btn-default btn-with-icon" v-on:click="prve()"><i class="ion-chevron-up"></i>上一个</button>
+        <button type="button" class="back-button btn btn-default btn-with-icon" v-on:click="next()"><i class="ion-chevron-down"></i>下一个</button>
+        <button type="button" class="back-button btn btn-default btn-with-icon" v-on:click="nextUntreated()"><i class="ion-chevron-right"></i>未处理</button>
+      </div>
+    </div>
+    <div class="person-info row">
+    <!-- <div class="col-lg-4 col-md-6 col-xs-12 no-padding">
+      <div class="detail">
+        <label>工单ID：<span> {{detail.id}} </span></label>
+      </div>
+    </div> -->
 
-                </div>
-            </div>
-
-            <div class="col-md-6 col-xs-12 no-padding">
-                <div class="contact-info">
-                    <div>
-                        <span>平台+渠道：{{detail.platform}} + {{detail.channelName}}</span>
-                    </div>
-
-                    <div>
-                        <span>通行证ID：{{detail.hoolaiPassportId}}</span>
-                    </div>
-                    <div>
-                        <span>联系电话：{{detail.customerMobile}}</span>
-                    </div>
-                    <div>
-                        <span>工单状态：{{{detail.status | formatTicketStatus}}}</span>
-                    </div>
-                    <div>
-                        <span>客服：{{detail.firstFlowUserName}}</span>
-                    </div>
-                    <div>
-                        <span>更新时间：{{detail.updatedAt | formatDate}}</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-        </div>
-        <div class="line"></div>
-        <div class="message-details">
-            <span>问题描述：</span>
-            <span>{{detail.content}}</span>
-        </div>
-        <!-- <div class="line"></div>
-        <div class="message-body">
-            <span>说明图片：</span>
-        </div> -->
-        <div class="line"></div>
-        <div class="attachment">
-            <label for="replyContent">客服回复：</label>
-            <textarea class="form-control" id="replyContent" v-model="detail.replyContent" :class="{'hide':detail.status>7}"></textarea>
-            <span :class="{'hide':detail.status < 7}">{{{detail.replyContent}}}</span>
-        </div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="attachment">
-            <label for="tags">编辑关键字：</label>
-            <input type="text" class="form-control input-sm" id="tags" v-model="detail.tags" :class="{'hide':detail.status>7}">
-            <span :class="{'hide':detail.status < 7}">{{{detail.tags}}}</span>
-        </div>
-        <div class="line"></div>
-        <div class="answer-container">
-            <button type="button" class="btn btn-with-icon" v-on:click="showFlowDo" :class="{'hide': detail.status>=6}"><i class="ion-reply"></i>工单流转</button>
-            <button type="button" class="btn btn-with-icon" v-on:click="replyDo" :class="{'hide': detail.status>=6}"><i class="ion-printer"></i>回复用户</button>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-          <answerlist></answerlist>
-
+      <div class="col-md-6 col-xs-12 no-padding">
+        <div class="contact-info">
+          <div>
+            <span>工单ID：{{detail.id}}</span>
           </div>
-       <div class="col-md-6">
-         <flowlist> </flowlist>
+          <div>
+            <span>工单编号：{{detail.serialNumber}}</span>
+          </div>
+          <div>
+            <span>游戏+版本号：{{detail.gameName}} + {{detail.gameVersion}} </span>
+          </div>
+          <div>
+            <span>游戏大区：{{detail.gameRegion}}</span>
+          </div>
+          <div>
+            <span>角色名称：{{detail.roleName}}</span>
+          </div>
+          <div>
+            <span>问题类型：{{detail.majorCategoryInfo.name}}</span>
+          </div>
+          <div>
+            <span>提交时间：{{detail.createdAt | formatDate}}</span>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="col-lg-4 col-md-6 col-xs-12 no-padding">
+        <div class="contact-info">
+          <div>
+            <span>平台+渠道：{{detail.platform}} + {{detail.channelName}}</span>
+          </div>
+
+          <div>
+            <span>通行证ID：{{detail.hoolaiPassportId}}</span>
+          </div>
+          <div>
+            <span>联系电话：{{detail.customerMobile}}</span>
+          </div>
+          <div>
+            <span>联系QQ：{{detail.qq}}</span>
+          </div>
+          <div>
+            <span>工单状态：{{{detail.status | formatTicketStatus}}}</span>
+          </div>
+          <div>
+            <span>客服：{{detail.firstFlowUserName}}</span>
+          </div>
+          <div>
+            <span>更新时间：{{detail.updatedAt | formatDate}}</span>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="row">
+    </div>
+    <div class="line"></div>
+    <div class="message-details">
+      <span>问题描述：</span>
+      <span>{{detail.content}}</span>
+    </div>
+    <div class="line"></div>
+    <div class="message-body" :class="{'hide': detail.files.length == 0 }">
+      <div id="aniimatedThumbnials" class="list-unstyled row">
+        <a v-for="item in detail.files" data-pinterest-text="Pin it" data-tweet-text="share it on twitter" class="col-md-3"
+        :href="item.url" :data-sub-html=detail.content>
+          <img class="img-responsive" :src="item.url">
+        </a>
+      </div>
 
-        <!-- <flowlist> </flowlist> -->
+    </div>
+    <div class="line"></div>
+    <div class="attachment">
+      <label for="tags">备注：</label>
+      <span>{{{detail.remark}}}</span>
+    </div>
+    <div class="line"></div>
+    <div class="attachment">
+      <label for="tags">关键字：</label>
+      <span>{{{detail.tags}}}</span>
+    </div>
+    <div class="line"></div>
+    <div class="answer-container">
+      <button type="button" class="btn btn-with-icon" v-on:click="showFlowDo" :class="{'hide': detail.status>8}"><i class="ion-reply"></i>工单流转</button>
+      <button type="button" class="btn btn-with-icon" v-on:click="showEditDetailDo" :class="{'hide': detail.status>8}"><i class="ion-save"></i>编辑工单</button>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <answerlist></answerlist>
+      </div>
+      <div class="col-md-6">
+        <flowlist> </flowlist>
+      </div>
     </div>
 
-    <flow :isshow.sync=showFlow v-on:flow-save="refreshFlow"> </flow>
+    <!-- <flowlist> </flowlist> -->
+  </div>
 
-
+  <flow :isshow.sync=showFlow v-on:flow-save="refreshFlow"> </flow>
+  <edit-detail :isshow.sync=showDetatil v-on:edit-save="refreshEditDetail"> </edit-detail>
 </div>
