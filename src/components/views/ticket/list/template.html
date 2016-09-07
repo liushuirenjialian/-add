@@ -6,7 +6,7 @@
                     <div class="col-md-3 col-sm-4" v-for="game in myGames">
                        <a class="sn-link" :class="{'connected':game.checked}"
                         target="_blank" v-on:click="searchGame(game)"><i class="socicon socicon-github"></i>
-                        <span>{{game.name}}</span> <em class="ion-ios-close-empty sn-link-close" ng-mousedown="unconnect(item)"></em></a>
+                        <span>{{game.name}}</span> <em class="ion-ios-close-empty sn-link-close"></em></a>
 
                     </div>
                     <div class="col-md-3 col-sm-4" v-show="myGames.length==0">

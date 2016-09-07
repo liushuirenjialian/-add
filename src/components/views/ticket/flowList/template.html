@@ -19,10 +19,10 @@
                 <p :class="{'hide': !flow.content}">回复：{{{flow.content}}}</p>
                 <div :class="{'hide': user.login != flow.toUserName , 'hide2': flow.content}">
                 <div class="to-input">
-                 <!--  <input type="text" name="name" class="editable-input form-control" v-model="flow.newContent"> -->
+                  <input type="text" name="name" class="editable-input form-control" v-model="flow.newContent"> 
                 </div>
                 <div class="to-button">
-                   <!--  <button type="button" class="btn btn-success" v-on:click="replyDo(flow)">回复</button> -->
+                  <button type="button" class="btn btn-success" v-on:click="replyDo(flow)">回复</button>
                 </div>
                 </div>
             </div>

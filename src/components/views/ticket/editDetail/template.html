@@ -10,7 +10,7 @@
             <div class="form-group">
               <label for="majorCategory">问题类型：</label>
               <select v-model="detail.majorCategory">
-                <option v-for="item in majorCategorys" :selected="item.value==detail.majorCategory">{{item.text}}<option>
+                <option v-for="item in majorCategorys" :selected="item.value==detail.majorCategory" :value="item.value">{{item.text}}<option>
               </select>
               <!-- <vselect :options=majorCategorys on-change="consoleCallback" :value.sync=detail.majorCategory placeholder="问题类型" class="vselect"></vselect> -->
             </div>
@@ -18,7 +18,7 @@
           <div class="col-md-12">
             <div class="form-group">
               <label for="tags">编辑关键字：</label>
-              <input type="text" class="form-control ng-pristine" id="tags" v-model="detail.tags" placeholder="关键字">
+              <input type="text" class="form-control" id="tags" v-model="detail.tags" placeholder="关键字">
             </div>
           </div>
         </div>

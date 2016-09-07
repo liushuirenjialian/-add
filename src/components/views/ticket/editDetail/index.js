@@ -27,18 +27,6 @@ module.exports = {
     this.getMajorCategorys();
   },
   methods: {
-    // initData: function (id) {
-    //   var _this = this;
-    //   var url = '/api/tickets/' + id;
-    //   ac_http.request(_this, 'GET', url, function (res) {
-    //     var item = res.data;
-    //     if (!item.majorCategoryInfo) {
-    //       item.majorCategoryInfo = {};
-    //       item.majorCategoryInfo.name = '';
-    //     }
-    //     _this.detail = item;
-    //   });
-    // },
     close: function () {
       this.isshow = false;
     },
@@ -63,10 +51,10 @@ module.exports = {
     },
     save: function () {
       var param = {};
-      ac_.forEach(this.detail, function (val, key) {
-        param[key] = val;
-      });
-      var url = '/api/tickets';
+      param.id = this.detail.id;
+      param.tags = this.detail.tags;
+      param.majorCategory = this.detail.majorCategory;
+      var url = '/api/tickets/updateDetail';
       var _this = this;
       ac_http.request(_this, 'PUT', url, param, function (res) {
         if (res.ret < 0) {
