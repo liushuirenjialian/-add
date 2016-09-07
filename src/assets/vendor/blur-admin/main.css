@@ -495,7 +495,7 @@ ul.btn-list {
   text-transform: lowercase;
   font-size: 11px;
   font-weight: 300;
-  width: 45px;
+  /*width: 45px;*/
   cursor: pointer;
   display: inline-block; }
   .mail-panel .tag.label {
@@ -4636,7 +4636,7 @@ a.al-sidebar-list-link {
 
 @media (max-width: 1200px) and (min-width: 500px) {
   .al-main {
-    // margin-left: 50px; 
+    // margin-left: 50px;
   }
   .al-footer {
     padding-left: 83px; } }
