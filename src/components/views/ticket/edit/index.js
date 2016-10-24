@@ -35,7 +35,8 @@ module.exports = {
         content: 'content',
         replyContent: '',
         tags: '',
-        remark: ''
+        remark: '',
+        pictureUrls: []
       }
     };
   },
