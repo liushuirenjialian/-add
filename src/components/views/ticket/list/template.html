@@ -1,9 +1,34 @@
 <div class="side-message-navigation expanded">
     <div class="mail-messages-control side-message-navigation-item">
         <div class="panel-body">
+          <div class="body-head">
+          <div class="search-head">
+            <div class="field-div">
+              <div>
+                 <label>通行证id</label>
+                 <input type="text" name="hoolaiPassportId" placeholder="通行证id">
+              </div>
+              <div>
+                 <label>平台</label>
+                 <select class="" name="platform" placeholder="平台">
+                   <option value="">全部</option>
+                   <option value="iOS">iOS</option>
+                   <option value="Android">Android</option>
+                 </select>
+              </div>
+              <div>
+                 <label>渠道</label>
+                 <input type="text" name="channelName"  placeholder="渠道">
+              </div>
+            </div>
+            <div class="button-div">
+              <button type="button" class="btn btn-default btn-with-icon" v-on:click="bindList(0)"><i class="ion-ios-search-strong"></i>查询</button>
+              <button type="button" class="btn btn-default btn-with-icon" v-on:click="cancelSearch()">取消</button>
+            </div>
+          </div>
             <div class="add-row-editable-table">
                 <div class="social-profiles row clearfix">
-                    <div class="col-md-3 col-sm-4" v-for="game in myGames">
+                    <div class="games-icon" v-for="game in myGames">
                        <a class="sn-link" :class="{'connected':game.checked}"
                         target="_blank" v-on:click="searchGame(game)"><i class="socicon socicon-github"></i>
                         <span>{{game.name}}</span> <em class="ion-ios-close-empty sn-link-close"></em></a>
@@ -14,6 +39,7 @@
                     </div>
                 </div>
             </div>
+            </div>
             <div>
                 <table class="table table-bordered table-hover table-condensed">
                     <thead>
@@ -21,13 +47,14 @@
                             <td>id</td>
                             <td>游戏名称<span class="caret"></span></td>
                             <td>平台 + 渠道</td>
+                            <td>通行证id</td>
                             <td>大区</td>
                             <td>角色名称</td>
                             <td>创建时间</td>
                             <td>当前状态</td>
                             <td>客服</td>
                             <td>问题类型</td>
-                            <td>查看详情</td>
+                            <td>问题描述</td>
                             <td>
                                 操作
                             </td>
@@ -38,6 +65,7 @@
                             <td>{{item.id}}</td>
                             <td><span class="editable">{{item.gameName}}</span></td>
                             <td><span class="editable">{{item.platform}} + {{item.channelName}}</span></td>
+                            <td><span class="editable">{{item.hoolaiPassportId}}</span></td>
                             <td><span class="editable">{{item.gameRegion}}</span></td>
                             <td><span class="editable">{{item.roleName}}</span></td>
                             <td class="select-td"><span class="editable">{{item.createdAt | formatDate}}</span></td>

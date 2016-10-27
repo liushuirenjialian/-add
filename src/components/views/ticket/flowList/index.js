@@ -29,6 +29,7 @@ module.exports = {
         if (_this.flowList.length > 0) {
           _this.isshow = true;
         }
+        _this.$dispatch('showFlowList', _this.isshow);
       });
     },
     replyDo: function (flow) {

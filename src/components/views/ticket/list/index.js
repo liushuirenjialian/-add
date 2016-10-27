@@ -43,7 +43,8 @@ module.exports = {
     },
     bindList: function (num) {
       var url = '/api/tickets';
-      var param = {};
+      var param = this.getSearchInfo();
+      // ac_.assign(this.getSearchInfo(), param);
       param.page = num;
       param.size = this.size;
       this.page = num;
@@ -83,6 +84,27 @@ module.exports = {
         if (item.id === game.id) {
           item.checked = !game.checked;
         }
+      });
+      this.bindList(0);
+    },
+    getSearchInfo: function () {
+      var inputList = $('.field-div').find('input,select');
+      var data = {};
+      inputList.each(function (index) {
+        var input = inputList.eq(index);
+        var val = input.val();
+        if (val) {
+          var name = input.attr('name');
+          eval('data.' + name + '=val');
+        }
+      });
+      return data;
+    },
+    cancelSearch: function () {
+      var inputList = $('.field-div').find('input,select');
+      inputList.each(function (index) {
+        var input = inputList.eq(index);
+        input.val('');
       });
       this.bindList(0);
     },

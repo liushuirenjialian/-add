@@ -14,6 +14,7 @@ module.exports = {
       actionId: 1,
       showFlow: false,
       showDetatil: false,
+      flowListShow: false,
       detail: {
         id: 0,
         gameRegion: '',
@@ -37,6 +38,9 @@ module.exports = {
       this.detail.status = ticket.status;
       this.detail.updatedAt = ticket.updatedAt;
       this.detail.firstFlowUserName = ticket.firstFlowUserName;
+    },
+    showFlowList: function (isShow) {
+      this.flowListShow = isShow;
     }
   },
   components: {

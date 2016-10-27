@@ -10,3 +10,4 @@ rules:
   no-console: [2, { allow: ["warn", "error"] }]
   no-debugger: 0
   vars-on-top: 0
+  no-eval: 0
