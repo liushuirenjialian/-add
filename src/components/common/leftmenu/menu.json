@@ -43,4 +43,23 @@
         "iClass": "",
         "authorities": ""
     }]
+}, {
+    "text": "FAQ管理",
+    "name": "faq",
+    "link": "",
+    "iClass": "ion-stats-bars",
+    "authorities": "",
+    "subMenu": [{
+        "text": "FAQ列表",
+        "name": "faq-list",
+        "link": "/faq/list/all",
+        "iClass": "",
+        "authorities": ""
+    }, {
+        "text": "分类管理",
+        "name": "categoryFaq-list",
+        "link": "/categoryFaq/list",
+        "iClass": "",
+        "authorities": ""
+    }]
 }]

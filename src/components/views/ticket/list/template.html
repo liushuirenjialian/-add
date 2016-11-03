@@ -61,7 +61,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="editable-row" v-for="item in roleList">
+                        <tr class="editable-row" v-for="item in roleList" @dblclick="showDetatil(item.id)">
                             <td>{{item.id}}</td>
                             <td><span class="editable">{{item.gameName}}</span></td>
                             <td><span class="editable">{{item.platform}} + {{item.channelName}}</span></td>

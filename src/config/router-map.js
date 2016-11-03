@@ -72,6 +72,25 @@ module.exports = {
           }
         }
       },
+      '/categoryFaq': {
+        name: 'categoryFaq',
+        component: function (resolve) {
+          require(['../components/views/categoryFaq'], resolve);
+        },
+        auth: true,
+        subRoutes: {
+          '/list': {
+            name: 'categoryFaq-list',
+            component: require('../components/views/categoryFaq/list'),
+            auth: true
+          },
+          '/detail/:id': {
+            name: 'categoryFaq-detail',
+            component: require('../components/views/categoryFaq/detail'),
+            auth: true
+          }
+        }
+      },
       '/game': {
         name: 'category',
         component: function (resolve) {
