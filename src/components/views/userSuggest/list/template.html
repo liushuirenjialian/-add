@@ -37,16 +37,16 @@
             </div>
             <div>
                 <table class="table table-bordered table-hover table-condensed">
-                    <thead>
+                    <thead id="userSuggestThead">
                         <tr>
-                            <td>id<span class="caret"></span></td>
-                            <td>反馈内容</td>
-                            <td>分类名称</td>
-                            <td>所属游戏</td>
-                            <td>反馈时间</td>
-                            <td>当前状态</td>
-                            <td>客服</td>
-                            <td>更新时间</td>
+                            <td name="id">id</td>
+                            <td name="suggest">反馈内容</td>
+                            <td name="categoryFaqId">分类名称</td>
+                            <td name="gameId">所属游戏</td>
+                            <td name="createAt">反馈时间</td>
+                            <td name="status">当前状态</td>
+                            <td name="fromUserName">客服</td>
+                            <td name="updateAt">更新时间</td>
                             <td>
                                 操作
                             </td>
@@ -59,7 +59,7 @@
                             <td><span class="editable">{{item.categoryFaq.name}}</span></td>
                             <td><span class="editable">{{item.game.name}}</span></td>
                             <td class="select-td"><span class="editable">{{item.createAt | formatDate}}</span></td>
-                            <td class="select-td"><span class="editable">{{{item.status | formatFAQStatus}}}</span></td>
+                            <td class="select-td"><span class="editable">{{{item.status | formatUserSuggestStatus}}}</span></td>
                             <td><span class="editable">{{item.fromUserName}}</span></td>
                             <td class="select-td"><span class="editable">{{item.updateAt | formatDate}}</span></td>
                             <td>

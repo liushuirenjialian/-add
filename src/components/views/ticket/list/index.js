@@ -25,8 +25,9 @@ module.exports = {
   components: {
     paging: require('../../../common/paging')
   },
-  created: function () {
+  ready: function () {
     this.bindMyGames();
+    this.addtheadSort();
   },
   events: {
     pagindGo: function (num, size) {
@@ -35,6 +36,32 @@ module.exports = {
     }
   },
   methods: {
+    addtheadSort: function () {
+      var _this = this;
+      var tdList = $('#ticketThead').find('td');
+      tdList.each(function (index) {
+        var td = tdList.eq(index);
+        var name = td.attr('name');
+        if (name) {
+          td.append('<span/>');
+          td.click(function () {
+            tdList.attr('class', '');
+            tdList.find('span').attr('class', '');
+            td.find('span').attr('class', 'caret');
+            var sort = name + ',desc';
+            if (sort === _this.sort) {
+              sort = name + ',asc';
+              td.attr('class', 'dropup');
+            }
+            _this.sortDo(sort);
+          });
+        }
+      });
+    },
+    sortDo: function (sort) {
+      this.sort = sort;
+      this.bindList(0);
+    },
     teggleDropdown: function () {
       this.dropdownStatus = !this.dropdownStatus;
     },

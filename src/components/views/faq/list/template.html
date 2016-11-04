@@ -42,20 +42,17 @@
             </div>
             <div>
                 <table class="table table-bordered table-hover table-condensed">
-                    <thead>
+                    <thead id="faqThead">
                         <tr>
-                            <td>id<span class="caret"></span></td>
-                            <td>问题</td>
-                            <td>分类名称</td>
-                            <td>创建时间</td>
-                            <td>当前状态</td>
-                            <td>客服</td>
-                            <td>查看数</td>
-                            <td>赞数</td>
-                            <td>不认可数</td>
-                            <!-- <td>
-                              适用游戏
-                            </td> -->
+                            <td name="id">id</td>
+                            <td name="asked">问题</td>
+                            <td name="categoryFaqId">分类名称</td>
+                            <td name="createAt">创建时间</td>
+                            <td name="status">当前状态</td>
+                            <td name="fromUserName">客服</td>
+                            <td name="views">查看数</td>
+                            <td name="likes">赞数</td>
+                            <td name="hates">不认可数</td>
                             <td>
                                 操作
                             </td>
@@ -72,7 +69,6 @@
                             <td><span class="editable">{{item.views}}</span></td>
                             <td><span class="editable">{{item.likes}}</span></td>
                             <td><span class="editable">{{item.hates}}</span></td>
-                            <!-- <td class="select-td"><span class="editable">{{{item.faq_games | formatFAQGames}}}</span></td> -->
                             <td>
                                 <div class="buttons">
                                     <button class="status-button btn btn-xs btn-primary" v-on:click="showEdit(item.id)">编辑</button>

@@ -51,6 +51,18 @@ module.exports = {
     }
     return '';
   },
+  formatUserSuggestStatus: function (status) {
+    if (status === 0) {
+      return '<span class="tag label work">未处理</span>';
+    }
+    if (status === 1) {
+      return '<span class="tag label family">已处理</span>';
+    }
+    if (status === 2) {
+      return '<span class="tag label friend">已忽略</span>';
+    }
+    return '';
+  },
   formatFAQGames: function (FAQGames) {
     // console.log(FAQGames);
     if (!FAQGames) { return ''; }
