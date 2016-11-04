@@ -18,6 +18,7 @@ module.exports = {
       var param = {};
       param.page = 0;
       param.size = 1000;
+      param.sort = 'sort,asc';
       ac_http.request(_this, 'GET', url, param, function (ret) {
         _this.categoryList = ret.data;
       });

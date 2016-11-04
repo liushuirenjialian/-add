@@ -9,6 +9,7 @@ module.exports = {
       page: 0,
       size: 10,
       total: 0,
+      sort: 'sort,asc',
       pageList: [],
       confirmStatus: false,
       id: 0
@@ -18,9 +19,10 @@ module.exports = {
     paging: require('../../../common/paging'),
     confirm: require('../../../common/confirm')
   },
-  created: function () {
+  ready: function () {
     this.$dispatch('showBreadcrumb', 'FAQ分类管理');
     this.bindList(0);
+    this.addtheadSort();
   },
   events: {
     pagindGo: function (num, size) {
@@ -29,11 +31,38 @@ module.exports = {
     }
   },
   methods: {
+    addtheadSort: function () {
+      var _this = this;
+      var tdList = $('#categoryFaqThead').find('td');
+      tdList.each(function (index) {
+        var td = tdList.eq(index);
+        var name = td.attr('name');
+        if (name) {
+          td.append('<span/>');
+          td.click(function () {
+            tdList.attr('class', '');
+            tdList.find('span').attr('class', '');
+            td.find('span').attr('class', 'caret');
+            var sort = name + ',desc';
+            if (sort === _this.sort) {
+              sort = name + ',asc';
+              td.attr('class', 'dropup');
+            }
+            _this.sortDo(sort);
+          });
+        }
+      });
+    },
+    sortDo: function (sort) {
+      this.sort = sort;
+      this.bindList(0);
+    },
     bindList: function (num) {
       var url = '/api/category-faqs';
       var param = {};
       param.page = num;
       param.size = this.size;
+      param.sort = this.sort;
       this.page = num;
       var _this = this;
       ac_http.request(_this, 'GET', url, param, function (ret) {

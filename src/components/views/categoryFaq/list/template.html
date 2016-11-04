@@ -4,12 +4,11 @@
             <button class="btn btn-primary" v-on:click="showDetatil('add')">增加</button>
         </div>
         <table class="table table-bordered table-hover table-condensed">
-            <tbody>
+            <tbody id="categoryFaqThead">
                 <tr>
-                    <td>id</td>
-                    <td>类型名称</td>
-                    <!-- <td>上级id</td> -->
-                    <td>排序id</td>
+                    <td name="id">id</td>
+                    <td name="name">类型名称</td>
+                    <td name="sort">排序id</td>
                     <td>操作</td>
                 </tr>
                 <tr class="editable-row" v-for="item in pageList">
