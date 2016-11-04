@@ -53,6 +53,30 @@ module.exports = {
           }
         }
       },
+      '/faq': {
+        name: 'faq',
+        component: function (resolve) {
+          require(['../components/views/faq'], resolve);
+        },
+        auth: true,
+        subRoutes: {
+          '/list/:status': {
+            name: 'faq-list',
+            component: require('../components/views/faq/list'),
+            auth: true
+          },
+          '/detail/:id': {
+            name: 'faq-detail',
+            component: require('../components/views/faq/detail'),
+            auth: true
+          },
+          '/edit/:id': {
+            name: 'faq-edit',
+            component: require('../components/views/faq/edit'),
+            auth: true
+          }
+        }
+      },
       '/category': {
         name: 'category',
         component: function (resolve) {

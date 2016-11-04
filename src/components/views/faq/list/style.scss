@@ -1,0 +1,89 @@
+.messages .little-human .date {
+  float: left;
+  margin: 15px 10px 0 5px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.mail-messages-control .btn-group .more-1 {
+  margin-left: 65px;
+}
+
+.mail-messages-control .btn-group .more-2 {
+  margin-left: 50px;
+}
+
+.mail-messages-control .btn-group .more-3 {
+  margin-left: 50px;
+}
+
+.mail-messages-control .btn-group .more-4 {
+  margin-left: 50px;
+}
+
+.table {
+  thead {
+    text-align: center;
+  }
+
+  td {
+    max-height: 120px;
+    background: #fff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.editable-row {
+  .content {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.search-head {
+  margin-bottom: 20px;
+
+  .field-div {
+    display: inline-block;
+    width: 90%;
+
+    div {
+      text-align: left;
+      display: inline-block;
+      // width: 33%;
+
+      label {
+        max-width: 120px;
+      }
+
+      input,
+      select {
+        width: 200px;
+        color: #666;
+        border: 1px solid #cbcbcb;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: none;
+        height: 34px;
+        padding: 6px 12px;
+      }
+    }
+  }
+
+  .button-div {
+    top: 20px;
+    right: 20px;
+    position: absolute;
+  }
+}
+
+.social-profiles {
+  div {
+    display: inline-block;
+    width: 150px;
+  }
+}

@@ -1,0 +1,122 @@
+<div class="message-container form-info">
+    <div class="message">
+        <div class="row">
+            <button type="button" class="back-button btn btn-default btn-with-icon" v-link="{ name:'faq-list', params: { status: 'all' } }"><i class="ion-chevron-left"></i>返回</button>
+        </div>
+        <div class="row from-centent">
+            <form name="editForm" class="edit-form">
+                <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="gameId">分类：</label>
+                          <select class="form-control" name="" v-model="detail.categoryFaq">
+                            <option value="option" :value="item" v-for="item in categoryFaqs">{{ item.name }}</option>
+                          </select>
+                      </div>
+                  </div>
+
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="status">状态：</label>
+                          <select class="form-control" name="" v-model="detail.status">
+                            <option value="option" :value="item.id" v-for="item in faqStatus">{{ item.name }}</option>
+                          </select>
+                      </div>
+                  </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="asked">问题题目：</label>
+                            <input type="text" class="form-control" id="asked" v-model="detail.asked" placeholder="分类名称">
+                            <span class="help-block error-block basic-block">必填</span></div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="questions">回复答案：</label>
+                            <textarea class="form-control" id="questions" v-model="detail.questions" placeholder="回复答案"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+
+                            <div class="checkbox">
+                              适用游戏：<label><input type="checkbox" v-model="isApplyAll">适用所有游戏</label>
+                             </div>
+                            <v-select class="faq_games" v-show="!isApplyAll"  multiple :value.sync="detail.faq_games" :options="gameList" label="name"></v-select>
+                            <!-- <input type="text" class="form-control" id="gameName" v-model="detail.gameName" placeholder="游戏"> -->
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="keywords">编辑关键字：</label>
+                            <input type="text" class="form-control" id="keywords" v-model="detail.keywords" placeholder="关键字">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                      <div class="form-group faq-checkbox">
+                          <div class="checkbox">
+                                  <label><input type="checkbox" v-model="isNoReply">禁止用户评论</label>
+                           </div>
+                          <div class="checkbox">
+                                 <label><input type="checkbox" v-model="isRecommend">推荐显示</label>
+                          </div>
+                          <div class="checkbox">
+                                <label><input type="checkbox" v-model="isHighlight">高亮显示</label>
+                          </div>
+                          <div class="checkbox">
+                               <label><input type="checkbox" v-model="isCategoryTop">分类置顶</label>
+                         </div>
+                      </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="views">查看次数</label>
+                            <input type="text" class="form-control" id="views" v-model="detail.views" placeholder="查看次数">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="likes">赞次数：</label>
+                            <input type="text" class="form-control" id="likes" v-model="detail.likes" placeholder="赞次数">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="hates">不认可数：</label>
+                            <input type="text" class="form-control" id="hates" v-model="detail.hates" placeholder="不认可数">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group disabled">
+                            <label for="fromUserName">客服：</label>
+                            <input type="text" class="form-control" disabled id="fromUserName" v-model="detail.fromUserName" placeholder="客服">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group disabled">
+                            <label for="createAt">创建时间：</label>
+                            <input type="text" class="form-control"  disabled id="createAt" v-model="detail.createAt | formatDate" placeholder="创建时间">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="updateAt">更新时间：</label>
+                            <input type="text" class="form-control" disabled id="updateAt" v-model="detail.updateAt | formatDate" placeholder="更新时间">
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="line"></div>
+                <div class="buttons">
+                    <button type="button" class="btn btn-with-icon" v-on:click="save"><i class="ion-printer"></i>保存</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>

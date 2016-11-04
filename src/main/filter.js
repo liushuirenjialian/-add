@@ -38,5 +38,26 @@ module.exports = {
       return '<span class="tag label study">工单结束</span>';
     }
     return '';
+  },
+  formatFAQStatus: function (status) {
+    if (status === 0) {
+      return '<span class="tag label work">草稿</span>';
+    }
+    if (status === 1) {
+      return '<span class="tag label family">发布</span>';
+    }
+    if (status === 2) {
+      return '<span class="tag label friend">关闭</span>';
+    }
+    return '';
+  },
+  formatFAQGames: function (FAQGames) {
+    // console.log(FAQGames);
+    if (!FAQGames) { return ''; }
+    var faqGames = '';
+    // FAQGames.forEach(function (item) {
+    //   console.log(item);
+    // });
+    return faqGames;
   }
 };

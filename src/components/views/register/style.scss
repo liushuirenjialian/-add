@@ -3,12 +3,12 @@ main {
   top: 100px;
 
   .auth-block {
+    .form-group {
+      min-height: 60px;
+    }
+
     a {
       padding-bottom: 20px;
     }
-  }
-
-  .form-group {
-    height: 60px;
   }
 }

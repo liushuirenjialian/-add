@@ -74,3 +74,10 @@
 .detail-group {
   margin: 10px 15px;
 }
+
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control {
+  color: #803535;
+  border: 0;
+}
