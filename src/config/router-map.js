@@ -65,14 +65,28 @@ module.exports = {
             component: require('../components/views/faq/list'),
             auth: true
           },
-          '/detail/:id': {
-            name: 'faq-detail',
-            component: require('../components/views/faq/detail'),
-            auth: true
-          },
           '/edit/:id': {
             name: 'faq-edit',
             component: require('../components/views/faq/edit'),
+            auth: true
+          }
+        }
+      },
+      '/userSuggest': {
+        name: 'userSuggest',
+        component: function (resolve) {
+          require(['../components/views/userSuggest'], resolve);
+        },
+        auth: true,
+        subRoutes: {
+          '/list/:status': {
+            name: 'userSuggest-list',
+            component: require('../components/views/userSuggest/list'),
+            auth: true
+          },
+          '/edit/:id': {
+            name: 'userSuggest-edit',
+            component: require('../components/views/userSuggest/edit'),
             auth: true
           }
         }

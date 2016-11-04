@@ -1,0 +1,89 @@
+<div class="message-container form-info">
+    <div class="message">
+        <div class="row">
+            <button type="button" class="back-button btn btn-default btn-with-icon" v-link="{ name:'userSuggest-list', params: { status: 'all' } }"><i class="ion-chevron-left"></i>返回</button>
+        </div>
+        <div class="row from-centent">
+            <form name="editForm" class="edit-form">
+                <div class="row">
+                  <div class="col-md-4">
+                      <div class="form-group">
+                          <label for="gameId">分类：</label>
+                          <select class="form-control" name="" v-model="detail.categoryFaq">
+                            <option value="option" :value="item" v-for="item in categoryFaqs">{{ item.name }}</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-md-4">
+                      <div class="form-group">
+                          <label for="questions">反馈游戏：</label>
+                          <select class="form-control" name="" v-model="detail.game">
+                            <option :value="item" v-for="item in gameList">{{ item.name }}</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-md-4">
+                      <div class="form-group">
+                          <label for="status">状态：</label>
+                          <select class="form-control" name="" v-model="detail.status">
+                            <option :value="item.id" v-for="item in userSuggestStatus">{{ item.name }}</option>
+                          </select>
+                      </div>
+                  </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="suggest">反馈内容：</label>
+                            <textarea class="form-control" id="suggest" v-model="detail.suggest" placeholder="反馈内容"></textarea>
+                            <span class="help-block error-block basic-block">必填</span></div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="results">解决结果：</label>
+                            <textarea class="form-control" id="questions" v-model="detail.results" placeholder="解决结果"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group disabled">
+                            <label for="fromUserName">处理客服：</label>
+                            <input type="text" class="form-control" disabled id="fromUserName" v-model="detail.fromUserName" placeholder="处理客服">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group disabled">
+                            <label for="createAt">反馈时间：</label>
+                            <input type="text" class="form-control"  disabled id="createAt" v-model="detail.createAt | formatDate" placeholder="反馈时间">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="updateAt">更新时间：</label>
+                            <input type="text" class="form-control" disabled id="updateAt" v-model="detail.updateAt | formatDate" placeholder="更新时间">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group disabled">
+                            <label for="userQq">联系QQ：</label>
+                            <input type="text" class="form-control"  disabled id="userQq" v-model="detail.userQq" placeholder="联系QQ">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="userMobile">联系手机号：</label>
+                            <input type="text" class="form-control" disabled id="userMobile" v-model="detail.userMobile" placeholder="联系手机号">
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="line"></div>
+                <div class="buttons">
+                    <button type="button" class="btn btn-with-icon" v-on:click="save"><i class="ion-printer"></i>保存</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>

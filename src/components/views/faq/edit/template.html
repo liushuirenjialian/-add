@@ -10,7 +10,7 @@
                       <div class="form-group">
                           <label for="gameId">分类：</label>
                           <select class="form-control" name="" v-model="detail.categoryFaq">
-                            <option value="option" :value="item" v-for="item in categoryFaqs">{{ item.name }}</option>
+                            <option :value="item" v-for="item in categoryFaqs">{{ item.name }}</option>
                           </select>
                       </div>
                   </div>
@@ -19,7 +19,7 @@
                       <div class="form-group">
                           <label for="status">状态：</label>
                           <select class="form-control" name="" v-model="detail.status">
-                            <option value="option" :value="item.id" v-for="item in faqStatus">{{ item.name }}</option>
+                            <option :value="item.id" v-for="item in faqStatus">{{ item.name }}</option>
                           </select>
                       </div>
                   </div>

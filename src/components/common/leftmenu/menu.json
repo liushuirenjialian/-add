@@ -55,10 +55,16 @@
         "link": "/faq/list/all",
         "iClass": "",
         "authorities": ""
-    }, {
+    },{
         "text": "分类管理",
         "name": "categoryFaq-list",
         "link": "/categoryFaq/list",
+        "iClass": "",
+        "authorities": ""
+    },{
+        "text": "用户反馈",
+        "name": "userSuggest-list",
+        "link": "/userSuggest/list/all",
         "iClass": "",
         "authorities": ""
     }]
