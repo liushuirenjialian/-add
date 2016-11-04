@@ -5,11 +5,11 @@
           <div class="search-head">
             <div class="field-div">
               <div>
-                 <label>反馈内容</label>
-                 <input type="text" name="asked" placeholder="反馈内容">
+                 <label>反馈内容：</label>
+                 <input type="text" name="suggest" placeholder="反馈内容">
               </div>
               <div>
-                 <label>状态</label>
+                 <label>状态：</label>
                  <select class="" name="status">
                    <option value="-1">全部</option>
                    <option :value="item.id" v-for="item in userSuggestStatus">{{ item.name }}</option>
