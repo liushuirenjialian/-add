@@ -17,8 +17,7 @@ module.exports = {
       total: 0,
       page: 0,
       size: 10,
-      order: 'id',
-      sort: 'desc',
+      sort: 'id,desc',
       rolename: ''
     };
   },
@@ -37,14 +36,43 @@ module.exports = {
       }
     }
   },
+  ready: function () {
+    this.addtheadSort();
+  },
   methods: {
+    addtheadSort: function () {
+      var _this = this;
+      var tdList = $('#userThead').find('td');
+      tdList.each(function (index) {
+        var td = tdList.eq(index);
+        var name = td.attr('name');
+        if (name) {
+          td.append('<span/>');
+          td.click(function () {
+            tdList.attr('class', '');
+            tdList.find('span').attr('class', '');
+            td.find('span').attr('class', 'caret');
+            var sort = name + ',desc';
+            if (sort === _this.sort) {
+              sort = name + ',asc';
+              td.attr('class', 'dropup');
+            }
+            _this.sortDo(sort);
+          });
+        }
+      });
+    },
+    sortDo: function (sort) {
+      this.sort = sort;
+      this.bindList(0);
+    },
     bindList: function (num) {
       var url = '/api/users';
       var _this = this;
       var param = {};
       param.page = num;
       param.size = this.size;
-      param.sort = this.order + ',' + this.sort;
+      param.sort = this.sort;
       this.page = num;
       if (this.rolename !== 'all') {
         url = '/api/users/search/' + this.rolename;

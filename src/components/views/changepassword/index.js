@@ -27,10 +27,11 @@ module.exports = {
       if (this.password !== this.confirmPassword) {
         _this.$dispatch('showMsg', '两次密码不同，请重新输入！', 1); return;
       }
-      ac_http.request(_this, 'POST', url, param, function (ret) {
+      ac_http.request(_this, 'POST', url, this.password, function (ret) {
         if (ret.ret < 0) {
           _this.$dispatch('showMsg', res.data.message, 1); return;
         }
+        _this.$dispatch('showMsg', '修改密码成功');
       });
     }
   },
