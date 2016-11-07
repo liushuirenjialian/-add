@@ -1,0 +1,15 @@
+<div class="">
+  <p>
+    导入：
+      <input type="file" id="uploadFile" name="myfile" accept="application/vnd.ms-excel">
+  </p>
+  <p>
+    <input type="button" name="name" value="导入" @click="upload">
+  </p>
+  <div>
+    {{{ message }}}
+    <ul>
+      <li v-for="item in errorList" v-show="errorList.length>0">第 {{item.xh}} 行，{{item.error}} </li>
+    </ul>
+  </div>
+</div>

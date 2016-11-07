@@ -67,5 +67,11 @@
         "link": "/userSuggest/list/all",
         "iClass": "",
         "authorities": ""
+    },{
+        "text": "FAQ导入",
+        "name": "faqImport",
+        "link": "/faqImport",
+        "iClass": "",
+        "authorities": ""
     }]
 }]

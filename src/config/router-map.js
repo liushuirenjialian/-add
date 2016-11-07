@@ -72,6 +72,11 @@ module.exports = {
           }
         }
       },
+      '/faqImport': {
+        name: 'faqimport',
+        component: require('../components/views/faq/faqimport'),
+        auth: true
+      },
       '/userSuggest': {
         name: 'userSuggest',
         component: function (resolve) {

@@ -24,7 +24,9 @@ var H5Uploader = (function () {
         throw new Error('The upload action address option is undefined.');
       }
       xhr = new XMLHttpRequest();
+      var token = ac_store.getToken();
       xhr.open('POST', literals.action, true);
+      xhr.setRequestHeader('Authorization', 'Bearer ' + token.access_token);
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
           body = JSON.parse(xhr.responseText);
