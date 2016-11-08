@@ -84,7 +84,7 @@ module.exports = {
       param.sort = this.sort;
       param.categoryFaqId = this.status;
       param.games = this.getCheckedGames();
-      url = '/api/f-aqs/queryList';
+      url = '/api/search/f-aqs';
       ac_http.request(_this, 'GET', url, param, function (res) {
         _this.total = res.headers('x-total-count');
         res.data.forEach(function (item) {
