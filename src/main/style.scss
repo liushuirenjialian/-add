@@ -81,3 +81,10 @@ fieldset[disabled] .form-control {
   color: #803535;
   border: 0;
 }
+
+.social-profiles {
+  div {
+    display: inline-block;
+    min-width: 150px;
+  }
+}
