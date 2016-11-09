@@ -5,9 +5,30 @@ module.exports = {
   data: function () {
     return {
       actionId: 1,
+      stataList: [{
+        id: 0,
+        name: '不显示'
+      }, {
+        id: 1,
+        name: '显示'
+      }],
+      categorys: [{
+        id: 0,
+        name: '手游'
+      }, {
+        id: 1,
+        name: '页游'
+      }, {
+        id: 2,
+        name: '其他'
+      }],
       detail: {
         id: '',
         name: '',
+        sort: '',
+        status: '',
+        categoryId: '',
+        categoryName: '',
         description: '',
         createdAt: new Date(),
         updatedAt: new Date()

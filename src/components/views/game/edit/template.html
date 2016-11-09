@@ -7,13 +7,35 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="name">游戏名称</label>
+                        <label for="name">游戏名称：</label>
                         <input type="text" class="form-control ng-pristine" id="name" v-model="detail.name" placeholder="游戏名称">
                         <span class="help-block error-block basic-block">必填</span></div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="description">描述</label>
+                        <label for="sort">排序：</label>
+                        <input type="text" class="form-control ng-pristine" id="sort" v-model="detail.sort" placeholder="排序">
+                        <span class="help-block error-block basic-block">必填</span></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="categoryId">类型：</label>
+                        <select class="form-control" name="" v-model="detail.categoryId">
+                          <option :value="item.id" v-for="item in categorys">{{ item.name }}</option>
+                        </select>
+                  <span class="help-block error-block basic-block">必填</span></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="status">状态：</label>
+                        <select class="form-control" name="" v-model="detail.status">
+                          <option :value="item.id" v-for="item in stataList">{{ item.name }}</option>
+                        </select>
+                    <span class="help-block error-block basic-block">必填</span></div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="description">描述：</label>
                         <input type="text" class="form-control ng-pristine" id="description" v-model="detail.description" placeholder="描述">
                     </div>
                 </div>

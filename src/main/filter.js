@@ -63,6 +63,15 @@ module.exports = {
     }
     return '';
   },
+  formatGameStatus: function (status) {
+    if (status === 0) {
+      return '<span class="tag label work">不显示</span>';
+    }
+    if (status === 1) {
+      return '<span class="tag label family">显示</span>';
+    }
+    return '';
+  },
   formatFAQGames: function (FAQGames) {
     // console.log(FAQGames);
     if (!FAQGames) { return ''; }
