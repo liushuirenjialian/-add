@@ -39,6 +39,10 @@ ac_.forEach(filters, function (func, key) {
 
 Vue.use(VueRouter);
 
+var powerBox = require('../components/common/powerBox');
+
+Vue.component(powerBox.name, powerBox);
+
 Vue.use(require('vue-resource'));
 Vue.http.options.root = '/root';
 // Vue.http.options.emulateJSON = true;

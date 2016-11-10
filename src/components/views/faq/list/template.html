@@ -24,6 +24,9 @@
             <div class="button-div">
               <button type="button" class="btn btn-default btn-with-icon" v-on:click="bindList(0)"><i class="ion-ios-search-strong"></i>查询</button>
               <button type="button" class="btn btn-default btn-with-icon" v-on:click="cancelSearch()">取消</button>
+              <power-box auth="ROLE_ADMIN,ROLE_MODERATOR">
+                  <button type="button" class="btn btn-default btn-with-icon" v-on:click="deleteDo()"><i class="ion-delete"></i>删除</button>
+              </power-box>
             </div>
           </div>
             <div class="add-row-editable-table">
@@ -44,6 +47,9 @@
                 <table class="table table-bordered table-hover table-condensed">
                     <thead id="faqThead">
                         <tr>
+                            <td>
+                              <input type="checkbox" id="checkbox" v-model="checkedGird" @click="clickCheck">
+                            </td>
                             <td name="id">id</td>
                             <td name="asked">问题</td>
                             <td name="categoryFaqId">分类名称</td>
@@ -60,6 +66,9 @@
                     </thead>
                     <tbody>
                         <tr class="editable-row" v-for="item in roleList" @dblclick="showEdit(item.id)">
+                            <td>
+                              <input type="checkbox" :value="item.id" v-model="checkedGirdIds">
+                            </td>
                             <td>{{item.id}}</td>
                             <td class="select-td content"><span class="editable" title="{{item.asked}}">{{item.asked}}</span></td>
                             <td><span class="editable">{{item.categoryFaq.name}}</span></td>
@@ -82,3 +91,4 @@
         </div>
     </div>
 </div>
+<confirm :isshow.sync=confirmStatus :data.sync=id v-on:confirm-status="deleteData"> </confirm>

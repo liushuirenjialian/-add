@@ -74,17 +74,56 @@
 .detail-group {
   margin: 10px 15px;
 }
-
+// 表单中不可编辑的效果
 .form-control[disabled],
 .form-control[readonly],
 fieldset[disabled] .form-control {
   color: #803535;
   border: 0;
 }
-
+// 按游戏查询
 .social-profiles {
   div {
     display: inline-block;
     min-width: 150px;
+  }
+}
+
+// 列表查询
+.search-head {
+  margin-bottom: 20px;
+
+  .field-div {
+    display: inline-block;
+    width: 90%;
+
+    div {
+      text-align: left;
+      display: inline-block;
+      // width: 33%;
+
+      label {
+        max-width: 120px;
+      }
+
+      input,
+      select {
+        width: 200px;
+        color: #666;
+        border: 1px solid #cbcbcb;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: none;
+        height: 34px;
+        padding: 6px 12px;
+      }
+    }
+  }
+
+  .button-div {
+    top: 20px;
+    right: 20px;
+    position: absolute;
+    display: flex;
   }
 }
