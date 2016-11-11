@@ -24,6 +24,9 @@
             <div class="button-div">
               <button type="button" class="btn btn-default btn-with-icon" v-on:click="bindList(0)"><i class="ion-ios-search-strong"></i>查询</button>
               <button type="button" class="btn btn-default btn-with-icon" v-on:click="cancelSearch()">取消</button>
+              <power-box auth="ROLE_ADMIN,ROLE_MODERATOR">
+                  <button type="button" class="btn btn-default btn-with-icon" v-on:click="deleteDo()"><i class="ion-delete"></i>删除</button>
+              </power-box>
             </div>
           </div>
             <div class="add-row-editable-table">
@@ -44,6 +47,9 @@
                 <table class="table table-bordered table-hover table-condensed">
                     <thead id="ticketThead">
                         <tr>
+                            <td>
+                              <input type="checkbox" id="checkbox" v-model="checkedGird" @click="clickCheck">
+                            </td>
                             <td name="id">id</td>
                             <td name="gameName">游戏名称</span></td>
                             <td name="channelName">平台 + 渠道</td>
@@ -62,6 +68,9 @@
                     </thead>
                     <tbody>
                         <tr class="editable-row" v-for="item in roleList" @dblclick="showDetatil(item.id)">
+                            <td>
+                              <input type="checkbox" :value="item.id" v-model="checkedGirdIds">
+                            </td>
                             <td>{{item.id}}</td>
                             <td><span class="editable">{{item.gameName}}</span></td>
                             <td><span class="editable">{{item.platform}} + {{item.channelName}}</span></td>
@@ -86,3 +95,4 @@
         </div>
     </div>
 </div>
+<confirm :isshow.sync=confirmStatus v-on:confirm-status="deleteData"> </confirm>

@@ -102,10 +102,6 @@ module.exports = {
         _this.total = res.headers('x-total-count');
         var girdIds = [];
         res.data.forEach(function (item) {
-          if (!item.majorCategoryInfo) {
-            item.majorCategoryInfo = {};
-            item.majorCategoryInfo.name = '';
-          }
           girdIds.push(item.id);
         });
         _this.girdIds = girdIds;
@@ -180,7 +176,6 @@ module.exports = {
         this.$dispatch('showMsg', '请先勾选需要删除的数据！', 1); return;
       }
       this.confirmStatus = true; // 控制显示confirm
-      // this.id = id; // 传给子组件， 子组件再传回来
     }
   }
 };
