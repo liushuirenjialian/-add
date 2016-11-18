@@ -20,6 +20,10 @@ module.exports = {
       total: 0,
       sort: 'id,desc',
       myGames: [],
+      checkedGird: false,
+      checkedGirdIds: [],
+      girdIds: [],
+      confirmStatus: false,
       userSuggestStatus: [
         { id: 0, name: '未处理' },
         { id: 1, name: '已处理' },
@@ -28,7 +32,8 @@ module.exports = {
     };
   },
   components: {
-    paging: require('../../../common/paging')
+    paging: require('../../../common/paging'),
+    confirm: require('../../../common/confirm')
   },
   ready: function () {
     this.bindMyGames();
@@ -67,6 +72,14 @@ module.exports = {
       this.sort = sort;
       this.bindList(0);
     },
+    clickCheck: function () {
+      this.checkedGird = !this.checkedGird;
+      if (this.checkedGird) {
+        this.checkedGirdIds = this.girdIds;
+      } else {
+        this.checkedGirdIds = [];
+      }
+    },
     teggleDropdown: function () {
       this.dropdownStatus = !this.dropdownStatus;
     },
@@ -90,12 +103,13 @@ module.exports = {
       url = '/api/user-suggests/queryList';
       ac_http.request(_this, 'GET', url, param, function (res) {
         _this.total = res.headers('x-total-count');
+        var girdIds = [];
         res.data.forEach(function (item) {
-          if (!item.majorCategoryInfo) {
-            item.majorCategoryInfo = {};
-            item.majorCategoryInfo.name = '';
-          }
+          girdIds.push(item.id);
         });
+        _this.girdIds = girdIds;
+        _this.checkedGird = false;
+        _this.checkedGirdIds = [];
         _this.roleList = res.data;
       });
     },
@@ -146,6 +160,25 @@ module.exports = {
         }
       });
       return games.join(',');
+    },
+    deleteData: function () { // 确定删除后，把倒腾的数据传回来
+      var checkedGirdIds = this.checkedGirdIds;
+      var param = {};
+      param.ids = checkedGirdIds.join(',');
+      var url = '/api/user-suggests/dels/' + param.ids;
+      var _this = this;
+      ac_http.request(_this, 'DELETE', url, function (res) {
+        if (res.ret < 0) {
+          _this.$dispatch('showMsg', res.data.message, 1); return;
+        }
+        _this.bindList(_this.page);  // 删除后刷新页面
+      });
+    },
+    deleteDo: function () {
+      if (this.checkedGirdIds.length === 0) {
+        this.$dispatch('showMsg', '请先勾选需要删除的数据！', 1); return;
+      }
+      this.confirmStatus = true; // 控制显示confirm
     }
   }
 };

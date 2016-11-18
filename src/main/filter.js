@@ -72,13 +72,14 @@ module.exports = {
     }
     return '';
   },
-  formatFAQGames: function (FAQGames) {
-    // console.log(FAQGames);
-    if (!FAQGames) { return ''; }
-    var faqGames = '';
-    // FAQGames.forEach(function (item) {
-    //   console.log(item);
-    // });
-    return faqGames;
+  formatFAQGames: function (item) {
+    if (item.isAllgames === 1) { return '适用全部'; }
+    if (!item.faq_games) { return ''; }
+    var faqGames = item.faq_games;
+    var textArr = [];
+    faqGames.forEach(function (game) {
+      textArr.push(game.name);
+    });
+    return textArr.join(',');
   }
 };

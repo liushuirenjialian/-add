@@ -10,8 +10,8 @@ module.exports = {
   },
   data: function () {
     return {
-      order: 'name',
-      sort: 'desc',
+      order: '',
+      sort: '',
       page: 0,
       size: 10,
       total: 0,

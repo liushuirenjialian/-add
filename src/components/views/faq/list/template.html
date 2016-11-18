@@ -51,6 +51,7 @@
                               <input type="checkbox" id="checkbox" v-model="checkedGird" @click="clickCheck">
                             </td>
                             <td name="id">id</td>
+                            <td>适用游戏</td>
                             <td name="asked">问题</td>
                             <td name="categoryFaqId">分类名称</td>
                             <td name="createAt">创建时间</td>
@@ -70,6 +71,7 @@
                               <input type="checkbox" :value="item.id" v-model="checkedGirdIds">
                             </td>
                             <td>{{item.id}}</td>
+                            <td class="select-td content"><span class="editable">{{{item | formatFAQGames}}}</span></td>
                             <td class="select-td content"><span class="editable" title="{{item.asked}}">{{item.asked}}</span></td>
                             <td><span class="editable">{{item.categoryFaq.name}}</span></td>
                             <td class="select-td"><span class="editable">{{item.createAt | formatDate}}</span></td>
