@@ -23,6 +23,12 @@
         "link": "/game/list",
         "iClass": "",
         "authorities": ["ROLE_ADMIN", "ROLE_MODERATOR"]
+    }, {
+        "text": "重建索引",
+        "name": "esreload ",
+        "link": "/system/esreload",
+        "iClass": "",
+        "authorities": ["ROLE_ADMIN"]
     }]
 }, {
     "text": "工单管理",

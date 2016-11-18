@@ -1,0 +1,18 @@
+<div class="">
+  <p>
+    重建FAQ的索引： <input type="button" name="name" @click="reload('faq')" value="确定重建">
+  </p>
+  <p>
+    重建ticket的索引： <input type="button" name="name" @click="reload('ticket')" value="确定重建">
+  </p>
+
+  <p>
+    重建用户反馈的索引： <input type="button" name="name" @click="reload('userSuggest')" value="确定重建">
+  </p>
+
+  <p>
+    <label class="error">{{message}}</label>
+  </p>
+</div>
+
+<confirm :isshow.sync=confirmStatus v-on:confirm-status="reloadDo" message="确定是否重建索引？"> </confirm>

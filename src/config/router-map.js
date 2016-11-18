@@ -134,6 +134,10 @@ module.exports = {
           }
         }
       },
+      '/system/esreload': {
+        component: require('../components/views/system/esreload'),
+        auth: false
+      },
       '/game': {
         name: 'category',
         component: function (resolve) {
